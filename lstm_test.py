@@ -4,6 +4,7 @@ import torch
 from scipy.stats import zscore
 from matplotlib import pyplot as plt
 from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
 
 
 # multivariate data preparation
@@ -31,10 +32,11 @@ def normalize(data):
     data = zscore(data, axis=0)
     data = np.nan_to_num(data)
     # data = torch.tensor(data, dtype=torch.float32)
+
     return data
 
 
-b = 0.9  # Decay between samples (in (0, 1)).
+b = 0.1  # Decay between samples (in (0, 1)).
 
 
 class LowPassIIR:
@@ -58,7 +60,7 @@ def Accuracy(label, filter_loss, threshold):
     FD = []
     for i in range(len(filter_loss)):
         # abnormal, positive
-        if filter_loss[i] > threshold:
+        if filter_loss[i] >= threshold:
             FD.append(1)
             if label[i] == 1:
                 TP += 1
@@ -90,10 +92,13 @@ class Sequence(torch.nn.Module):
     def __init__(self):
         super(Sequence, self).__init__()
         self.lstm1 = torch.nn.LSTMCell(11, 64)
+        # self.drop_out1 = torch.nn.Dropout(0.2)
         self.lstm2 = torch.nn.LSTMCell(64, 32)
+        # self.drop_out2 = torch.nn.Dropout(0.2)
         # self.lstm3 = torch.nn.LSTMCell(64, 32)
-        self.fc1 = torch.nn.Linear(32, 16)
+        self.fc1 = torch.nn.Linear(32,16)
         self.fc2 = torch.nn.Linear(16, 1)
+
         self.device = torch.device('cuda')
 
     def custom_loss_func(y_predictions, target):
@@ -107,8 +112,8 @@ class Sequence(torch.nn.Module):
         c_t1 = torch.zeros(input.size(1), 64, dtype=torch.float32).to(self.device)
         h_t2 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
         c_t2 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
-        h_t3 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
-        c_t3 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
+        # h_t3 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
+        # c_t3 = torch.zeros(input.size(1), 32, dtype=torch.float32).to(self.device)
 
         outputs = []
         batch_size = input.size(1)
@@ -125,7 +130,9 @@ class Sequence(torch.nn.Module):
             h_t1, c_t1 = self.lstm1(input[i], (h_t1, c_t1))
             # print(f" step {i} , hidden state 1: {h_t1.shape}")
             # print(f" step {i} , cell state 1: {c_t1.shape}")
+           # h_t1 = self.drop_out1(h_t1)
             h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+            #h_t2 = self.drop_out2(h_t2)
             # print(f" step {i} , hidden state 2: {h_t2.shape}")
             # print(f" step {i} , cell state 2: {c_t2.shape}")
             # h_t3, c_t3 = self.lstm2(h_t2, (h_t3, c_t3))
@@ -137,6 +144,8 @@ class Sequence(torch.nn.Module):
         # print("outputs.shape", np.array(outputs).shape)
         # print(outputs)
         #print('return output', output)
+        # output = self.fc1(h_t2)
+        # output = self.fc2(output)
         return output
 
 
@@ -159,9 +168,15 @@ dfs = [df_fixed_train]
 
 # df_train = pd.read_csv('rate_simulation_normal_data_last_312.csv')
 # df_valid = pd.read_csv('log_13_2022-3-14-14-04-09_normal_data_last.csv')
-df_valid = pd.read_csv('log_10_2022-3-22-15-17-08_normal_data_last.csv')
+#df_valid = pd.read_csv('log_10_2022-3-22-15-17-08_normal_data_last.csv')
+df_valid = pd.read_csv('log_15_2022-3-22-17-06-08_normal_data_last.csv')
+
+
 # df_test = pd.read_csv('log_15_2022-3-14-14-35-00_normal_data_last.csv')
-df_test = pd.read_csv('log_8_2022-3-22-15-11-05_normal_data_last.csv')
+#df_test = pd.read_csv('log_8_2022-3-22-15-11-05_normal_data_last.csv')
+df_test = pd.read_csv('log_8_2022-3-23-11-40-47_normal_data_last.csv')
+#df_test = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last.csv')
+
 # drop out the monitored datasource
 # X_tr = df_train.loc[df_train['datasource'] != 'roll_measured']
 # train_dataset = df_train.drop(columns=['datasource'])
@@ -202,9 +217,13 @@ X_test = test_dataset
 
 X_valid = normalize(X_valid)
 y_valid = normalize(y_valid)
+print('y_valid min', min(y_valid[11:3012]))
+print('y_valid max', max(y_valid[11:3012]))
 
 X_test = normalize(X_test)
 y_test = normalize(y_test)
+print('y_test min', min(y_test[11:10012]))
+print('y_test max', max(y_test[11:10012]))
 
 # X_test = normalize(X_test)
 # y_test = normalize(y_test)
@@ -231,6 +250,8 @@ for df in dfs:
     df = df.to_numpy()
     # df = np.delete(df, 6, 0)
     y = normalize(df[y_index])
+    print('y_train min', min(y[11:8012]))
+    print('y_train max', max(y[11:8012]))
     X = normalize(df.T)
     X_input, y_input = process_data(X, y, stride)
     for i in range(len(X_input)):
@@ -240,13 +261,16 @@ for df in dfs:
 X_training = np.array(X_training)
 y_training = np.array(y_training)
 
+# cut the landing part
 X_training = X_training[0:8000]
 y_training = y_training[0:8000]
-X_valid_input = X_valid_input[0:800]
-y_valid_input = y_valid_input[0:800]
-X_test_input = X_test_input[0:800]
-y_test_input = y_test_input[0:800]
-
+# X_training, X_valid_input, y_training, y_valid_input = train_test_split(X_training, y_training,
+#     test_size=0.2, shuffle = True, random_state = 8)
+X_valid_input = X_valid_input[0:3000]
+y_valid_input = y_valid_input[0:3000]
+X_test_input = X_test_input[0:10000]
+y_test_input = y_test_input[0:10000]
+#3500
 
 print("X_training.shape", X_training.shape)
 print("y_training.shape", y_training.shape)
@@ -255,11 +279,14 @@ print("y_valid.shape", np.array(y_valid_input).shape)
 print("X_test.shape", X_test_input.shape)
 print("y_test.shape", np.array(y_test_input).shape)
 
+
 # inject abnormal data
 test_label = [0] * len(y_test_input)
-for i in range(500, len(y_test_input)):
+for i in range(2000, 4000):
     for j in range(stride):  # 3 is the roll_rate index
-        X_test_input[i][j][0] = X_test_input[i][j][0] * 1.5
+        for k in range(11):
+            X_test_input[i][j][k] = X_test_input[i][j][k]*1000;
+
 
     test_label[i] = 1
 
@@ -269,11 +296,12 @@ for i in range(500, len(y_test_input)):
 
 # number of data sources
 n_features = 11
-# this is length of sliding window
+# this is length of sliding window.
+
 n_steps = stride
 batch_size = 16
 #PATH = 'TEST.pth'
-PATH = 'cut_fixed_wing_custom_loss_sequence_training_model.pth'
+PATH = 'test_different_cut_fixed_wing_custom_loss_sequence_training_model.pth'
 test_path = PATH
 # criterion = torch.nn.L1Loss()  # reduction='sum' created huge loss value
 # criterion = Sequence.custom_loss_func()
@@ -355,17 +383,31 @@ if train == True:
 
     test_ = plt.plot(epoch_valid_loss)
 
-    plt.savefig('sequence_df2_loss_last.png')
+    plt.savefig('test_sequence_df2_loss_last.png')
     plt.clf()
 
     train_ = plt.plot(epoch_train_loss)
 
-    plt.savefig('sequence_df2_training_loss_last.png')
+    plt.savefig('test_sequence_df2_training_loss_last.png')
 
 print("computing threshold")
 
 # Load
 my_lstm = torch.load(PATH)
+print('lstm parameters')
+for name, m in my_lstm.named_modules():
+    print(name)
+    print(m)
+# for item in my_lstm.parameters():
+#     print(item)
+params = my_lstm.state_dict()
+print(params.keys())
+for k, v in params.items():
+    print(k)
+    print(v)
+    print(v.size())
+
+
 my_lstm.eval()
 Filtered = []
 train_y_predicted = []
@@ -398,11 +440,11 @@ for i in range(0, len(X_training)):
     # if filtered_loss < 1:
     #     Filtered.append(filtered_loss)
 
-print(len(train_y_predicted))
+
 filter_mean = np.mean(Filtered)
 filter_std = np.std(Filtered)
-FD_threshold = filter_mean + 2.6 * filter_std
-# FD_threshold = 0.2
+FD_threshold = filter_mean + 1.3 * filter_std
+#FD_threshold = 0.05902386768298962
 print("loss mean", filter_mean)
 print("loss std", filter_std)
 print("FD_threshold", FD_threshold)
@@ -505,7 +547,7 @@ plt.yticks(fontsize=20)
 plt.plot(np.arange(len(train_y_predicted)), train_y_predicted, 'r', linewidth=2.0, label='prediction')
 plt.plot(np.arange(len(train_y_predicted)), y_training, 'b', linewidth=2.0, label='groundtruth')
 plt.legend()
-plt.savefig('cut_fixed_wing_new_train_prediction.png')
+plt.savefig('test_whole_fixed_wing_new_train_prediction.png')
 plt.clf()
 
 plt.figure(figsize=(12,6))
@@ -517,7 +559,7 @@ plt.yticks(fontsize=20)
 plt.plot(np.arange(len(valid_y_predicted)), valid_y_predicted, 'r', linewidth=2.0, label='prediction')
 plt.plot(np.arange(len(valid_y_predicted)), y_valid_input, 'b', linewidth=2.0, label='groundtruth')
 plt.legend()
-plt.savefig('cut_fixed_wing_new_valid_prediction.png')
+plt.savefig('test_whole_fixed_wing_new_valid_prediction.png')
 plt.clf()
 
 plt.figure(figsize=(12,6))
@@ -529,8 +571,20 @@ plt.yticks(fontsize=20)
 plt.plot(np.arange(len(test_y_predicted)), test_y_predicted, 'r', linewidth=2.0, label='prediction')
 plt.plot(np.arange(len(test_y_predicted)), y_test_input, 'b', linewidth=2.0, label='groundtruth')
 plt.legend()
-plt.title('attack roll angle [600, 1500], threshold ' + str(FD_threshold))
-plt.savefig('cut_fixed_wing_roll_new_test_prediction.png')
+plt.title('attack yaw rate [2000, 4000], threshold ' + str(FD_threshold))
+plt.savefig('test_whole_fixed_wing_roll_new_test_prediction.png')
+plt.clf()
+
+plt.figure(figsize=(12,6))
+plt.title("test")
+plt.xlabel('timestamp')
+plt.ylabel('error')
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
+plt.plot(np.arange(len(test_err)), test_err, 'r', linewidth=2.0, label='test_err')
+plt.legend()
+plt.title('test_err roll angle [2000, 4000], threshold ' + str(FD_threshold))
+plt.savefig('test_whole_err_fixed_wing_roll_new_test_prediction.png')
 plt.clf()
 
 #
