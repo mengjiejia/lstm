@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 import pandas as pd
 import torch
@@ -47,6 +49,28 @@ class Sequence(torch.nn.Module):
             output = self.fc2(output)
 
         return output
+
+
+# abnormal injection
+# stride = 5
+def abnormal_injection(data, patten, percentage, index, rate):
+    random.seed(5)
+    p = int(len(data) * percentage)
+    abnormal_indices = random.sample(range(len(data)), k=p)
+
+    # continuously
+    if patten == 0:
+        for i in range(2000, 4000):
+            for j in range(5):
+                data[i][j][index] = data[i][j][index] * rate
+
+    # randomly
+    elif patten == 1:
+        for i in abnormal_indices:
+            for j in range(5):
+                data[i][j][index] = data[i][j][index] * rate
+
+    return data
 
 
 # multivariate data preparation
@@ -118,8 +142,10 @@ def Accuracy(label, filter_loss, threshold):
                 TN += 1
             else:
                 FN += 1
-
-    TPR = TP / (TP + FN)
+    if TP == 0 and FN == 0:
+        TPR = 0
+    else:
+        TPR = TP / (TP + FN)
     FPR = FP / (FP + TN)
     ACC = (TP + TN) / (TP + TN + FP + FN)
 
@@ -139,11 +165,12 @@ def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filen
     x_position = [start, end]
     for i in x_position:
         plt.axvline(x=i, color='y', linestyle='--')
+    plt.legend()
     plt.savefig(path + '/' + filename + '.png', dpi=300)
     plt.clf()
 
 
-def two_line(title, xlabel, ylabel, prediction, groundtruth, filename, path):
+def two_line(title, xlabel, ylabel, prediction, normal, filename, path):
     plt.figure(figsize=(12, 6))
     plt.title(title)
     plt.xlabel(xlabel)
@@ -151,7 +178,7 @@ def two_line(title, xlabel, ylabel, prediction, groundtruth, filename, path):
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
     plt.plot(np.arange(len(prediction)), prediction, 'r', linewidth=2.0, label='prediction')
-    plt.plot(np.arange(len(groundtruth)), groundtruth, 'b', linewidth=2.0, label='groundtruth')
+    plt.plot(np.arange(len(normal)), normal, 'b', linewidth=2.0, label='normal_sensor_reading')
     plt.legend()
     plt.savefig(path + '/' + filename + '.png', dpi=300)
     plt.clf()

@@ -31,9 +31,15 @@ y_training = y_training[0:8000]
 X_training, X_valid, y_training, y_valid = train_test_split(X_training, y_training,
                                                             test_size=0.2, shuffle=False, random_state=0)
 
+# inject abnormal data
+patten = 1
+percentage = 0.2
+rate = 0.5
+X_training = myModule.abnormal_injection(X_training, patten, percentage, y_index, rate)
+
 # create the output directory
 parent_path = os.getcwd()
-directory = '3layers2dropout20'
+directory = 'newrandom_20_percentage_05'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -41,8 +47,10 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 sys.stdout = open(output_dir + '/output.txt', 'a')
+print("######### training output ##########")
 print("X_training.shape", X_training.shape)
 print("y_training.shape", y_training.shape)
+print('abnormal windows', int(len(X_training) * percentage))
 print("X_valid.shape", X_valid.shape)
 print("y_valid.shape", np.array(y_valid).shape)
 print("sliding window length", stride)
@@ -52,6 +60,7 @@ sys.stdout = to_screen
 
 model_path = output_dir + '/model.pth'
 threshold_file = output_dir + '/threshold.pickle'
+mean_std_file = output_dir + '/mean_std.pickle'
 
 # number of data sources
 n_features = 11
@@ -150,9 +159,12 @@ FD_threshold = filter_mean + 2 * filter_std
 with open(threshold_file, 'wb') as f:
     pickle.dump(FD_threshold, f)
 
+with open(mean_std_file, 'wb') as f:
+    pickle.dump([filter_mean, filter_std], f)
+
 sys.stdout = open(output_dir + '/output.txt', 'a')
-print("loss mean", filter_mean)
-print("loss std", filter_std)
+print("error mean", filter_mean)
+print("error std", filter_std)
 print("FD_threshold", FD_threshold)
 
 total = len(Filtered)
