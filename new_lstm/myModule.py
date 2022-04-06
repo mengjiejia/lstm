@@ -27,7 +27,7 @@ class Sequence(torch.nn.Module):
         return loss_value
 
     def forward(self, input):
-        # Initial cell states
+        # Initial cell states, every time training batch?
         h_t1 = torch.zeros(input.size(1), 128, dtype=torch.float32).to(self.device)
         c_t1 = torch.zeros(input.size(1), 128, dtype=torch.float32).to(self.device)
         h_t2 = torch.zeros(input.size(1), 64, dtype=torch.float32).to(self.device)
@@ -51,26 +51,56 @@ class Sequence(torch.nn.Module):
         return output
 
 
-# abnormal injection
+# training and validation dataset abnormal injection
 # stride = 5
-def abnormal_injection(data, patten, percentage, index, rate):
+def abnormal_injection(data, pattern, percentage, index, rate):
     random.seed(5)
     p = int(len(data) * percentage)
     abnormal_indices = random.sample(range(len(data)), k=p)
 
     # continuously
-    if patten == 0:
-        for i in range(2000, 4000):
+    if pattern == 0:
+        for i in range(300, 1581):
             for j in range(5):
                 data[i][j][index] = data[i][j][index] * rate
 
     # randomly
-    elif patten == 1:
+    elif pattern == 1:
         for i in abnormal_indices:
+            rate = random.uniform(1.1, 1.5)
             for j in range(5):
                 data[i][j][index] = data[i][j][index] * rate
 
     return data
+
+
+# test dataset attack, label
+def attack(X_test, y_test, pattern, percentage, index):
+    random.seed(5)
+    p = int(len(y_test) * percentage)
+    abnormal_indices = random.sample(range(len(y_test)), k=p)
+    test_label = [0] * len(y_test)
+    # continuously
+    if pattern == 0:
+        for i in range(2000, 3400):
+            rate = random.uniform(1.1, 1.5)
+            for j in range(5):  # 3 is the roll_rate index
+                X_test[i][j][index] = X_test[i][j][index] * rate
+
+            y_test[i] = y_test[i] * rate
+            test_label[i] = 1
+
+    # random
+    elif pattern == 1:
+        for i in abnormal_indices:
+            rate = random.uniform(1.1, 1.5)
+            for j in range(5):
+                X_test[i][j][index] = X_test[i][j][index] * rate
+
+            y_test[i] = y_test[i] * rate
+            test_label[i] = 1
+
+    return X_test, y_test, test_label, p
 
 
 # multivariate data preparation
@@ -103,6 +133,30 @@ def normalize(data):
     data = zscore(data, axis=0)
     data = np.nan_to_num(data)
     return data
+
+
+# random shuffle
+def random_shuffle(X, y):
+    xy_merged = []
+    for i in range(len(X)):
+        item = [X[i], y[i]]
+        item = np.array(item)
+        xy_merged.append(item)
+
+    xy_merged = np.array(xy_merged)
+
+    random.shuffle(xy_merged)
+
+    X_random = []
+    y_random = []
+    for item in xy_merged:
+        X_random.append(item[0])
+        y_random.append(item[1])
+
+    X_random = np.array(X_random)
+    y_random = np.array(y_random)
+
+    return X_random, y_random
 
 
 b = 0.1  # Decay between samples (in (0, 1)).
@@ -165,8 +219,9 @@ def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filen
     x_position = [start, end]
     for i in x_position:
         plt.axvline(x=i, color='y', linestyle='--')
-    plt.legend()
-    plt.savefig(path + '/' + filename + '.png', dpi=300)
+    lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
+    # plt.legend()
+    plt.savefig(path + '/' + filename + '.png', dpi=300, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.clf()
 
 
@@ -179,8 +234,9 @@ def two_line(title, xlabel, ylabel, prediction, normal, filename, path):
     plt.yticks(fontsize=20)
     plt.plot(np.arange(len(prediction)), prediction, 'r', linewidth=2.0, label='prediction')
     plt.plot(np.arange(len(normal)), normal, 'b', linewidth=2.0, label='normal_sensor_reading')
-    plt.legend()
-    plt.savefig(path + '/' + filename + '.png', dpi=300)
+    lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
+    # plt.legend()
+    plt.savefig(path + '/' + filename + '.png', dpi=300, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.clf()
 
 
@@ -191,7 +247,8 @@ def one_line(title, xlabel, ylabel, data, filename, path):
     plt.ylabel(ylabel)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.plot(np.arange(len(data)), data, 'r', linewidth=2.0, label='test_err')
-    plt.legend()
-    plt.savefig(path + '/' + filename + '.png', dpi=300)
+    plt.plot(np.arange(len(data)), data, 'r', linewidth=2.0, label='error')
+    lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
+    # plt.legend()
+    plt.savefig(path + '/' + filename + '.png', dpi=300, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.clf()
