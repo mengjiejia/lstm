@@ -82,7 +82,7 @@ if pattern != -1:
 
 # create the output directory
 parent_path = os.getcwd()
-directory = 'random_abnormal_training'
+directory = 'test_abnormal_training_decrease'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -140,8 +140,8 @@ epoch_train_loss = []
 for t in range(train_episodes):
     mv_lstm.train()
     train_loss = []
-    for i in range(0, len(X_training_normal), batch_size):
-        inpt = X_training_normal[i:i + batch_size, :, :]
+    for i in range(0, len(X_training_abnormal), batch_size):
+        inpt = X_training_abnormal[i:i + batch_size, :, :]
         target = y_training_normal[i:i + batch_size]
 
         x_batch = torch.tensor(inpt, dtype=torch.float32)
@@ -186,8 +186,8 @@ err_abs = torch.nn.L1Loss()
 # mse = torch.mse
 
 
-for i in range(0, len(X_training_normal)):
-    inpt = [X_training_normal[i, :, :]]
+for i in range(0, len(X_training_abnormal)):
+    inpt = [X_training_abnormal[i, :, :]]
     target = y_training_normal[i]
 
     x_batch = torch.tensor(inpt, dtype=torch.float32)
@@ -241,8 +241,8 @@ print("train accuracy", accuracy)
 # compute validation accuracy
 err_output = []
 valid_y_prediction = []
-for i in range(0, len(X_valid_normal)):
-    inpt = [X_valid_normal[i]]
+for i in range(0, len(X_valid_abnormal)):
+    inpt = [X_valid_abnormal[i]]
     target = y_valid_normal[i]
 
     x_valid = torch.tensor(inpt, dtype=torch.float32)

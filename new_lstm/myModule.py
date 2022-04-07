@@ -48,6 +48,24 @@ class Sequence(torch.nn.Module):
             output = self.fc1(h_t3)
             output = self.fc2(output)
 
+            # s = [0] *
+            # for i in range(3):
+            #     for j in range(4):
+            #         s[j] += c[i][j]
+            # avarage = []
+            # for item in s:
+            #     avarage.append(item/4)
+
+        # last sample as input
+        h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
+
+        h_t1 = self.drop_out1(h_t1)
+        h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+        h_t2 = self.drop_out2(h_t2)
+        h_t3, c_t3 = self.lstm3(h_t2, (h_t3, c_t3))
+        output = self.fc1(h_t3)
+        output = self.fc2(output)
+
         return output
 
 
@@ -67,7 +85,7 @@ def abnormal_injection(data, pattern, percentage, index, rate):
     # randomly
     elif pattern == 1:
         for i in abnormal_indices:
-            rate = random.uniform(1.1, 1.5)
+            rate = random.uniform(0.5, 0.9)
             for j in range(5):
                 data[i][j][index] = data[i][j][index] * rate
 
@@ -93,14 +111,14 @@ def attack(X_test, y_test, pattern, percentage, index):
     # random
     elif pattern == 1:
         for i in abnormal_indices:
-            rate = random.uniform(1.1, 1.5)
+            rate = random.uniform(0.5, 0.9)
             for j in range(5):
                 X_test[i][j][index] = X_test[i][j][index] * rate
 
             y_test[i] = y_test[i] * rate
             test_label[i] = 1
 
-    return X_test, y_test, test_label, p
+    return X_test, y_test, test_label, p, abnormal_indices
 
 
 # multivariate data preparation
@@ -180,22 +198,27 @@ def Accuracy(label, filter_loss, threshold):
     TN = 0
     FN = 0
     FP = 0
-    FD = []
+    TP_list = []
+    FP_list = []
+    TN_list = []
+    FN_list = []
     for i in range(len(filter_loss)):
         # abnormal, positive
         if filter_loss[i] >= threshold:
-            FD.append(1)
             if label[i] == 1:
                 TP += 1
+                TP_list.append(i)
             else:
                 FP += 1
+                FP_list.append(i)
         else:
             # normal, negative
-            FD.append(0)
             if label[i] == 0:
                 TN += 1
+                TN_list.append(i)
             else:
                 FN += 1
+                FN_list.append(i)
     if TP == 0 and FN == 0:
         TPR = 0
     else:
@@ -203,22 +226,34 @@ def Accuracy(label, filter_loss, threshold):
     FPR = FP / (FP + TN)
     ACC = (TP + TN) / (TP + TN + FP + FN)
 
-    return TP, FP, TN, FN, TPR, FPR, ACC
+    return TP, FP, TN, FN, TPR, FPR, ACC, TP_list, FP_list, TN_list, FN_list
 
 
-def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filename, path):
+def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filename, path, abnormal_mark, TP_list,
+                  FP_list):
     plt.figure(figsize=(12, 6))
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.plot(np.arange(len(prediction)), prediction, 'r', linewidth=2.0, label='prediction')
-    plt.plot(np.arange(len(abnormal)), abnormal, 'g', linewidth=2.0, label='abnormal')
+    plt.plot(np.arange(len(prediction)), prediction, 'r', marker='o', markevery=TP_list, linewidth=2.0,
+             label='TP_prediction')
+    plt.plot(np.arange(len(prediction)), prediction, 'r', marker='s', markevery=FP_list, linewidth=2.0,
+             label='FP_prediction')
+    plt.plot(np.arange(len(abnormal)), abnormal, 'g', marker='D', markevery=abnormal_mark, linewidth=2.0,
+             label='abnormal')
     # add vertical line
     x_position = [start, end]
     for i in x_position:
         plt.axvline(x=i, color='y', linestyle='--')
+
+    pair = []
+    for i in abnormal_mark:
+        pair.append((prediction[i], abnormal[i]))
+
+    plt.plot((abnormal_mark, abnormal_mark), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y', linestyle='--')
+
     lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
     # plt.legend()
     plt.savefig(path + '/' + filename + '.png', dpi=300, bbox_extra_artists=(lgd,), bbox_inches='tight')

@@ -14,7 +14,7 @@ import random
 to_screen = sys.stdout
 
 parent_path = os.getcwd()
-directory = 'normal_training'
+directory = 'test_abnormal_training_decrease'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -38,8 +38,8 @@ stride = 5
 X_test, y_test = myModule.reconstruct_data(X_test, y_test, stride)
 
 # cut the landing part
-X_test = X_test[0:7000]
-y_test = y_test[0:7000]
+X_test = X_test[0:100]
+y_test = y_test[0:100]
 X_test_normal = X_test.copy()
 y_test_normal = y_test.copy()
 X_test_abnormal = X_test.copy()
@@ -70,7 +70,7 @@ print("y_test.shape", np.array(y_test).shape)
 #
 #     test_label[i] = 1
 
-X_test_abnormal, y_test_abnormal, abnormal_label, windows_count = myModule.attack(X_test_abnormal, y_test_abnormal, pattern, 0.2, y_index)
+X_test_abnormal, y_test_abnormal, abnormal_label, windows_count, abnormal_indices = myModule.attack(X_test_abnormal, y_test_abnormal, pattern, 0.2, y_index)
 print("total abnormal windows", windows_count)
 
 # number of data sources
@@ -179,7 +179,26 @@ FD_threshold = (mean + 2 * std)
 print('Fd_threshold', FD_threshold)
 
 # abnormal x, abnormal y, accuracy
-TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(abnormal_label, abnormalx_abnormaly_test_err, FD_threshold)
+TP, FP, TN, FN, TPR, FPR, ACC, TP_list, FP_list, TN_list, FN_list = myModule.Accuracy(abnormal_label, abnormalx_abnormaly_test_err, FD_threshold)
+
+test_positive = np.concatenate((TP_list, FP_list))
+test_positive.sort()
+abnormal_indices.sort()
+TP_list.sort()
+combined_positive_list = []
+for item in abnormal_indices:
+    if item in TP_list:
+        combined_positive_list.append(1)
+    else:
+        combined_positive_list.append(0)
+
+d = {'abnormal_indice': abnormal_indices, 'test': combined_positive_list}
+df_positive_list = pd.DataFrame(d)
+
+print('positive_list')
+print(df_positive_list)
+
+
 print('abnormal x, abnormal y, test results:')
 print("TP", TP)
 print("FP", FP)
@@ -189,49 +208,59 @@ print("TPR", TPR)
 print("FPR", FPR)
 print("ACC", ACC)
 
-# normal x, abnormal y, accuracy
-TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(abnormal_label, normalx_abnormaly_test_err, FD_threshold)
-print('normal x, abnormal y, test results:')
-print("TP", TP)
-print("FP", FP)
-print("TN", TN)
-print("FN", FN)
-print("TPR", TPR)
-print("FPR", FPR)
-print("ACC", ACC)
-
-# normal accuracy
-TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(normal_label, normalx_normaly_test_err, FD_threshold)
-print('normal x, normal y, test results:')
-print("TP", TP)
-print("FP", FP)
-print("TN", TN)
-print("FN", FN)
-print("TPR", TPR)
-print("FPR", FPR)
-print("ACC", ACC)
+# # normal x, abnormal y, accuracy
+# TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(abnormal_label, normalx_abnormaly_test_err, FD_threshold)
+# print('normal x, abnormal y, test results:')
+# print("TP", TP)
+# print("FP", FP)
+# print("TN", TN)
+# print("FN", FN)
+# print("TPR", TPR)
+# print("FPR", FPR)
+# print("ACC", ACC)
+#
+# # normal accuracy
+# TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(normal_label, normalx_normaly_test_err, FD_threshold)
+# print('normal x, normal y, test results:')
+# print("TP", TP)
+# print("FP", FP)
+# print("TN", TN)
+# print("FN", FN)
+# print("TPR", TPR)
+# print("FPR", FPR)
+# print("ACC", ACC)
 
 
 x_label = 'sliding window number'
 y_label = 'roll angle'
 
+abnormal_mark = []
+for item in abnormal_indices:
+    if item < 100:
+        abnormal_mark.append(item)
+
+test_mark = []
+for item in test_positive:
+    if item < 100:
+        test_mark.append(item)
+
 # test result
 # myModule.three_line('test result', x_label, y_label, test_y_prediction, y_test, y_test_abnormal, 'test result', output_dir)
 # abnormal x, abnormal y, results
-myModule.test_two_line('random abnormal x, abnormal y, test result', x_label, y_label, abnormalx_abnormaly_prediction, y_test_abnormal, 0, 0, 'random abnormal x, abnormal y, test result',
-                       output_dir)
-myModule.two_line('random abnormal_abnormal test result with normal sensor reading', x_label, y_label, abnormalx_abnormaly_prediction, y_test_normal,
+myModule.test_two_line('test result', x_label, y_label, abnormalx_abnormaly_prediction[0:100], y_test_abnormal[0:100], 0, 0, 'test result',
+                       output_dir, abnormal_mark, TP_list, FP_list)
+myModule.two_line('random abnormal_abnormal test result with normal sensor reading', x_label, y_label, abnormalx_abnormaly_prediction[0:100], y_test_normal[0:100],
                   'random abnormal_abnormal test result with normal sensor reading', output_dir)
 
 # normal x, abnormal y, results
-myModule.test_two_line('normal x, abnormal y, test result', x_label, y_label, normalx_abnormaly_prediction, y_test_abnormal, 0, 0, 'normal x, abnormal y, test result',
-                       output_dir)
+# myModule.test_two_line('normal x, abnormal y, test result', x_label, y_label, normalx_abnormaly_prediction[0:100], y_test_abnormal, 0, 0, 'normal x, abnormal y, test result',
+#                        output_dir)
 myModule.two_line('normal_abnormal test result with normal sensor reading', x_label, y_label, normalx_abnormaly_prediction, y_test_normal,
                   'normal_abnormal test result with normal sensor reading', output_dir)
 
 # normal x, normal y, test results
-myModule.test_two_line('normal x, normal y, test result random', x_label, y_label, normalx_normaly_prediction, y_test_normal, 0, 0, 'normal test result',
-                       output_dir)
+# myModule.test_two_line('normal x, normal y, test result random', x_label, y_label, normalx_normaly_prediction, y_test_normal, 0, 0, 'normal test result',
+#                        output_dir)
 
 
 print('MSE abnormal x, abnormal y', mean_squared_error(y_test_normal, abnormalx_abnormaly_prediction))
