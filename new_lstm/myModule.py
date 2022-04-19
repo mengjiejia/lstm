@@ -8,6 +8,13 @@ from matplotlib import pyplot as plt
 
 
 # lstm model
+
+def custom_loss_func(y_predictions, target):
+    square_difference = torch.square(y_predictions - target)
+    loss_value = torch.sum(square_difference) * 0.5
+    return loss_value
+
+
 class Sequence(torch.nn.Module):
     def __init__(self):
         super(Sequence, self).__init__()
@@ -20,11 +27,6 @@ class Sequence(torch.nn.Module):
         self.fc2 = torch.nn.Linear(16, 1)
 
         self.device = torch.device('cuda')
-
-    def custom_loss_func(y_predictions, target):
-        square_difference = torch.square(y_predictions - target)
-        loss_value = torch.sum(square_difference) * 0.5
-        return loss_value
 
     def forward(self, input):
         # Initial cell states, every time training batch?
@@ -48,14 +50,6 @@ class Sequence(torch.nn.Module):
             output = self.fc1(h_t3)
             output = self.fc2(output)
 
-            # s = [0] *
-            # for i in range(3):
-            #     for j in range(4):
-            #         s[j] += c[i][j]
-            # avarage = []
-            # for item in s:
-            #     avarage.append(item/4)
-
         # last sample as input
         h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
 
@@ -68,6 +62,160 @@ class Sequence(torch.nn.Module):
 
         return output
 
+
+# model2
+class model2(torch.nn.Module):
+    def __init__(self):
+        super(model2, self).__init__()
+        self.lstm1 = torch.nn.LSTMCell(11, 8)
+        self.lstm2 = torch.nn.LSTMCell(8, 8)
+        self.fc1 = torch.nn.Linear(8, 4)
+        self.fc2 = torch.nn.Linear(4, 1)
+
+        self.device = torch.device('cuda')
+
+    def forward(self, input):
+        # Initial cell states, every time training batch?
+        h_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        h_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+
+        outputs = []
+        batch_size = input.size(1)
+        seq_length = input.size(0)
+        input = input.view(seq_length, batch_size, -1)
+        for i in range(input.size(0)):
+            h_t1, c_t1 = self.lstm1(input[i], (h_t1, c_t1))
+            h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+            output = self.fc1(h_t2)
+            output = self.fc2(output)
+
+        # last sample as input
+        h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
+        h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+        output = self.fc1(h_t2)
+        output = self.fc2(output)
+
+        return output
+
+
+# model3
+class model3(torch.nn.Module):
+    def __init__(self):
+        super(model3, self).__init__()
+        self.lstm1 = torch.nn.LSTMCell(11, 8)
+        self.lstm2 = torch.nn.LSTMCell(8, 8)
+        self.fc1 = torch.nn.Linear(8, 1)
+
+        self.device = torch.device('cuda')
+
+    def forward(self, input):
+        # Initial cell states, every time training batch?
+        h_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        h_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+
+        outputs = []
+        batch_size = input.size(1)
+        seq_length = input.size(0)
+        input = input.view(seq_length, batch_size, -1)
+        for i in range(input.size(0)):
+            h_t1, c_t1 = self.lstm1(input[i], (h_t1, c_t1))
+            h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+            output = self.fc1(h_t2)
+
+        # last sample as input
+        h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
+        h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+        output = self.fc1(h_t2)
+
+        return output
+
+# model4
+class model4(torch.nn.Module):
+    def __init__(self):
+        super(model4, self).__init__()
+        self.lstm1 = torch.nn.LSTMCell(11, 16)
+        self.lstm2 = torch.nn.LSTMCell(16, 16)
+        self.fc1 = torch.nn.Linear(16, 8)
+        self.fc2 = torch.nn.Linear(8, 1)
+
+        self.device = torch.device('cuda')
+
+    def forward(self, input):
+        # Initial cell states, every time training batch?
+        h_t1 = torch.zeros(input.size(1), 16, dtype=torch.float32).to(self.device)
+        c_t1 = torch.zeros(input.size(1), 16, dtype=torch.float32).to(self.device)
+        h_t2 = torch.zeros(input.size(1), 16, dtype=torch.float32).to(self.device)
+        c_t2 = torch.zeros(input.size(1), 16, dtype=torch.float32).to(self.device)
+
+        outputs = []
+        batch_size = input.size(1)
+        seq_length = input.size(0)
+        input = input.view(seq_length, batch_size, -1)
+        for i in range(input.size(0)):
+            h_t1, c_t1 = self.lstm1(input[i], (h_t1, c_t1))
+            h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+            output = self.fc1(h_t2)
+            output = self.fc2(output)
+
+        # last sample as input
+        h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
+        h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+        output = self.fc1(h_t2)
+        output = self.fc2(output)
+
+        return output
+
+# model5
+class model5(torch.nn.Module):
+    def __init__(self):
+        super(model5, self).__init__()
+        self.lstm1 = torch.nn.LSTMCell(11, 8)
+        self.drop_out1 = torch.nn.Dropout(0.2)
+        self.lstm2 = torch.nn.LSTMCell(8, 8)
+        self.drop_out2 = torch.nn.Dropout(0.2)
+        self.lstm3 = torch.nn.LSTMCell(8, 8)
+        self.fc1 = torch.nn.Linear(8, 4)
+        self.fc2 = torch.nn.Linear(4, 1)
+
+        self.device = torch.device('cuda')
+
+    def forward(self, input):
+        # Initial cell states, every time training batch?
+        h_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t1 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        h_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t2 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        h_t3 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+        c_t3 = torch.zeros(input.size(1), 8, dtype=torch.float32).to(self.device)
+
+        outputs = []
+        batch_size = input.size(1)
+        seq_length = input.size(0)
+        input = input.view(seq_length, batch_size, -1)
+        for i in range(input.size(0)):
+            h_t1, c_t1 = self.lstm1(input[i], (h_t1, c_t1))
+            h_t1 = self.drop_out1(h_t1)
+            h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+            h_t2 = self.drop_out2(h_t2)
+            h_t3, c_t3 = self.lstm3(h_t2, (h_t3, c_t3))
+            output = self.fc1(h_t3)
+            output = self.fc2(output)
+
+        # last sample as input
+        h_t1, c_t1 = self.lstm1(input[4], (h_t1, c_t1))
+
+        h_t1 = self.drop_out1(h_t1)
+        h_t2, c_t2 = self.lstm2(h_t1, (h_t2, c_t2))
+        h_t2 = self.drop_out2(h_t2)
+        h_t3, c_t3 = self.lstm3(h_t2, (h_t3, c_t3))
+        output = self.fc1(h_t3)
+        output = self.fc2(output)
+
+        return output
 
 # training and validation dataset abnormal injection
 # stride = 5
@@ -82,10 +230,24 @@ def abnormal_injection(data, pattern, percentage, index, rate):
             for j in range(5):
                 data[i][j][index] = data[i][j][index] * rate
 
-    # randomly
+    # randomly increase
     elif pattern == 1:
         for i in abnormal_indices:
-            rate = random.uniform(0.5, 0.9)
+            rate = random.uniform(0.5, 1.0)
+            for j in range(5):
+                data[i][j][index] = data[i][j][index] + abs(data[i][j][index]) * rate
+
+    # randomly decrease
+    elif pattern == 2:
+        for i in abnormal_indices:
+            rate = random.uniform(0.5, 1.0)
+            for j in range(5):
+                data[i][j][index] = data[i][j][index] - abs(data[i][j][index]) * rate
+
+    # randomly multiply
+    elif pattern == 3:
+        for i in abnormal_indices:
+            rate = random.uniform(1.5, 2.0)
             for j in range(5):
                 data[i][j][index] = data[i][j][index] * rate
 
@@ -101,17 +263,39 @@ def attack(X_test, y_test, pattern, percentage, index):
     # continuously
     if pattern == 0:
         for i in range(2000, 3400):
-            rate = random.uniform(1.1, 1.5)
+            rate = random.uniform(0.5, 1.5)
+            while rate == 1:
+                rate = random.uniform(0.5, 1.5)
             for j in range(5):  # 3 is the roll_rate index
                 X_test[i][j][index] = X_test[i][j][index] * rate
 
             y_test[i] = y_test[i] * rate
             test_label[i] = 1
 
-    # random
+    # random increase
     elif pattern == 1:
         for i in abnormal_indices:
-            rate = random.uniform(0.5, 0.9)
+            rate = random.uniform(0.5, 1.0)
+            for j in range(5):
+                X_test[i][j][index] = X_test[i][j][index] + abs(X_test[i][j][index]) * rate
+
+            y_test[i] = y_test[i] + abs(y_test[i]) * rate
+            test_label[i] = 1
+
+    # random decrease
+    elif pattern == 2:
+        for i in abnormal_indices:
+            rate = random.uniform(0.5, 1.0)
+            for j in range(5):
+                X_test[i][j][index] = X_test[i][j][index] - abs(X_test[i][j][index]) * rate
+
+            y_test[i] = y_test[i] - abs(y_test[i]) * rate
+            test_label[i] = 1
+
+    # random multiply
+    elif pattern == 3:
+        for i in abnormal_indices:
+            rate = random.uniform(0.5, 1.0)
             for j in range(5):
                 X_test[i][j][index] = X_test[i][j][index] * rate
 
@@ -141,6 +325,45 @@ def reconstruct_data(X_train, y_train, stride):
     for i in range(L - stride):
         train_x = X_train[i:i + stride, :]
         train_y = y_train[i + stride:i + stride + 1]
+        X.append(train_x)
+        y.append(train_y)
+    return np.array(X), np.array(y)
+
+
+# use 5 to predict 3
+def reconstruct_data_middle(X_train, y_train, stride):
+    X = []
+    y = []
+    L = len(X_train)
+    for i in range(L - stride + 1):
+        train_x = X_train[i:i + stride, :]
+        train_y = y_train[i + 2:i + 2 + 1]
+        X.append(train_x)
+        y.append(train_y)
+    return np.array(X), np.array(y)
+
+
+# use 5 to predict 4
+def reconstruct_data_4(X_train, y_train, stride):
+    X = []
+    y = []
+    L = len(X_train)
+    for i in range(L - stride + 1):
+        train_x = X_train[i:i + stride, :]
+        train_y = y_train[i + 3:i + 3 + 1]
+        X.append(train_x)
+        y.append(train_y)
+    return np.array(X), np.array(y)
+
+
+# use 5 to predict 5
+def reconstruct_data_5(X_train, y_train, stride):
+    X = []
+    y = []
+    L = len(X_train)
+    for i in range(L - stride + 1):
+        train_x = X_train[i:i + stride, :]
+        train_y = y_train[i + 4:i + 4 + 1]
         X.append(train_x)
         y.append(train_y)
     return np.array(X), np.array(y)
@@ -223,13 +446,19 @@ def Accuracy(label, filter_loss, threshold):
         TPR = 0
     else:
         TPR = TP / (TP + FN)
-    FPR = FP / (FP + TN)
+        # print(TP)
+        # print(FN)
+    if FP == 0 and TN == 0:
+        FPR = 0
+    else:
+        FPR = FP / (FP + TN)
+
     ACC = (TP + TN) / (TP + TN + FP + FN)
 
     return TP, FP, TN, FN, TPR, FPR, ACC, TP_list, FP_list, TN_list, FN_list
 
 
-def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filename, path, abnormal_mark, TP_list,
+def mark_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filename, path, abnormal_mark, TP_list,
                   FP_list):
     plt.figure(figsize=(12, 6))
     plt.title(title)
@@ -249,10 +478,17 @@ def test_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filen
         plt.axvline(x=i, color='y', linestyle='--')
 
     pair = []
-    for i in abnormal_mark:
+    # for i in abnormal_mark:
+    #     pair.append((prediction[i], abnormal[i]))
+
+    for i in TP_list:
         pair.append((prediction[i], abnormal[i]))
 
-    plt.plot((abnormal_mark, abnormal_mark), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y', linestyle='--')
+    # plt.plot((abnormal_mark, abnormal_mark), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y',
+    #          linestyle='--')
+
+    plt.plot((TP_list, TP_list), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y',
+             linestyle='--')
 
     lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
     # plt.legend()

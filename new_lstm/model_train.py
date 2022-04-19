@@ -14,7 +14,8 @@ import random
 to_screen = sys.stdout
 
 # load data
-df_train1 = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last.csv')  # cut 8000
+# df_train1 = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last.csv')  # cut 8000
+df_train1 = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last_degrees.csv')
 df_train2 = pd.read_csv('log_15_2022-3-22-17-06-08_normal_data_last.csv')  # cut 1000 - 3000
 df_train3 = pd.read_csv('log_21_2022-3-31-14-40-08_normal_data_last.csv')  # cut 1000 - 4000
 
@@ -61,7 +62,7 @@ X_training_abnormal, X_valid_abnormal, y_training_abnormal, y_valid_abnormal = t
 
 
 # inject abnormal data
-pattern = 1
+pattern = -1
 percentage = 0.2
 rate = 0.5
 if pattern != -1:
@@ -82,7 +83,7 @@ if pattern != -1:
 
 # create the output directory
 parent_path = os.getcwd()
-directory = 'test_abnormal_training_decrease'
+directory = 'sequence/normal_training_5to6_degrees'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -131,7 +132,7 @@ mv_lstm.float()
 mv_lstm = mv_lstm.cuda()
 optimizer = torch.optim.Adam(mv_lstm.parameters(), lr=0.001)
 
-train_episodes = 500
+train_episodes = 300
 
 # training model
 min_valid_loss = np.inf
@@ -153,7 +154,7 @@ for t in range(train_episodes):
 
         optimizer.zero_grad()
         output = mv_lstm(x_batch)
-        loss = myModule.Sequence.custom_loss_func(output.view(-1), y_batch)
+        loss = myModule.custom_loss_func(output.view(-1), y_batch)
         l2_lambda = 0.001
         l2_norm = sum(p.pow(2.0).sum()
                       for p in mv_lstm.parameters())
@@ -181,11 +182,13 @@ my_lstm.eval()
 Filtered = []
 train_y_prediction = []
 err_abs = torch.nn.L1Loss()
-
+Filtered_err_percentage = []
+low_pass_IIR = 0
+percentage_low_pass_IIR = 0
 # regression evaluation metrics
 # mse = torch.mse
 
-
+# when computing threshold, feed the training data one by one, instead of by batch
 for i in range(0, len(X_training_abnormal)):
     inpt = [X_training_abnormal[i, :, :]]
     target = y_training_normal[i]
@@ -204,16 +207,26 @@ for i in range(0, len(X_training_abnormal)):
     err = err_abs(output.view(-1), y_batch)
     err = torch.mean(err)
     err = err.to("cpu").detach().numpy()
+    err_percentage = err.item()/abs(target)
 
     if i == 0:
         low_pass_IIR = myModule.LowPassIIR(myModule.b, err)
+        percentage_low_pass_IIR = myModule.LowPassIIR(myModule.b, err_percentage)
 
     filtered_err = low_pass_IIR.filter(err.item())
     Filtered.append(filtered_err.item())
 
+    filtered_err_percentage = percentage_low_pass_IIR.filter(err_percentage.item())
+    Filtered_err_percentage.append(filtered_err_percentage)
+
+
+print(Filtered_err_percentage)
 print("computing threshold")
-filter_mean = np.mean(Filtered)
-filter_std = np.std(Filtered)
+
+# filter_mean = np.mean(Filtered)
+# filter_std = np.std(Filtered)
+filter_mean = np.mean(Filtered_err_percentage)
+filter_std = np.std(Filtered_err_percentage)
 FD_threshold = filter_mean + 2 * filter_std
 
 with open(threshold_file, 'wb') as f:
@@ -227,10 +240,10 @@ print("error mean", filter_mean)
 print("error std", filter_std)
 print("FD_threshold", FD_threshold)
 
-total = len(Filtered)
+total = len(Filtered_err_percentage)
 normal_count = 0
 abnormal_count = 0
-for item in Filtered:
+for item in Filtered_err_percentage:
     if item <= FD_threshold:
         normal_count += 1
     else:
@@ -240,6 +253,7 @@ print("train accuracy", accuracy)
 
 # compute validation accuracy
 err_output = []
+valid_err_percentage = []
 valid_y_prediction = []
 for i in range(0, len(X_valid_abnormal)):
     inpt = [X_valid_abnormal[i]]
@@ -259,17 +273,22 @@ for i in range(0, len(X_valid_abnormal)):
     err = err_abs(y_target, output.view(-1))
     err = torch.mean(err)
     err = err.to("cpu").detach().numpy()
+    err_percentage = err.item()/target
 
     if i == 0:
         low_pass_IIR = myModule.LowPassIIR(myModule.b, err.item())
+        percentage_low_pass_IIR = myModule.LowPassIIR(myModule.b, err_percentage.item())
 
     filtered_err = low_pass_IIR.filter(err.item())
     err_output.append(filtered_err)
 
+    filtered_err_percentage = percentage_low_pass_IIR.filter(err_percentage.item())
+    valid_err_percentage.append(filtered_err_percentage)
+
 total = len(err_output)
 normal_count = 0
 abnormal_count = 0
-for item in err_output:
+for item in valid_err_percentage:
 
     if item <= FD_threshold:
         normal_count += 1
