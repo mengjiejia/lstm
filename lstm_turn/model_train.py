@@ -17,7 +17,7 @@ to_screen = sys.stdout
 
 # create the output directory
 parent_path = os.getcwd()
-directory = 'sequence/range_scale/normal_training/turn_normal_training_5to6_degree'
+directory = 'sequence/range_scale/normal_training/turn3'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -25,23 +25,16 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 # load data
-# df_train1 = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last.csv')  # cut 8000
-
-# df_train1 = pd.read_csv('log_11_2022-3-22-16-43-18_normal_data_last_degrees.csv')
-df_train1 = pd.read_csv('log_27_2022-4-25-14-01-56_normal_data_last_degrees.csv') # turn cut 500 - 2000
-# df_train1 = pd.read_csv('log_27_2022-4-25-14-40-32_normal_data_last_degrees.csv') # stable cut 1500 - 3000
-# df_train1 = pd.read_csv('log_4_2022-4-26-11-28-12_normal_data_last_degrees.csv') # stable cut 1500 - 3000
-
-# df_train2 = pd.read_csv('log_15_2022-3-22-17-06-08_normal_data_last.csv')  # cut 1000 - 3000
-# df_train3 = pd.read_csv('log_21_2022-3-31-14-40-08_normal_data_last.csv')  # cut 1000 - 4000
+filename = 'log_1_2022-5-10-18-07-45_normal_data_last_degrees.csv'
+read_path = '/home/mengjie/dataset/px4/fixed_wing/turn/3/'
+df_train1 = pd.read_csv(read_path + filename)  # turn cut 800 - 2500
 
 y_index = 0
 X_training, y_training = myModule.preprocess(df_train1, y_index)
 
 # cut off the landing part
-X_training = X_training[500:2000]
-y_training = y_training[500:2000]
-
+X_training = X_training[800:2500]
+y_training = y_training[800:2500]
 
 # scale the data with different normalization
 # X_training = np.delete(X_training, y_index, 1)
@@ -63,7 +56,6 @@ df_y = pd.DataFrame(y_training)
 
 df_x.to_csv(output_dir + '/df_x.csv')
 df_y.to_csv(output_dir + '/df_y.csv')
-
 
 # y_scaler = MinMaxScaler()
 # y_scaler.fit(y_training)
@@ -104,10 +96,9 @@ X_training_abnormal, X_valid_abnormal, y_training_abnormal, y_valid_abnormal = t
 # inject abnormal data
 pattern = -1
 percentage = 0.2
-rate = 0.5
 if pattern != -1:
-    X_training_abnormal = myModule.abnormal_injection(X_training_abnormal, pattern, percentage, y_index, rate)
-    X_valid_abnormal = myModule.abnormal_injection(X_valid_abnormal, pattern, percentage, y_index, rate)
+    X_training_abnormal = myModule.abnormal_injection(X_training_abnormal, pattern, percentage, y_index)
+    X_valid_abnormal = myModule.abnormal_injection(X_valid_abnormal, pattern, percentage, y_index)
 
 # X_training_combined = np.concatenate((X_training_normal, X_training_abnormal))
 # y_training_combined = np.concatenate((y_training_normal, y_training_abnormal))
@@ -120,7 +111,6 @@ if pattern != -1:
 
 # X_valid_combined = np.array(X_valid_combined)
 # y_valid_combined = np.array(y_valid_combined )
-
 
 
 if pattern == 0:
@@ -158,7 +148,7 @@ mean_std_file_per = output_dir + '/mean_std_per.pickle'
 # dump(y_scaler, output_dir + '/y_scaler.joblib')
 
 # number of data sources
-n_features = 11
+n_features = 10  # delete altitude
 # this is length of sliding window.
 
 n_steps = stride

@@ -18,7 +18,7 @@ import random
 to_screen = sys.stdout
 
 parent_path = os.getcwd()
-directory = 'model2/min_max/abnormal_training/new_log_4_2022-4-26-11-28-12_stable_normal_training_5to6_degree'  # this is stable flying pattern
+directory = 'model2/range_scale/normal_training/turn3'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -33,12 +33,12 @@ mean_std_file_abs = output_dir + '/mean_std_abs.pickle'
 
 # load test data
 # df_test = pd.read_csv('log_8_2022-3-23-11-40-47_normal_data_last_degrees.csv')
-df_test = pd.read_csv('log_29_2022-4-25-17-04-19_normal_data_last_degrees.csv')
+df_test = pd.read_csv('/home/mengjie/dataset/px4/fixed_wing/turn/2/log_0_2022-5-10-17-35-36_normal_data_last_degrees.csv') # cut 500-1800
 
 y_index = 0
 X_test, y_test = myModule.preprocess(df_test, y_index)
-X_scaler = load(output_dir + '/X_scaler.joblib')
-y_scaler = load(output_dir + '/y_scaler.joblib')
+# X_scaler = load(output_dir + '/X_scaler.joblib')
+# y_scaler = load(output_dir + '/y_scaler.joblib')
 
 # X_test = myModule.normalize(X_test)
 # y_test = myModule.normalize(y_test)
@@ -47,25 +47,26 @@ y_scaler = load(output_dir + '/y_scaler.joblib')
 stride = 5
 
 # cut the landing part
-X_test = X_test[1500:3000]
-y_test = y_test[1500:3000]
+X_test = X_test[500:1800]
+y_test = y_test[500:1800]
 # X_test = np.delete(X_test, y_index, 1)
-y_test = y_test.reshape((len(y_test), 1))
+# y_test = y_test.reshape((len(y_test), 1))
 
 # X_test = X_scaler.transform(X_test)
 # y_test = y_scaler.transform(y_test)
 
 
-# min_max scaler
-X_scaler = MinMaxScaler()
-X_scaler.fit(X_test)
-X_test = X_scaler.transform(X_test)
+# # min_max scaler
+# X_scaler = MinMaxScaler()
+# X_scaler.fit(X_test)
+# X_test = X_scaler.transform(X_test)
+# #
+# y_scaler = MinMaxScaler()
+# y_scaler.fit(y_test)
+# y_test= y_scaler.transform(y_test)
 #
-y_scaler = MinMaxScaler()
-y_scaler.fit(y_test)
-y_test= y_scaler.transform(y_test)
+# y_test = y_test.reshape((len(y_test), ))
 
-y_test = y_test.reshape((len(y_test), ))
 
 X_test, y_test = myModule.reconstruct_data(X_test, y_test, stride)
 
@@ -92,11 +93,11 @@ print(f"######### test output {attack_pattern} ##########")
 print("X_test.shape", X_test.shape)
 print("y_test.shape", np.array(y_test).shape)
 
-X_test_abnormal, y_test_abnormal, abnormal_label, windows_count, abnormal_indices = myModule.attack(X_test_abnormal, y_test_abnormal, pattern, 0.2, y_index, X_scaler, y_scaler)
+X_test_abnormal, y_test_abnormal, abnormal_label, windows_count, abnormal_indices = myModule.attack(X_test_abnormal, y_test_abnormal, pattern, 0.2, y_index)
 print("total abnormal windows", windows_count)
 
-# number of data sources
-n_features = 11
+# number of data sources, remove altitude
+n_features = 10
 
 # this is length of sliding window.
 n_steps = stride
@@ -123,7 +124,8 @@ normalx_normaly_test_err_per = []
 normal_label = [0] * len(y_test_normal)
 
 # abnormal x, abnormal y
-y_test_abnormal = y_scaler.inverse_transform(y_test_abnormal)
+# y_test_abnormal = y_scaler.inverse_transform(y_test_abnormal)
+y_test_abnormal = y_test_abnormal * 90
 for i in range(0, len(X_test_abnormal)):
     inpt = [X_test_abnormal[i]]
     target = y_test_abnormal[i]
@@ -137,7 +139,7 @@ for i in range(0, len(X_test_abnormal)):
     output = my_lstm(x_test)
     prediction = output.view(-1).to("cpu").detach().numpy()
     prediction = prediction.reshape((len(prediction), 1))
-    prediction = y_scaler.inverse_transform(prediction)
+    prediction = prediction * 90
     prediction = prediction.reshape((len(prediction), ))
 
     for k in range(len(prediction)):
@@ -156,10 +158,9 @@ for i in range(0, len(X_test_abnormal)):
     filtered_err_percentage = percentage_low_pass_IIR.filter(err_percentage.item())
     abnormalx_abnormaly_test_err_per.append(filtered_err_percentage)
 
-# for item in abnormalx_abnormaly_test_err_per:
-#     print(item)
+
 # normal x, normal y
-y_test_normal = y_scaler.inverse_transform(y_test_normal)
+y_test_normal = y_test_normal * 90
 for i in range(0, len(X_test_normal)):
     inpt = [X_test_normal[i]]
     target = y_test_normal[i]
@@ -173,7 +174,7 @@ for i in range(0, len(X_test_normal)):
     output = my_lstm(x_test)
     prediction = output.view(-1).to("cpu").detach().numpy()
     prediction = prediction.reshape((len(prediction), 1))
-    prediction = y_scaler.inverse_transform(prediction)
+    prediction = prediction * 90
     prediction = prediction.reshape((len(prediction), ))
 
     for k in range(len(prediction)):
@@ -278,18 +279,7 @@ print("TPR", TPR)
 print("FPR", FPR)
 print("ACC", ACC)
 
-# normal x, abnormal y, accuracy
-# TP, FP, TN, FN, TPR, FPR, ACC, TP_list, FP_list, TN_list, FN_list = myModule.Accuracy(abnormal_label, normalx_abnormaly_test_err_per, FD_threshold)
-# print('normal x, abnormal y, test results:')
-# print("TP", TP)
-# print("FP", FP)
-# print("TN", TN)
-# print("FN", FN)
-# print("TPR", TPR)
-# print("FPR", FPR)
-# print("ACC", ACC)
 
-#
 # # normal accuracy
 # TP, FP, TN, FN, TPR, FPR, ACC = myModule.Accuracy(normal_label, normalx_normaly_test_err, FD_threshold)
 # print('normal x, normal y, test results:')
@@ -326,18 +316,18 @@ for item in FP_list:
         FP_mark.append(item)
 
 # test result
-# myModule.three_line('test result', x_label, y_label, test_y_prediction, y_test, y_test_abnormal, 'test result', output_dir)
+
 # abnormal x, abnormal y, results
 myModule.mark_two_line(f'{attack_pattern} test result', x_label, y_label, abnormalx_abnormaly_prediction[0:200], y_test_abnormal[0:200], 0, 0, f'{attack_pattern} test result percentage',
                        output_dir, abnormal_mark, TP_mark, FP_mark)
-myModule.two_line(f'{attack_pattern} test result with normal sensor reading', x_label, y_label, abnormalx_abnormaly_prediction[0:200], y_test_normal[0:200],
-                  f'{attack_pattern} test result with normal sensor reading percentage', output_dir)
+myModule.two_line(f'{attack_pattern} test result', x_label, y_label, abnormalx_abnormaly_prediction, y_test_normal,
+                  f'{attack_pattern} test result', output_dir)
 
 # normal x, abnormal y, results
 # myModule.test_two_line('normal x, abnormal y, test result', x_label, y_label, normalx_normaly_prediction[0:100], y_test_normal, 0, 0, 'normal x, abnormal y, test result',
 #                        output_dir)
-myModule.two_line('normal test result with normal sensor reading', x_label, y_label, normalx_normaly_prediction[0:200], y_test_normal[0:200],
-                  'normal test result with normal sensor reading percentage', output_dir)
+myModule.two_line('normal test result', x_label, y_label, normalx_normaly_prediction, y_test_normal,
+                  'normal test result', output_dir)
 
 TP_prediction = []
 TP_reading = []
