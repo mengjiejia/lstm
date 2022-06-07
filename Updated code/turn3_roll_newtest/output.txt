@@ -1,0 +1,1819 @@
+######### training output normal ##########
+X_training.shape (1316, 5, 10)
+y_training.shape (1316,)
+X_valid.shape (329, 5, 10)
+y_valid.shape (329,)
+sliding window length 5
+computing turning threshold
+turn threshold
+percentage error mean 0.1091596847898978
+percentage error std 0.14714596178310896
+percentage FD_threshold 0.4034516083561157
+abs error mean 0.8277198195193461
+abs error std 0.6950888227875565
+abs FD_threshold 2.217897465094459
+computing stable threshold
+stable threshold
+percentage error mean 298.1424062283869
+percentage error std 2418.820512508215
+percentage FD_threshold 5135.783431244817
+abs error mean 0.6574020320257083
+abs error std 0.5976565035528769
+abs FD_threshold 1.8527150391314622
+Training MSE  2.8077770138770703
+Validation MSE  3.106765564815821
+######### test output randomly increase ##########
+X_test.shape (1000, 10)
+y_test.shape (1000,)
+abnormal datapoints
+[30, 33, 35, 38, 39, 40, 43, 45, 46, 48, 50, 51, 52, 53, 55, 56, 58, 60, 61, 62, 63, 64, 66, 67, 70, 71, 73, 74, 76, 77, 80, 81, 83, 85, 86, 87, 89, 90, 91, 94, 173, 175, 179, 190, 191, 192, 196, 206, 209, 214, 215, 218, 226, 227, 228, 233, 239, 247, 252, 258, 262, 265, 268, 276, 279, 288, 300, 314, 315, 321, 326, 327, 330, 332, 340, 343, 344, 345, 349, 359, 472, 474, 481, 482, 487, 489, 490, 492, 495, 497, 501, 503, 506, 508, 510, 512, 519, 522, 523, 524, 526, 530, 531, 533, 534, 539, 547, 548, 552, 555, 561, 565, 567, 569, 570, 572, 576, 577, 578, 584, 661, 663, 664, 666, 667, 668, 670, 678, 681, 687, 688, 692, 694, 697, 702, 703, 708, 709, 710, 712, 718, 722, 724, 725, 728, 729, 730, 732, 737, 738, 744, 746, 756, 759, 761, 763, 765, 767, 768, 769, 845, 848, 856, 857, 861, 864, 874, 879, 884, 885, 887, 894, 895, 897, 900, 903, 914, 921, 924, 926, 928, 935, 946, 947, 951, 958, 961, 963, 965, 968, 970, 972, 981, 984, 985, 986, 987, 989, 991, 995]
+total abnormal datapoints 200
+stable: 5
+stable: 6
+stable: 7
+stable: 8
+stable: 9
+stable: 10
+stable: 11
+stable: 12
+stable: 13
+stable: 14
+stable: 15
+stable: 16
+stable: 17
+stable: 18
+stable: 19
+stable: 20
+stable: 21
+stable: 22
+stable: 23
+stable: 24
+stable: 25
+stable: 26
+stable: 27
+stable: 28
+stable: 29
+stable: 30
+abnormal stable 30
+filtered_err_abs 2.772989020402722
+prediction [0.8779205]
+sensor reading 3.895825803432229
+stable: 31
+stable: 32
+stable: 33
+abnormal stable 33
+filtered_err_abs 2.6567224868393495
+prediction [0.98122245]
+sensor reading 3.849853904486333
+stable: 34
+stable: 35
+abnormal stable 35
+filtered_err_abs 2.5777742010437015
+prediction [1.0722325]
+sensor reading 3.8174179501039083
+stable: 36
+stable: 37
+stable: 38
+abnormal stable 38
+filtered_err_abs 2.5394143327814422
+prediction [1.0605891]
+sensor reading 3.7818896164504467
+stable: 39
+abnormal stable 39
+filtered_err_abs 2.650006811467231
+prediction [1.1022638]
+sensor reading 3.7645588635478435
+stable: 40
+abnormal stable 40
+filtered_err_abs 2.5478474418965398
+prediction [1.2310729]
+sensor reading 3.7675692812062858
+stable: 41
+stable: 42
+stable: 43
+abnormal stable 43
+filtered_err_abs 2.4155483983080233
+prediction [1.1765302]
+sensor reading 3.742455675879431
+stable: 44
+stable: 45
+abnormal stable 45
+filtered_err_abs 2.5751718838434625
+prediction [1.0014175]
+sensor reading 3.7299990921287387
+stable: 46
+abnormal stable 46
+filtered_err_abs 2.654740851714424
+prediction [1.0654546]
+sensor reading 3.7290366089765885
+stable: 47
+stable: 48
+abnormal stable 48
+filtered_err_abs 2.4419917790253383
+prediction [1.1656592]
+sensor reading 3.7403711923953877
+stable: 49
+stable: 50
+abnormal stable 50
+filtered_err_abs 2.438458199230988
+prediction [1.1697087]
+sensor reading 3.7433958423254614
+stable: 51
+abnormal stable 51
+filtered_err_abs 2.5176848644940217
+prediction [1.2234776]
+sensor reading 3.7499653993227433
+stable: 52
+abnormal stable 52
+filtered_err_abs 2.519706027457398
+prediction [1.2383437]
+sensor reading 3.7582743014874374
+stable: 53
+abnormal stable 53
+filtered_err_abs 2.3735412852713744
+prediction [1.4055365]
+sensor reading 3.762837257153768
+stable: 54
+stable: 55
+abnormal stable 55
+filtered_err_abs 2.286297871367881
+prediction [1.3764111]
+sensor reading 3.764099826951118
+stable: 56
+abnormal stable 56
+filtered_err_abs 2.3520149304168174
+prediction [1.4129636]
+sensor reading 3.77228056418662
+stable: 57
+stable: 58
+abnormal stable 58
+filtered_err_abs 2.4457593169944456
+prediction [1.2163422]
+sensor reading 3.7857119840595255
+stable: 59
+stable: 60
+abnormal stable 60
+filtered_err_abs 2.4461051513822247
+prediction [1.2121432]
+sensor reading 3.7949421622517443
+stable: 61
+abnormal stable 61
+filtered_err_abs 2.5348709016052027
+prediction [1.2594795]
+sensor reading 3.804213192334756
+stable: 62
+abnormal stable 62
+filtered_err_abs 2.5295847692987037
+prediction [1.2715809]
+sensor reading 3.8005784282965376
+stable: 63
+abnormal stable 63
+filtered_err_abs 2.3927570227672725
+prediction [1.4244924]
+sensor reading 3.802046277412727
+stable: 64
+abnormal stable 64
+filtered_err_abs 2.3742245996384828
+prediction [1.4425027]
+sensor reading 3.8146682053239385
+stable: 65
+stable: 66
+abnormal stable 66
+filtered_err_abs 2.3214347010497143
+prediction [1.3995793]
+sensor reading 3.816108741542034
+stable: 67
+abnormal stable 67
+filtered_err_abs 2.3786245787704376
+prediction [1.4317303]
+sensor reading 3.816709361739514
+stable: 68
+stable: 69
+stable: 70
+abnormal stable 70
+filtered_err_abs 2.54304649772292
+prediction [1.1177087]
+sensor reading 3.8270039637347932
+stable: 71
+abnormal stable 71
+filtered_err_abs 2.5445959352871235
+prediction [1.2846272]
+sensor reading 3.8293952833068623
+stable: 72
+stable: 73
+abnormal stable 73
+filtered_err_abs 2.551482624792477
+prediction [1.1268047]
+sensor reading 3.8284318203968826
+stable: 74
+abnormal stable 74
+filtered_err_abs 2.5229158587240597
+prediction [1.3077996]
+sensor reading 3.827541438253671
+stable: 75
+stable: 76
+abnormal stable 76
+filtered_err_abs 2.4444861175487276
+prediction [1.2411815]
+sensor reading 3.8095446620212736
+stable: 77
+abnormal stable 77
+filtered_err_abs 2.5087864136881612
+prediction [1.2829676]
+sensor reading 3.798898424367967
+stable: 78
+stable: 79
+stable: 80
+abnormal stable 80
+filtered_err_abs 2.5372132173514554
+prediction [1.057607]
+sensor reading 3.7587140867022457
+stable: 81
+abnormal stable 81
+filtered_err_abs 2.5241872202489395
+prediction [1.2203528]
+sensor reading 3.7430925012799854
+stable: 82
+stable: 83
+abnormal stable 83
+filtered_err_abs 2.528088684212301
+prediction [1.0370593]
+sensor reading 3.708110425588402
+stable: 84
+stable: 85
+abnormal stable 85
+filtered_err_abs 2.4209308444989834
+prediction [1.1510485]
+sensor reading 3.699519507867366
+stable: 86
+abnormal stable 86
+filtered_err_abs 2.497422311897408
+prediction [1.2006667]
+sensor reading 3.7065880538084275
+stable: 87
+abnormal stable 87
+filtered_err_abs 2.489119181453718
+prediction [1.209508]
+sensor reading 3.6977046067555097
+stable: 88
+stable: 89
+abnormal stable 89
+filtered_err_abs 2.4346406103116225
+prediction [1.1765302]
+sensor reading 3.7285275531643483
+stable: 90
+abnormal stable 90
+filtered_err_abs 2.3680375301931496
+prediction [1.3792442]
+sensor reading 3.739881525474935
+stable: 91
+abnormal stable 91
+filtered_err_abs 2.360984975934964
+prediction [1.37346]
+sensor reading 3.7336614784622606
+stable: 92
+stable: 93
+stable: 94
+abnormal stable 94
+filtered_err_abs 2.4258931072303067
+prediction [1.2006667]
+sensor reading 3.776863888502567
+stable: 95
+stable: 96
+stable: 97
+stable: 98
+stable: 99
+turning: 100
+first point turn 100
+first point turn 101
+stable: 158
+stable: 159
+stable: 160
+stable: 161
+stable: 162
+stable: 163
+stable: 164
+stable: 165
+stable: 166
+stable: 167
+stable: 168
+stable: 169
+stable: 170
+stable: 171
+stable: 172
+stable: 173
+abnormal stable 173
+filtered_err_abs 3.084493021800566
+prediction [0.20727038]
+sensor reading 3.615624326008307
+stable: 174
+stable: 175
+abnormal stable 175
+filtered_err_abs 3.0839563066823725
+prediction [0.24840675]
+sensor reading 3.617506441945026
+stable: 176
+stable: 177
+stable: 178
+stable: 179
+abnormal stable 179
+filtered_err_abs 3.0438233631258713
+prediction [0.27556276]
+sensor reading 3.6245135742589003
+stable: 180
+stable: 181
+stable: 182
+stable: 183
+stable: 184
+stable: 185
+stable: 186
+stable: 187
+stable: 188
+stable: 189
+stable: 190
+abnormal stable 190
+filtered_err_abs 3.027265166316523
+prediction [0.42453736]
+sensor reading 3.759273539882145
+stable: 191
+abnormal stable 191
+filtered_err_abs 3.2441613768611446
+prediction [0.51043844]
+sensor reading 3.778699479120405
+stable: 192
+abnormal stable 192
+filtered_err_abs 3.1885559568313173
+prediction [0.5996159]
+sensor reading 3.781993339000099
+stable: 193
+stable: 194
+stable: 195
+stable: 196
+abnormal stable 196
+filtered_err_abs 2.900328881734704
+prediction [0.65029955]
+sensor reading 3.819324025989703
+stable: 197
+stable: 198
+stable: 199
+stable: 200
+stable: 201
+stable: 202
+stable: 203
+stable: 204
+stable: 205
+stable: 206
+abnormal stable 206
+filtered_err_abs 3.0190755718428695
+prediction [0.6247575]
+sensor reading 3.9500718260046552
+stable: 207
+stable: 208
+stable: 209
+abnormal stable 209
+filtered_err_abs 2.9506246972077568
+prediction [0.7361913]
+sensor reading 3.9727861648348215
+stable: 210
+stable: 211
+stable: 212
+stable: 213
+stable: 214
+abnormal stable 214
+filtered_err_abs 2.9543523349487066
+prediction [0.7541044]
+sensor reading 3.995665458214206
+stable: 215
+abnormal stable 215
+filtered_err_abs 3.1918718532534767
+prediction [0.781471]
+sensor reading 3.9997338596300915
+stable: 216
+stable: 217
+stable: 218
+abnormal stable 218
+filtered_err_abs 2.8914352587775203
+prediction [0.85405356]
+sensor reading 4.015320282632465
+stable: 219
+stable: 220
+stable: 221
+stable: 222
+stable: 223
+stable: 224
+stable: 225
+stable: 226
+abnormal stable 226
+filtered_err_abs 3.0105519262660594
+prediction [0.69951475]
+sensor reading 4.012890385812049
+stable: 227
+abnormal stable 227
+filtered_err_abs 3.216105913795124
+prediction [0.77303344]
+sensor reading 4.011978655261392
+stable: 228
+abnormal stable 228
+filtered_err_abs 3.179814145532955
+prediction [0.84819496]
+sensor reading 4.0239767925618875
+stable: 229
+stable: 230
+stable: 231
+stable: 232
+stable: 233
+abnormal stable 233
+filtered_err_abs 2.9535196062640905
+prediction [0.8138922]
+sensor reading 4.047413000918139
+stable: 234
+stable: 235
+stable: 236
+stable: 237
+stable: 238
+stable: 239
+abnormal stable 239
+filtered_err_abs 3.0175137332316573
+prediction [0.7332603]
+sensor reading 4.047848763969226
+stable: 240
+stable: 241
+stable: 242
+stable: 243
+stable: 244
+stable: 245
+stable: 246
+stable: 247
+abnormal stable 247
+filtered_err_abs 3.004668082687404
+prediction [0.7258138]
+sensor reading 4.030791781760292
+stable: 248
+stable: 249
+stable: 250
+stable: 251
+stable: 252
+abnormal stable 252
+filtered_err_abs 2.973953014571626
+prediction [0.6624453]
+sensor reading 3.927034430651282
+stable: 253
+stable: 254
+stable: 255
+stable: 256
+stable: 257
+stable: 258
+abnormal stable 258
+filtered_err_abs 3.0569043366245987
+prediction [0.5326807]
+sensor reading 3.8962081037914524
+stable: 259
+stable: 260
+stable: 261
+stable: 262
+abnormal stable 262
+filtered_err_abs 3.0004388466170244
+prediction [0.57221305]
+sensor reading 3.871453685706365
+stable: 263
+stable: 264
+stable: 265
+abnormal stable 265
+filtered_err_abs 2.988759417004853
+prediction [0.55524004]
+sensor reading 3.836565735521366
+stable: 266
+stable: 267
+stable: 268
+abnormal stable 268
+filtered_err_abs 2.9940225497073607
+prediction [0.5301145]
+sensor reading 3.8135409509690636
+stable: 269
+stable: 270
+stable: 271
+stable: 272
+stable: 273
+stable: 274
+stable: 275
+stable: 276
+abnormal stable 276
+filtered_err_abs 3.051334765090602
+prediction [0.4245863]
+sensor reading 3.7890168275401517
+stable: 277
+stable: 278
+stable: 279
+abnormal stable 279
+filtered_err_abs 3.009801323857441
+prediction [0.4823705]
+sensor reading 3.792065713584959
+stable: 280
+stable: 281
+stable: 282
+stable: 283
+stable: 284
+stable: 285
+stable: 286
+stable: 287
+stable: 288
+abnormal stable 288
+filtered_err_abs 3.035790051377989
+prediction [0.49864545]
+sensor reading 3.8431155254747154
+stable: 289
+stable: 290
+stable: 291
+stable: 292
+stable: 293
+stable: 294
+stable: 295
+stable: 296
+stable: 297
+stable: 298
+stable: 299
+stable: 300
+abnormal stable 300
+filtered_err_abs 3.0266137169095852
+prediction [0.6878894]
+sensor reading 4.0220227486494835
+stable: 301
+stable: 302
+stable: 303
+stable: 304
+stable: 305
+stable: 306
+stable: 307
+stable: 308
+stable: 309
+stable: 310
+stable: 311
+stable: 312
+stable: 313
+stable: 314
+abnormal stable 314
+filtered_err_abs 2.9733503173024793
+prediction [0.7594601]
+sensor reading 4.027993627776211
+stable: 315
+abnormal stable 315
+filtered_err_abs 3.168208268386437
+prediction [0.8256758]
+sensor reading 4.015534981377456
+stable: 316
+stable: 317
+stable: 318
+stable: 319
+stable: 320
+stable: 321
+abnormal stable 321
+filtered_err_abs 3.0202131213844687
+prediction [0.60083157]
+sensor reading 3.9151082511202766
+stable: 322
+stable: 323
+stable: 324
+stable: 325
+stable: 326
+abnormal stable 326
+filtered_err_abs 2.996953067209961
+prediction [0.55393314]
+sensor reading 3.849526441917682
+stable: 327
+abnormal stable 327
+filtered_err_abs 3.250118356647754
+prediction [0.56496036]
+sensor reading 3.843208321719215
+stable: 328
+stable: 329
+stable: 330
+abnormal stable 330
+filtered_err_abs 2.9618695199903873
+prediction [0.58333087]
+sensor reading 3.83141906764209
+stable: 331
+stable: 332
+abnormal stable 332
+filtered_err_abs 2.9787487728599875
+prediction [0.5751387]
+sensor reading 3.8088794694802823
+stable: 333
+stable: 334
+stable: 335
+stable: 336
+stable: 337
+stable: 338
+stable: 339
+stable: 340
+abnormal stable 340
+filtered_err_abs 3.05017423012436
+prediction [0.42448774]
+sensor reading 3.787417249697283
+stable: 341
+stable: 342
+stable: 343
+abnormal stable 343
+filtered_err_abs 3.0186266477344295
+prediction [0.47259384]
+sensor reading 3.79293070223869
+stable: 344
+abnormal stable 344
+filtered_err_abs 3.2206163364195612
+prediction [0.54112494]
+sensor reading 3.7841845014960183
+stable: 345
+abnormal stable 345
+filtered_err_abs 3.16632006126189
+prediction [0.6119473]
+sensor reading 3.772234527027781
+stable: 346
+stable: 347
+stable: 348
+stable: 349
+abnormal stable 349
+filtered_err_abs 2.926806695163804
+prediction [0.5653688]
+sensor reading 3.766030448348857
+stable: 350
+stable: 351
+stable: 352
+stable: 353
+stable: 354
+stable: 355
+stable: 356
+stable: 357
+stable: 358
+stable: 359
+abnormal stable 359
+filtered_err_abs 3.0518201159180407
+prediction [0.51038885]
+sensor reading 3.8768440096175985
+stable: 360
+stable: 361
+stable: 362
+stable: 363
+turning: 364
+first point turn 364
+first point turn 365
+abnormal turning 367
+filtered_err_abs 2.3812064591441686
+prediction [-1.1273774]
+sensor reading -3.5274712739530725
+abnormal turning 368
+filtered_err_abs 2.771172661218982
+prediction [-1.6167129]
+sensor reading -4.431215480496127
+abnormal turning 369
+filtered_err_abs 2.9329876322183948
+prediction [-2.2952125]
+sensor reading -5.246179532908985
+abnormal turning 370
+filtered_err_abs 3.0529633225861583
+prediction [-2.9027946]
+sensor reading -5.969088633617794
+abnormal turning 371
+filtered_err_abs 3.222195846456919
+prediction [-3.3587568]
+sensor reading -6.59975645674758
+abnormal turning 372
+filtered_err_abs 3.4432905656713877
+prediction [-3.719302]
+sensor reading -7.187158517893652
+abnormal turning 373
+filtered_err_abs 3.378022465533203
+prediction [-4.3406544]
+sensor reading -7.711424640720872
+abnormal turning 374
+filtered_err_abs 3.239176062089819
+prediction [-4.962295]
+sensor reading -8.186043970600005
+abnormal turning 375
+filtered_err_abs 3.0895012644273656
+prediction [-5.524879]
+sensor reading -8.5977496697848
+abnormal turning 376
+filtered_err_abs 2.9243129136894406
+prediction [-6.058085]
+sensor reading -8.964043307085321
+abnormal turning 377
+filtered_err_abs 2.7155101621422597
+prediction [-6.5720134]
+sensor reading -9.264323612019844
+abnormal turning 378
+filtered_err_abs 2.4362087043550953
+prediction [-7.093502]
+sensor reading -9.498677674173228
+stable: 422
+stable: 423
+stable: 424
+stable: 425
+stable: 426
+stable: 427
+stable: 428
+stable: 429
+stable: 430
+stable: 431
+stable: 432
+stable: 433
+stable: 434
+stable: 435
+stable: 436
+stable: 437
+stable: 438
+stable: 439
+stable: 440
+stable: 441
+stable: 442
+stable: 443
+stable: 444
+stable: 445
+stable: 446
+stable: 447
+stable: 448
+stable: 449
+stable: 450
+stable: 451
+stable: 452
+stable: 453
+stable: 454
+stable: 455
+stable: 456
+stable: 457
+stable: 458
+stable: 459
+stable: 460
+stable: 461
+stable: 462
+stable: 463
+stable: 464
+stable: 465
+stable: 466
+stable: 467
+stable: 468
+stable: 469
+stable: 470
+stable: 471
+stable: 472
+abnormal stable 472
+filtered_err_abs 2.755108302479793
+prediction [0.68455404]
+sensor reading 3.6781418681140843
+stable: 473
+stable: 474
+abnormal stable 474
+filtered_err_abs 2.697722681816874
+prediction [0.78783184]
+sensor reading 3.6800836564592503
+stable: 475
+stable: 476
+stable: 477
+stable: 478
+stable: 479
+stable: 480
+stable: 481
+abnormal stable 481
+filtered_err_abs 2.7406667834490666
+prediction [0.7887096]
+sensor reading 3.765525156869331
+stable: 482
+abnormal stable 482
+filtered_err_abs 2.81755892401904
+prediction [0.9588817]
+sensor reading 3.7849840927470133
+stable: 483
+stable: 484
+stable: 485
+stable: 486
+stable: 487
+abnormal stable 487
+filtered_err_abs 2.6331716345922116
+prediction [1.0726207]
+sensor reading 3.8986398111585006
+stable: 488
+stable: 489
+abnormal stable 489
+filtered_err_abs 2.6251363153926293
+prediction [1.1324394]
+sensor reading 3.938604877876025
+stable: 490
+abnormal stable 490
+filtered_err_abs 2.6347382485436572
+prediction [1.3228594]
+sensor reading 3.9586644740582324
+stable: 491
+stable: 492
+abnormal stable 492
+filtered_err_abs 2.4211689452524654
+prediction [1.4508095]
+sensor reading 4.0044055569563595
+stable: 493
+stable: 494
+stable: 495
+abnormal stable 495
+filtered_err_abs 2.5094465707759257
+prediction [1.3764111]
+sensor reading 4.047234352677617
+stable: 496
+stable: 497
+abnormal stable 497
+filtered_err_abs 2.5170784384956164
+prediction [1.3995793]
+sensor reading 4.07430998894854
+stable: 498
+stable: 499
+stable: 500
+stable: 501
+abnormal stable 501
+filtered_err_abs 2.6042878900209163
+prediction [1.324098]
+sensor reading 4.115892744704837
+stable: 502
+stable: 503
+abnormal stable 503
+filtered_err_abs 2.6103212508303315
+prediction [1.3325945]
+sensor reading 4.11129727941321
+stable: 504
+stable: 505
+stable: 506
+abnormal stable 506
+filtered_err_abs 2.499584766534243
+prediction [1.4378653]
+sensor reading 4.111403505788427
+stable: 507
+stable: 508
+abnormal stable 508
+filtered_err_abs 2.5295141211381287
+prediction [1.4267682]
+sensor reading 4.114821714698398
+stable: 509
+stable: 510
+abnormal stable 510
+filtered_err_abs 2.5206865494164137
+prediction [1.4328971]
+sensor reading 4.110793076553495
+stable: 511
+stable: 512
+abnormal stable 512
+filtered_err_abs 2.530816138212594
+prediction [1.4116654]
+sensor reading 4.092734707358121
+stable: 513
+stable: 514
+stable: 515
+stable: 516
+stable: 517
+stable: 518
+stable: 519
+abnormal stable 519
+filtered_err_abs 2.6572920079389397
+prediction [1.178812]
+sensor reading 4.051678671702888
+stable: 520
+stable: 521
+stable: 522
+abnormal stable 522
+filtered_err_abs 2.5920957137341656
+prediction [1.2714825]
+sensor reading 4.059274659671835
+stable: 523
+abnormal stable 523
+filtered_err_abs 2.65158766318555
+prediction [1.3928758]
+sensor reading 4.051073742862789
+stable: 524
+abnormal stable 524
+filtered_err_abs 2.5819599328529788
+prediction [1.4822168]
+sensor reading 4.056440122867764
+stable: 525
+stable: 526
+abnormal stable 526
+filtered_err_abs 2.441783460078728
+prediction [1.4891611]
+sensor reading 4.070307363087536
+stable: 527
+stable: 528
+stable: 529
+stable: 530
+abnormal stable 530
+filtered_err_abs 2.6009194464119374
+prediction [1.2925733]
+sensor reading 4.079642965514059
+stable: 531
+abnormal stable 531
+filtered_err_abs 2.6630967339936107
+prediction [1.4084682]
+sensor reading 4.0784737305415355
+stable: 532
+stable: 533
+abnormal stable 533
+filtered_err_abs 2.521814633092347
+prediction [1.399967]
+sensor reading 4.079123120906536
+stable: 534
+abnormal stable 534
+filtered_err_abs 2.557419519492096
+prediction [1.5188941]
+sensor reading 4.080269838637712
+stable: 535
+stable: 536
+stable: 537
+stable: 538
+stable: 539
+abnormal stable 539
+filtered_err_abs 2.597584453708935
+prediction [1.2310729]
+sensor reading 4.0172942139099375
+stable: 540
+stable: 541
+stable: 542
+stable: 543
+stable: 544
+stable: 545
+stable: 546
+stable: 547
+abnormal stable 547
+filtered_err_abs 2.6546281361018074
+prediction [1.098433]
+sensor reading 3.968155519934574
+stable: 548
+abnormal stable 548
+filtered_err_abs 2.7277888395730105
+prediction [1.2360196]
+sensor reading 3.97193748255994
+stable: 549
+stable: 550
+stable: 551
+stable: 552
+abnormal stable 552
+filtered_err_abs 2.505947285339617
+prediction [1.3053085]
+sensor reading 3.9850086724078904
+stable: 553
+stable: 554
+stable: 555
+abnormal stable 555
+filtered_err_abs 2.5798280659252857
+prediction [1.2113962]
+sensor reading 3.9842016040576693
+stable: 556
+stable: 557
+stable: 558
+stable: 559
+stable: 560
+stable: 561
+abnormal stable 561
+filtered_err_abs 2.6937380404031104
+prediction [1.0722325]
+sensor reading 3.9762018928375396
+stable: 562
+stable: 563
+stable: 564
+stable: 565
+abnormal stable 565
+filtered_err_abs 2.570375906127401
+prediction [1.1859937]
+sensor reading 3.948172012547561
+stable: 566
+stable: 567
+abnormal stable 567
+filtered_err_abs 2.582382548915324
+prediction [1.181088]
+sensor reading 3.9238389533545908
+stable: 568
+stable: 569
+abnormal stable 569
+filtered_err_abs 2.4679189573632376
+prediction [1.3055693]
+sensor reading 3.916975663814057
+stable: 570
+abnormal stable 570
+filtered_err_abs 2.4561422670971025
+prediction [1.4594569]
+sensor reading 3.9142907262902944
+stable: 571
+stable: 572
+abnormal stable 572
+filtered_err_abs 2.3658045729051933
+prediction [1.4084682]
+sensor reading 3.8932407897479373
+stable: 573
+stable: 574
+stable: 575
+stable: 576
+abnormal stable 576
+filtered_err_abs 2.6106777527709806
+prediction [1.0985316]
+sensor reading 3.8914962306645893
+stable: 577
+abnormal stable 577
+filtered_err_abs 2.6317364964761336
+prediction [1.2556071]
+sensor reading 3.889683449496575
+stable: 578
+abnormal stable 578
+filtered_err_abs 2.60891434941568
+prediction [1.2764505]
+sensor reading 3.882828926210307
+stable: 579
+stable: 580
+stable: 581
+stable: 582
+stable: 583
+stable: 584
+abnormal stable 584
+filtered_err_abs 2.7153239889805056
+prediction [0.9948856]
+sensor reading 3.9217379916043593
+stable: 585
+stable: 586
+stable: 587
+stable: 588
+stable: 589
+turning: 590
+first point turn 590
+first point turn 591
+abnormal turning 592
+filtered_err_abs 2.257552285066213
+prediction [2.5026546]
+sensor reading 4.830063433800391
+abnormal turning 593
+filtered_err_abs 2.899650039183196
+prediction [3.255369]
+sensor reading 6.226363299407593
+abnormal turning 594
+filtered_err_abs 3.164234346340805
+prediction [4.276049]
+sensor reading 7.46968171484148
+abnormal turning 595
+filtered_err_abs 3.1016065305660874
+prediction [5.4819274]
+sensor reading 8.576575441507947
+abnormal turning 596
+filtered_err_abs 3.019255272807585
+prediction [6.5668316]
+sensor reading 9.57693683349456
+abnormal turning 597
+filtered_err_abs 2.9532672516765106
+prediction [7.5042524]
+sensor reading 10.4501875386314
+abnormal turning 598
+filtered_err_abs 2.595363441628833
+prediction [8.669183]
+sensor reading 11.224778922151277
+stable: 652
+stable: 653
+stable: 654
+stable: 655
+stable: 656
+stable: 657
+stable: 658
+stable: 659
+stable: 660
+stable: 661
+abnormal stable 661
+filtered_err_abs 3.273473569530018
+prediction [-0.18215351]
+sensor reading 3.4507696060915776
+stable: 662
+stable: 663
+abnormal stable 663
+filtered_err_abs 3.2887027172126153
+prediction [-0.2619586]
+sensor reading 3.352836113139065
+stable: 664
+abnormal stable 664
+filtered_err_abs 3.5690064421085297
+prediction [-0.28952503]
+sensor reading 3.310626289453466
+stable: 665
+stable: 666
+abnormal stable 666
+filtered_err_abs 3.2578057867197074
+prediction [-0.3353184]
+sensor reading 3.242308979201688
+stable: 667
+abnormal stable 667
+filtered_err_abs 3.5365759573569684
+prediction [-0.3407076]
+sensor reading 3.2268428429588245
+stable: 668
+abnormal stable 668
+filtered_err_abs 3.5619555159627474
+prediction [-0.352687]
+sensor reading 3.2120884921848516
+stable: 669
+stable: 670
+abnormal stable 670
+filtered_err_abs 3.2416867921195616
+prediction [-0.3596366]
+sensor reading 3.199032617498764
+stable: 671
+stable: 672
+stable: 673
+stable: 674
+stable: 675
+stable: 676
+stable: 677
+stable: 678
+abnormal stable 678
+filtered_err_abs 3.182216421689805
+prediction [-0.31982726]
+sensor reading 3.2089223847047377
+stable: 679
+stable: 680
+stable: 681
+abnormal stable 681
+filtered_err_abs 3.1718552639344595
+prediction [-0.2192384]
+sensor reading 3.29393520382208
+stable: 682
+stable: 683
+stable: 684
+stable: 685
+stable: 686
+stable: 687
+abnormal stable 687
+filtered_err_abs 3.160403737244912
+prediction [-0.03117733]
+sensor reading 3.4680699177465266
+stable: 688
+abnormal stable 688
+filtered_err_abs 3.4289383420167274
+prediction [0.03609717]
+sensor reading 3.494872654219628
+stable: 689
+stable: 690
+stable: 691
+stable: 692
+abnormal stable 692
+filtered_err_abs 3.062784673388092
+prediction [0.18576913]
+sensor reading 3.564855759046657
+stable: 693
+stable: 694
+abnormal stable 694
+filtered_err_abs 3.10734702648337
+prediction [0.219054]
+sensor reading 3.6133304728597246
+stable: 695
+stable: 696
+stable: 697
+abnormal stable 697
+filtered_err_abs 3.0531388297826214
+prediction [0.3072779]
+sensor reading 3.6709258886731795
+stable: 698
+stable: 699
+stable: 700
+stable: 701
+stable: 702
+abnormal stable 702
+filtered_err_abs 3.0781799186608945
+prediction [0.35497293]
+sensor reading 3.7513615656891837
+stable: 703
+abnormal stable 703
+filtered_err_abs 3.350014861716248
+prediction [0.375119]
+sensor reading 3.7553376922521635
+stable: 704
+stable: 705
+stable: 706
+stable: 707
+stable: 708
+abnormal stable 708
+filtered_err_abs 3.0801853399219743
+prediction [0.38948023]
+sensor reading 3.783445935979783
+stable: 709
+abnormal stable 709
+filtered_err_abs 3.3550281451219583
+prediction [0.4020893]
+sensor reading 3.7876556287879475
+stable: 710
+abnormal stable 710
+filtered_err_abs 3.362515591840687
+prediction [0.44314787]
+sensor reading 3.806495546793348
+stable: 711
+stable: 712
+abnormal stable 712
+filtered_err_abs 3.0485908531473154
+prediction [0.48948705]
+sensor reading 3.8115122277376425
+stable: 713
+stable: 714
+stable: 715
+stable: 716
+stable: 717
+stable: 718
+abnormal stable 718
+filtered_err_abs 3.1289270160550022
+prediction [0.3706585]
+sensor reading 3.8269405029294044
+stable: 719
+stable: 720
+stable: 721
+stable: 722
+abnormal stable 722
+filtered_err_abs 3.086581890698651
+prediction [0.3996927]
+sensor reading 3.8093257749547997
+stable: 723
+stable: 724
+abnormal stable 724
+filtered_err_abs 3.1009611453604338
+prediction [0.3963735]
+sensor reading 3.78337541060478
+stable: 725
+abnormal stable 725
+filtered_err_abs 3.307904785533663
+prediction [0.43765068]
+sensor reading 3.7685491708162524
+stable: 726
+stable: 727
+stable: 728
+abnormal stable 728
+filtered_err_abs 3.0318320760485133
+prediction [0.375119]
+sensor reading 3.705898527749877
+stable: 729
+abnormal stable 729
+filtered_err_abs 3.261860380265679
+prediction [0.40369326]
+sensor reading 3.691112395007008
+stable: 730
+abnormal stable 730
+filtered_err_abs 3.281881667146441
+prediction [0.39489424]
+sensor reading 3.679000313589795
+stable: 731
+stable: 732
+abnormal stable 732
+filtered_err_abs 3.0381883317924476
+prediction [0.35458535]
+sensor reading 3.662764271039302
+stable: 733
+stable: 734
+stable: 735
+stable: 736
+stable: 737
+abnormal stable 737
+filtered_err_abs 3.112163405710692
+prediction [0.14323331]
+sensor reading 3.5813307118196906
+stable: 738
+abnormal stable 738
+filtered_err_abs 3.420623574762964
+prediction [0.11677802]
+sensor reading 3.571674882135553
+stable: 739
+stable: 740
+stable: 741
+stable: 742
+stable: 743
+stable: 744
+abnormal stable 744
+filtered_err_abs 3.1749932896049513
+prediction [0.07503279]
+sensor reading 3.591525775576095
+stable: 745
+stable: 746
+abnormal stable 746
+filtered_err_abs 3.190253156404646
+prediction [0.11161074]
+sensor reading 3.6120218830922695
+stable: 747
+stable: 748
+stable: 749
+stable: 750
+stable: 751
+stable: 752
+stable: 753
+stable: 754
+stable: 755
+stable: 756
+abnormal stable 756
+filtered_err_abs 3.154791293898697
+prediction [0.05501613]
+sensor reading 3.5474603936934965
+stable: 757
+stable: 758
+stable: 759
+abnormal stable 759
+filtered_err_abs 3.1452281422747768
+prediction [0.0508178]
+sensor reading 3.5295642976048596
+stable: 760
+stable: 761
+abnormal stable 761
+filtered_err_abs 3.1888254808856384
+prediction [0.06428383]
+sensor reading 3.5600400774264727
+stable: 762
+stable: 763
+abnormal stable 763
+filtered_err_abs 3.175083421471192
+prediction [0.08739643]
+sensor reading 3.5689714140107807
+stable: 764
+stable: 765
+abnormal stable 765
+filtered_err_abs 3.1579374127865085
+prediction [0.10862812]
+sensor reading 3.566628255552096
+stable: 766
+stable: 767
+abnormal stable 767
+filtered_err_abs 3.1472876389853957
+prediction [0.12043118]
+sensor reading 3.5651118310740353
+stable: 768
+abnormal stable 768
+filtered_err_abs 3.392151835759807
+prediction [0.15371606]
+sensor reading 3.57307504889332
+stable: 769
+abnormal stable 769
+filtered_err_abs 3.4175575021108315
+prediction [0.16482711]
+sensor reading 3.5852074594260626
+stable: 770
+stable: 771
+stable: 772
+stable: 773
+stable: 774
+stable: 775
+turning: 776
+first point turn 776
+first point turn 777
+abnormal turning 778
+filtered_err_abs 2.6855688874739387
+prediction [-0.6430026]
+sensor reading -3.427128716925575
+abnormal turning 779
+filtered_err_abs 3.665909345793903
+prediction [-1.0029732]
+sensor reading -4.7778091099266655
+abnormal turning 780
+filtered_err_abs 4.373275190179366
+prediction [-1.5745888]
+sensor reading -6.026460043559835
+abnormal turning 781
+filtered_err_abs 4.824271765310051
+prediction [-2.2869406]
+sensor reading -7.161323277953407
+abnormal turning 782
+filtered_err_abs 5.053629740770507
+prediction [-3.1014442]
+sensor reading -8.180558472669423
+abnormal turning 783
+filtered_err_abs 5.35872276869375
+prediction [-3.6980426]
+sensor reading -9.090665260935848
+abnormal turning 784
+filtered_err_abs 5.382005127516347
+prediction [-4.522484]
+sensor reading -9.90707626096453
+abnormal turning 785
+filtered_err_abs 5.254335490092333
+prediction [-5.403623]
+sensor reading -10.643773361830045
+abnormal turning 786
+filtered_err_abs 5.059582575879961
+prediction [-6.2618937]
+sensor reading -11.299837539229005
+abnormal turning 787
+filtered_err_abs 4.794758115681258
+prediction [-7.0988665]
+sensor reading -11.864199821517271
+abnormal turning 788
+filtered_err_abs 4.486643723097667
+prediction [-7.8869305]
+sensor reading -12.339338824116592
+abnormal turning 789
+filtered_err_abs 4.1065391472426285
+prediction [-8.686065]
+sensor reading -12.750370151976515
+abnormal turning 790
+filtered_err_abs 3.698061980520161
+prediction [-9.433108]
+sensor reading -13.08578422890846
+abnormal turning 791
+filtered_err_abs 3.2535842932973775
+prediction [-10.138164]
+sensor reading -13.342361032103792
+abnormal turning 792
+filtered_err_abs 2.782520237343654
+prediction [-10.785515]
+sensor reading -13.515694516117948
+abnormal turning 793
+filtered_err_abs 2.309353727378164
+prediction [-11.375635]
+sensor reading -13.632414613353026
+stable: 838
+stable: 839
+stable: 840
+stable: 841
+stable: 842
+stable: 843
+stable: 844
+stable: 845
+abnormal stable 845
+filtered_err_abs 2.6539181054040215
+prediction [0.7156375]
+sensor reading 3.583067126880939
+stable: 846
+stable: 847
+stable: 848
+abnormal stable 848
+filtered_err_abs 2.5053145692527696
+prediction [1.0064057]
+sensor reading 3.687896050587418
+stable: 849
+stable: 850
+stable: 851
+stable: 852
+stable: 853
+stable: 854
+stable: 855
+stable: 856
+abnormal stable 856
+filtered_err_abs 2.707420246143062
+prediction [0.76330435]
+sensor reading 3.6943883327668705
+stable: 857
+abnormal stable 857
+filtered_err_abs 2.781112207605334
+prediction [0.9116728]
+sensor reading 3.700973113252769
+stable: 858
+stable: 859
+stable: 860
+stable: 861
+abnormal stable 861
+filtered_err_abs 2.5273634697987273
+prediction [0.9592693]
+sensor reading 3.665312661261329
+stable: 862
+stable: 863
+stable: 864
+abnormal stable 864
+filtered_err_abs 2.5951243792082863
+prediction [0.78861105]
+sensor reading 3.5777759401381237
+stable: 865
+stable: 866
+stable: 867
+stable: 868
+stable: 869
+stable: 870
+stable: 871
+stable: 872
+stable: 873
+stable: 874
+abnormal stable 874
+filtered_err_abs 2.7762996296352527
+prediction [0.36311412]
+sensor reading 3.3843001248361424
+stable: 875
+stable: 876
+stable: 877
+stable: 878
+stable: 879
+abnormal stable 879
+filtered_err_abs 2.695713437525968
+prediction [0.35393625]
+sensor reading 3.272327767885905
+stable: 880
+stable: 881
+stable: 882
+stable: 883
+stable: 884
+abnormal stable 884
+filtered_err_abs 2.726419689488778
+prediction [0.29646456]
+sensor reading 3.2518578938153384
+stable: 885
+abnormal stable 885
+filtered_err_abs 2.8973538639378913
+prediction [0.33662593]
+sensor reading 3.25297231964518
+stable: 886
+stable: 887
+abnormal stable 887
+filtered_err_abs 2.612954491140676
+prediction [0.46152636]
+sensor reading 3.2501274638712183
+stable: 888
+stable: 889
+stable: 890
+stable: 891
+stable: 892
+stable: 893
+stable: 894
+abnormal stable 894
+filtered_err_abs 2.767679903768682
+prediction [0.21061309]
+sensor reading 3.2198404564543672
+stable: 895
+abnormal stable 895
+filtered_err_abs 2.858414337422767
+prediction [0.34415895]
+sensor reading 3.2126549182611175
+stable: 896
+stable: 897
+abnormal stable 897
+filtered_err_abs 2.613838850114607
+prediction [0.46106637]
+sensor reading 3.2483090333393436
+stable: 898
+stable: 899
+stable: 900
+abnormal stable 900
+filtered_err_abs 2.5709604825364094
+prediction [0.521109]
+sensor reading 3.2691307951693678
+stable: 901
+stable: 902
+stable: 903
+abnormal stable 903
+filtered_err_abs 2.6458863514270172
+prediction [0.428383]
+sensor reading 3.267534190977456
+stable: 904
+stable: 905
+stable: 906
+stable: 907
+stable: 908
+stable: 909
+stable: 910
+stable: 911
+stable: 912
+stable: 913
+stable: 914
+abnormal stable 914
+filtered_err_abs 2.7924951736972132
+prediction [0.25208876]
+sensor reading 3.2935264786493454
+stable: 915
+stable: 916
+stable: 917
+stable: 918
+stable: 919
+stable: 920
+stable: 921
+abnormal stable 921
+filtered_err_abs 2.730242043556504
+prediction [0.40915692]
+sensor reading 3.3764575243730155
+stable: 922
+stable: 923
+stable: 924
+abnormal stable 924
+filtered_err_abs 2.636123738437714
+prediction [0.541536]
+sensor reading 3.3851945692501215
+stable: 925
+stable: 926
+abnormal stable 926
+filtered_err_abs 2.5600633772388086
+prediction [0.6577286]
+sensor reading 3.3810048955873184
+stable: 927
+stable: 928
+abnormal stable 928
+filtered_err_abs 2.49545755699493
+prediction [0.7224939]
+sensor reading 3.36820028008313
+stable: 929
+stable: 930
+stable: 931
+stable: 932
+stable: 933
+stable: 934
+stable: 935
+abnormal stable 935
+filtered_err_abs 2.7681303927684215
+prediction [0.35756797]
+sensor reading 3.365332855501618
+stable: 936
+stable: 937
+stable: 938
+stable: 939
+stable: 940
+stable: 941
+stable: 942
+stable: 943
+stable: 944
+stable: 945
+stable: 946
+abnormal stable 946
+filtered_err_abs 2.738438631471113
+prediction [0.39419556]
+sensor reading 3.368946368535216
+stable: 947
+abnormal stable 947
+filtered_err_abs 2.8246033932145553
+prediction [0.54270273]
+sensor reading 3.3768800062624105
+stable: 948
+stable: 949
+stable: 950
+stable: 951
+abnormal stable 951
+filtered_err_abs 2.513540906722798
+prediction [0.6426693]
+sensor reading 3.3323870374364626
+stable: 952
+stable: 953
+stable: 954
+stable: 955
+stable: 956
+stable: 957
+stable: 958
+abnormal stable 958
+filtered_err_abs 2.7806451435314576
+prediction [0.32285482]
+sensor reading 3.346712930371236
+stable: 959
+stable: 960
+stable: 961
+abnormal stable 961
+filtered_err_abs 2.6619747402782665
+prediction [0.4588824]
+sensor reading 3.334928718322708
+stable: 962
+stable: 963
+abnormal stable 963
+filtered_err_abs 2.571439219834919
+prediction [0.58397996]
+sensor reading 3.322432864044738
+stable: 964
+stable: 965
+abnormal stable 965
+filtered_err_abs 2.5206216724050297
+prediction [0.6411412]
+sensor reading 3.31634813247454
+stable: 966
+stable: 967
+stable: 968
+abnormal stable 968
+filtered_err_abs 2.4857754321248664
+prediction [0.6613362]
+sensor reading 3.313214225222513
+stable: 969
+stable: 970
+abnormal stable 970
+filtered_err_abs 2.4940963693572593
+prediction [0.67088217]
+sensor reading 3.3134288552125684
+stable: 971
+stable: 972
+abnormal stable 972
+filtered_err_abs 2.469246493287994
+prediction [0.69961333]
+sensor reading 3.3108293055890146
+stable: 973
+stable: 974
+stable: 975
+stable: 976
+stable: 977
+stable: 978
+stable: 979
+stable: 980
+stable: 981
+abnormal stable 981
+filtered_err_abs 2.756808398789096
+prediction [0.35826668]
+sensor reading 3.3547312054239287
+stable: 982
+stable: 983
+stable: 984
+abnormal stable 984
+filtered_err_abs 2.661624794124192
+prediction [0.5131153]
+sensor reading 3.387650552838949
+stable: 985
+abnormal stable 985
+filtered_err_abs 2.6986784343837327
+prediction [0.69760096]
+sensor reading 3.4003963599550455
+stable: 986
+abnormal stable 986
+filtered_err_abs 2.5422833860409124
+prediction [0.885882]
+sensor reading 3.4107882673726717
+stable: 987
+abnormal stable 987
+filtered_err_abs 2.4005555957604634
+prediction [1.025951]
+sensor reading 3.410759281437816
+stable: 988
+stable: 989
+abnormal stable 989
+filtered_err_abs 2.1406226705015197
+prediction [1.215726]
+sensor reading 3.4219620158087993
+stable: 990
+stable: 991
+abnormal stable 991
+filtered_err_abs 2.223455067227781
+prediction [1.121553]
+sensor reading 3.4145523136077838
+stable: 992
+stable: 993
+stable: 994
+stable: 995
+abnormal stable 995
+filtered_err_abs 2.5787498346086095
+prediction [0.7084713]
+sensor reading 3.4552518377341523
+stable: 996
+stable: 997
+stable: 998
+stable: 999
+FP ERROR
+########
+datapoint 778
+########
+datapoint 779
+########
+datapoint 780
+########
+datapoint 781
+########
+datapoint 782
+########
+datapoint 783
+########
+datapoint 784
+########
+datapoint 785
+########
+datapoint 786
+########
+datapoint 787
+########
+datapoint 788
+########
+datapoint 789
+########
+datapoint 790
+########
+datapoint 791
+########
+datapoint 792
+########
+datapoint 793
+########
+datapoint 592
+########
+datapoint 593
+########
+datapoint 594
+########
+datapoint 595
+########
+datapoint 596
+########
+datapoint 597
+########
+datapoint 598
+########
+datapoint 367
+########
+datapoint 368
+########
+datapoint 369
+########
+datapoint 370
+########
+datapoint 371
+########
+datapoint 372
+########
+datapoint 373
+########
+datapoint 374
+########
+datapoint 375
+########
+datapoint 376
+########
+datapoint 377
+########
+datapoint 378
+FP [367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 592, 593, 594, 595, 596, 597, 598, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793]
+abnormal x, abnormal y, test results:
+TP 200
+FP 35
+TN 760
+FN 0
+TPR 1.0
+FPR 0.0440251572327044
+ACC 0.964824120603015
+MSE abnormal x, abnormal y 1.0016077892225632
+MSE normal x, normal y 0.4761491758353956
