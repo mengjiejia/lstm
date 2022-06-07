@@ -104,6 +104,13 @@ df_y.to_csv(output_dir + '/df_y.csv')
 index = range(30, len(X_training))
 abnormal_indices = random.sample(index, 100)
 
+if pattern == 0:
+    abnormal_pattern = 'continuously'
+elif pattern == 1:
+    abnormal_pattern = 'random'
+elif pattern == -1:
+    abnormal_pattern = 'normal'
+
 # attack injection
 X_training_abnormal = myModule.attack_test(X_training, 0, abnormal_indices)
 
@@ -116,12 +123,6 @@ X_training_abnormal, y_training = myModule.training_reconstruct_data(X_training_
 X_training_normal, y_training = myModule.training_reconstruct_data(X_training_normal, y_train, stride)
 
 
-# X_training_normal = X_training
-# y_training_normal = y_training
-#
-# X_training_abnormal = X_training_normal.copy()
-# y_training_abnormal = y_training_normal.copy()
-
 # split the training and validation dataset
 X_training_normal, X_valid_normal, y_training_normal, y_valid_normal = train_test_split(X_training_normal,
                                                                                         y_training,
@@ -133,18 +134,6 @@ X_training_abnormal, X_valid_abnormal, y_training_normal, y_valid_normal = train
                                                                                                 test_size=0.2,
                                                                                                 shuffle=False,
                                                                                                 random_state=0)
-
-# inject abnormal data
-# if pattern != -1:
-#     X_training_abnormal = myModule.abnormal_injection(X_training_abnormal, pattern, percentage, y_index)
-#     X_valid_abnormal = myModule.abnormal_injection(X_valid_abnormal, pattern, percentage, y_index)
-
-if pattern == 0:
-    abnormal_pattern = 'continuously'
-elif pattern == 1:
-    abnormal_pattern = 'random'
-elif pattern == -1:
-    abnormal_pattern = 'normal'
 
 # output log to txt file
 sys.stdout = open(output_dir + '/output.txt', 'a')
@@ -363,17 +352,6 @@ print("abs error mean", filter_mean_abs)
 print("abs error std", filter_std_abs)
 print("abs FD_threshold", FD_threshold_abs)
 
-# total = len(Filtered_err_percentage)
-# normal_count = 0
-# abnormal_count = 0
-# for item in Filtered_err_percentage:
-#     if item <= FD_threshold_per:
-#         normal_count += 1
-#     else:
-#         abnormal_count += 1
-# accuracy = normal_count / total
-# print("train accuracy", accuracy)
-
 Filtered = []
 train_y_prediction = []
 err_abs = torch.nn.L1Loss()
@@ -416,7 +394,6 @@ print('Training MSE ', mean_squared_error(y_training_normal, train_y_prediction)
 err_output = []
 valid_err_percentage = []
 valid_y_prediction = []
-# y_valid_normal = y_scaler.inverse_transform(y_valid_normal)
 y_valid_normal = y_valid_normal * 90
 for i in range(0, len(X_valid_normal)):
     inpt = [X_valid_normal[i]]
@@ -449,18 +426,6 @@ for i in range(0, len(X_valid_normal)):
     valid_err_percentage.append(filtered_err_percentage)
 
 print('Validation MSE ', mean_squared_error(y_valid_normal, valid_y_prediction))
-#
-# total = len(err_output)
-# normal_count = 0
-# abnormal_count = 0
-# for item in valid_err_percentage:
-#
-#     if item <= FD_threshold_per:
-#         normal_count += 1
-#     else:
-#         abnormal_count += 1
-# accuracy = normal_count / total
-# print("valid accuracy", accuracy)
 
 sys.stdout.close()
 sys.stdout = to_screen

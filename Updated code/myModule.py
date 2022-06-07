@@ -108,97 +108,6 @@ def attack_test(data, attack_index, abnormal_indices):
     return data
 
 
-#
-# # training and validation dataset abnormal injection
-# # stride = 5
-# def abnormal_injection(data, pattern, percentage, index):
-#     random.seed(5)
-#     p = int(len(data) * percentage)
-#     abnormal_indices = random.sample(range(len(data)), k=p)
-#
-#     # continuously
-#     if pattern == 0:
-#         for i in range(300, 1581):
-#             # value in degree
-#             value = random.uniform(0.5, 1.0)
-#             for j in range(5):
-#                 data[i][j][index] = data[i][j][index] + value / 90  # value/90: scale the injection value
-#
-#     # randomly increase
-#     elif pattern == 1:
-#         for i in abnormal_indices:
-#             value = random.uniform(1.0, 5.0)
-#             for j in range(5):
-#                 data[i][j][index] = data[i][j][index] + value / 90
-#
-#     # randomly decrease
-#     elif pattern == 2:
-#         for i in abnormal_indices:
-#             value = random.uniform(0.5, 1.0)
-#             for j in range(5):
-#                 data[i][j][index] = data[i][j][index] - value / 90
-#
-#     # randomly multiply
-#     elif pattern == 3:
-#         for i in abnormal_indices:
-#             rate = random.uniform(1.5, 2.0)
-#             for j in range(5):
-#                 data[i][j][index] = data[i][j][index] * rate
-#
-#     return data
-#
-#
-# # test dataset attack, label
-# def attack(X_test, y_test, pattern, percentage, index):
-#     random.seed(5)
-#     p = int(len(y_test) * percentage)
-#     test_label = [0] * len(y_test)
-#
-#     # continuously
-#     if pattern == 0:
-#         abnormal_indices = np.arange(75, 150, 1)
-#         for i in range(75, 150):
-#             value = random.uniform(0.05, 0.1)
-#             for j in range(5):
-#                 X_test[i][j][index] = X_test[i][j][index] + value / 90
-#             y_test[i] = y_test[i] + value / 90
-#             test_label[i] = 1
-#
-#     # random increase
-#     elif pattern == 1:
-#         abnormal_indices = random.sample(range(len(y_test)), k=p)
-#         for i in abnormal_indices:
-#             value = random.uniform(1.0, 5.0)
-#             for j in range(5):
-#                 X_test[i][j][index] = X_test[i][j][index] + value / 90
-#             y_test[i] = y_test[i] + value / 90
-#             test_label[i] = 1
-#
-#     # random decrease
-#     elif pattern == 2:
-#         abnormal_indices = random.sample(range(len(y_test)), k=p)
-#         for i in abnormal_indices:
-#             value = random.uniform(5.0, 10.0)
-#             for j in range(5):
-#                 X_test[i][j][index] = X_test[i][j][index] - value / 90
-#
-#             y_test[i] = y_test[i] - value / 90
-#             test_label[i] = 1
-#
-#     # random multiply
-#     elif pattern == 3:
-#         abnormal_indices = random.sample(range(len(y_test)), k=p)
-#         for i in abnormal_indices:
-#             rate = random.uniform(0.5, 1.0)
-#             for j in range(5):
-#                 X_test[i][j][index] = X_test[i][j][index] * rate
-#
-#             y_test[i] = y_test[i] * rate
-#             test_label[i] = 1
-#
-#     return X_test, y_test, test_label, p, abnormal_indices
-
-
 def preprocess(df):
     df.rename(columns={'Unnamed: 0': 'datasource'}, inplace=True)
     df = df.drop(columns=['datasource'])
@@ -217,8 +126,6 @@ def preprocess(df):
     # airspeed divided by 30
     X[:, 9] = X[:, 9] / 30
 
-    # y = X[:, y_index]
-    # X = np.delete(X, y_index, 1)
     return X, nav_cmd
 
 
@@ -349,8 +256,6 @@ def mark_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filen
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
     prediction = [None]*5 + prediction
-    # df = pd.DataFrame({"xlabel": np.arange(len(abnormal)), "prediction": prediction, "abnormal": abnormal})
-    # df.plot(x="xlabel")
 
     plt.plot(np.arange(len(prediction)), prediction, 'r', marker='o', markevery=TP_list, linewidth=2.0,
              label='TP_prediction')
@@ -364,8 +269,6 @@ def mark_two_line(title, xlabel, ylabel, prediction, abnormal, start, end, filen
         plt.axvline(x=i, color='y', linestyle='--')
 
     pair = []
-    # for i in abnormal_mark:
-    #     pair.append((prediction[i], abnormal[i]))
 
     for i in TP_list:
         pair.append((prediction[i], abnormal[i]))
@@ -396,23 +299,16 @@ def two_line(title, xlabel, ylabel, prediction, normal, filename, path, stride, 
     plt.plot(np.arange(len(normal)), normal, 'b', linewidth=2.0, label='normal_sensor_reading')
     plt.plot(np.arange(len(prediction)), prediction, 'r', linewidth=2.0, label='prediction')
     pair = []
-    # for i in abnormal_mark:
-    #     pair.append((prediction[i], abnormal[i]))
 
     for i in FP_list:
         pair.append((prediction[i], normal[i]))
 
-    # plt.plot((abnormal_mark, abnormal_mark), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y',
-    #          linestyle='--')
-
     plt.plot((FP_list, FP_list), ([i for (i, j) in pair], [j for (i, j) in pair]), color='y',
              linestyle='--')
     lgd = plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
-    # plt.legend()
+
     plt.savefig(path + '/' + filename + '.png', dpi=300, bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.clf()
-    # for i in range(len(FP_list)):
-    #     FP_list[i] = FP_list[i] + 935
 
 
 def two_line_1(title, xlabel, ylabel, prediction, normal, filename, path):

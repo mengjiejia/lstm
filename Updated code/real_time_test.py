@@ -223,36 +223,6 @@ for i in range(0, len(X_test_abnormal) - stride):
             abnormalx_abnormaly_prediction.append(prediction[0])
             no_constraint_prediction.append(prediction[0])
 
-        # if filtered_err_abs >= FD_threshold:
-        #     print('abnormal stable', i + stride)
-        #     print('filtered_err_abs', filtered_err_abs)
-        #     # replace abnormal datapoint by predicted value
-        #     print('prediction', prediction)
-        #     print('sensor reading', target)
-        #     if prediction >= 1:
-        #         X_test_abnormal[i + stride][y_index] = 0.011694
-        #         abnormalx_abnormaly_prediction.append(0.011694)
-        #     else:
-        #         X_test_abnormal[i + stride][y_index] = prediction / 90
-        #         abnormalx_abnormaly_prediction.append(prediction[0])
-        #
-        #     abnormalx_abnormaly_positive.append(i + stride)
-        # else:
-        #     abnormalx_abnormaly_prediction.append(prediction[0])
-
-# if test_filtered_loss >= FD_threshold_abs:
-#     print('candidate abnormal', i + stride)
-#     if turning:
-#         abnormalx_abnormaly_prediction.append(X_test_abnormal[i + stride][y_index] * 90)
-#         abnormalx_abnormaly_test_err.append(0)
-#     else:
-#         X_test_abnormal[i + stride][y_index] = prediction / 90
-#         abnormalx_abnormaly_prediction.append(prediction[0])
-#         abnormalx_abnormaly_test_err.append(test_filtered_loss)
-#
-# else:
-#     abnormalx_abnormaly_prediction.append(prediction[0])
-#     abnormalx_abnormaly_test_err.append(test_filtered_loss)
 
 # normal x, normal y
 for i in range(0, len(X_test_normal) - stride):
@@ -310,12 +280,6 @@ for item in abnormal_indices:
     else:
         combined_positive_list.append(0)
 
-# d = {'abnormal_indice': abnormal_indices, 'test': combined_positive_list}
-# df_positive_list = pd.DataFrame(d)
-#
-# print('positive_list')
-# print(df_positive_list)
-
 print('abnormal x, abnormal y, test results:')
 print("TP", TP)
 print("FP", FP)
@@ -341,27 +305,6 @@ myModule.two_line(f'{attack_pattern} test result with normal reading', x_label, 
 myModule.two_line('normal test result', x_label, y_label, normalx_normaly_prediction, y_test_normal,
                   'normal test result', output_dir, 5, FP_list)
 
-# TP_prediction = []
-# TP_reading = []
-# FP_prediction = []
-# FP_reading = []
-# FN_prediction = []
-# FN_reading = []
-# for i in TP_list:
-#     TP_prediction.append(abnormalx_abnormaly_prediction[i])
-#     TP_reading.append(y_test_abnormal[i])
-#
-# for i in FP_list:
-#     FP_prediction.append(abnormalx_abnormaly_prediction[i])
-#     FP_reading.append(y_test_abnormal[i])
-#
-# for i in FN_list:
-#     FN_prediction.append(abnormalx_abnormaly_prediction[i])
-#     FN_reading.append(y_test_abnormal[i])
-#
-# myModule.windows('TP', 'sliding window number', 'roll angle', TP_prediction, TP_reading, TP_list, 'TP', output_dir)
-# myModule.windows('FP', 'sliding window number', 'roll angle', FP_prediction, FP_reading, FP_list, 'FP', output_dir)
-# myModule.windows('FN', 'sliding window number', 'roll angle', FN_prediction, FN_reading, FN_list, 'FN', output_dir)
 
 print('MSE abnormal x, abnormal y', mean_squared_error(y_test_normal[5:], abnormalx_abnormaly_prediction))
 print('MSE normal x, normal y', mean_squared_error(y_test_normal[5:], normalx_normaly_prediction))
