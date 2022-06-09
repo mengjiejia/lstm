@@ -64,7 +64,7 @@ nav_test = nav_test[400:1400]
 # abnormal_indices = [10, 50, 100, 120, 143, 306, 390, 530, 599, 666, 750, 888]
 
 # total 5 stable stages
-stable = [[30, 95], [170, 360], [470, 585], [660, 770], [845, 1000]]
+stable = [[30, 95], [170, 360], [470, 585], [660, 770], [845, 1000], [108, 150], [370, 410], [596, 645], [782, 830]]
 
 # stable random attack index
 abnormal_indices = []
@@ -72,7 +72,7 @@ abnormal_indices = []
 for s in stable:
     r = range(s[0], s[1])
     # sample 40 datapoints in each stable stage, so there would be 40*5 = 200 abnormal indices
-    index = random.sample(r, 40)
+    index = random.sample(r, 20)
     abnormal_indices = abnormal_indices + index
 
 X_test_normal = X_test.copy()
@@ -114,6 +114,8 @@ percentage_low_pass_IIR = 0
 
 turning = False
 
+turning_point_count = 0
+
 # test
 abnormalx_abnormaly_test_err = []
 abnormalx_abnormaly_prediction = []
@@ -131,27 +133,32 @@ normalx_normaly_test_err_per = []
 with open(turn_threshold_file_abs, 'rb') as f:
     turn_FD_threshold_abs = pickle.load(f)
 
+with open(turn_mean_std_file_abs, 'rb') as f:
+    turn_mean_abs, turn_std_abs = pickle.load(f)
+
 with open(stable_threshold_file_abs, 'rb') as f:
     stable_FD_threshold_abs = pickle.load(f)
 
+begin_turn_FD_threshold = (turn_mean_abs + 2 * turn_std_abs)
 FD_threshold = stable_FD_threshold_abs
-abnormal_label = [0] * (len(X_test_abnormal) - stride)
-for i in abnormal_indices:
-    abnormal_label[i - 5] = 1
 
 # y_test_abnormal = y_scaler.inverse_transform(y_test_abnormal)
 y_test_abnormal = X_test_abnormal[:, y_index] * 90
-no_constraint_prediction = []
+
 for i in range(0, len(X_test_abnormal) - stride):
 
     # waypoint if nav_test = 16
     if nav_test[i + stride] == 16:
+        turning_point_count = 0
         turning = True
-        FD_threshold = turn_FD_threshold_abs
+        FD_threshold = begin_turn_FD_threshold
         print('turning:', i + stride)
+        print('begin_turn_FD_threshold', begin_turn_FD_threshold)
     # X_test_abnormal[i + stride][y_index] * 90
     elif abs(X_test_abnormal[i + stride][5] * 180) <= 0.5 and 16 not in nav_test[i:i + stride]:
         turning = False
+        # set turning point count = 0
+        turning_point_count = 0
         FD_threshold = stable_FD_threshold_abs
         print('stable:', i + stride)
 
@@ -184,11 +191,15 @@ for i in range(0, len(X_test_abnormal) - stride):
     # abnormalx_abnormaly_test_err_per.append(filtered_err_per)
 
     if turning:
-        if 16 in nav_test[i + stride - 1:i + stride + 1]:
-            print('first point turn', i + stride)
-            abnormalx_abnormaly_prediction.append(X_test_abnormal[i + stride][y_index])
-            no_constraint_prediction.append(X_test_abnormal[i + stride][y_index])
 
+        turning_point_count += 1
+
+        if turning_point_count > 5:
+            FD_threshold = turn_FD_threshold_abs
+
+        if turning_point_count <= 5:
+            print(f'{turning_point_count} point turn', i + stride)
+            abnormalx_abnormaly_prediction.append(X_test_abnormal[i + stride][y_index] * 90)
 
         elif filtered_err_abs >= FD_threshold:
             print('abnormal turning', i + stride)
@@ -199,10 +210,9 @@ for i in range(0, len(X_test_abnormal) - stride):
             X_test_abnormal[i + stride][y_index] = prediction / 90
             abnormalx_abnormaly_positive.append(i + stride)
             abnormalx_abnormaly_prediction.append(prediction[0])
-            no_constraint_prediction.append(prediction[0])
+
         else:
             abnormalx_abnormaly_prediction.append(prediction[0])
-            no_constraint_prediction.append(prediction[0])
 
     else:
         if filtered_err_abs >= FD_threshold:  # target >= 1
@@ -211,18 +221,13 @@ for i in range(0, len(X_test_abnormal) - stride):
             # replace abnormal datapoint by predicted value
             print('prediction', prediction)
             print('sensor reading', target)
-            # constrain absolute stable prediction value within 1
-            no_constraint_prediction.append(prediction[0])
-            if prediction[0] >= 1:
-                prediction[0] = 1
+
             X_test_abnormal[i + stride][y_index] = prediction / 90
             abnormalx_abnormaly_prediction.append(prediction[0])
 
             abnormalx_abnormaly_positive.append(i + stride)
         else:
             abnormalx_abnormaly_prediction.append(prediction[0])
-            no_constraint_prediction.append(prediction[0])
-
 
 # normal x, normal y
 for i in range(0, len(X_test_normal) - stride):
@@ -262,23 +267,9 @@ for i in range(0, len(X_test_normal) - stride):
 TP, FP, TN, FN, TPR, FPR, ACC, TP_list, FP_list, TN_list, FN_list = myModule.Accuracy(abnormal_indices,
                                                                                       abnormalx_abnormaly_positive,
                                                                                       len(X_test_abnormal))
-print('FP ERROR')
-for i in FP_list:
-    print('########')
-    print('datapoint', i)
 
 print('FP', sorted(FP_list))
-test_positive = np.concatenate((TP_list, FP_list))
-test_positive.sort()
-abnormal_indices.sort()
-TP_list.sort()
-FP_list.sort()
-combined_positive_list = []
-for item in abnormal_indices:
-    if item in TP_list:
-        combined_positive_list.append(1)
-    else:
-        combined_positive_list.append(0)
+print('FN', sorted(FN_list))
 
 print('abnormal x, abnormal y, test results:')
 print("TP", TP)
@@ -305,14 +296,13 @@ myModule.two_line(f'{attack_pattern} test result with normal reading', x_label, 
 myModule.two_line('normal test result', x_label, y_label, normalx_normaly_prediction, y_test_normal,
                   'normal test result', output_dir, 5, FP_list)
 
-
 print('MSE abnormal x, abnormal y', mean_squared_error(y_test_normal[5:], abnormalx_abnormaly_prediction))
 print('MSE normal x, normal y', mean_squared_error(y_test_normal[5:], normalx_normaly_prediction))
 
-abnormalx_abnormaly_prediction = [None]*5 + abnormalx_abnormaly_prediction
-normalx_normaly_prediction = [None]*5 + normalx_normaly_prediction
-no_constraint_prediction = [None]*5 + no_constraint_prediction
-df = pd.DataFrame(data={"sensor reading": y_test_abnormal, "constraint prediction": abnormalx_abnormaly_prediction,  "original prediction": no_constraint_prediction})
+abnormalx_abnormaly_prediction = [None] * 5 + abnormalx_abnormaly_prediction
+normalx_normaly_prediction = [None] * 5 + normalx_normaly_prediction
+
+df = pd.DataFrame(data={"sensor reading": y_test_abnormal, "prediction": abnormalx_abnormaly_prediction})
 df.to_csv(output_dir + '/attack.csv', sep=',')
 
 df = pd.DataFrame(data={"sensor reading": y_test_normal, "prediction": normalx_normaly_prediction})
