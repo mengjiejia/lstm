@@ -1,0 +1,4183 @@
+######### training output normal ##########
+X_training.shape (2196, 5, 10)
+y_training.shape (2196,)
+X_valid.shape (549, 5, 10)
+y_valid.shape (549,)
+sliding window length 5
+computing turning threshold
+turn threshold
+percentage error mean 0.3109560239654368
+percentage error std 6.218226035928895
+percentage FD_threshold 12.747408095823227
+abs error mean 0.7626958772532146
+abs error std 1.0541626387131595
+abs FD_threshold 2.871021154679534
+computing stable threshold
+stable threshold
+percentage error mean 458.67194556635803
+percentage error std 8526.720227801776
+percentage FD_threshold 17512.11240116991
+abs error mean 0.5877531667282544
+abs error std 0.8712058315438813
+abs FD_threshold 2.330164829816017
+Training MSE  1.6044630390588699
+Validation MSE  1.977432168587442
+######### test output randomly increase ##########
+X_test.shape (2406, 10)
+y_test.shape (2406,)
+abnormal datapoints
+[50, 51, 53, 65, 93, 130, 141, 180, 198, 299, 313, 404, 422, 426, 456, 484, 498, 500, 531, 556, 574, 579, 604, 660, 701, 712, 785, 819, 832, 843, 901, 911, 918, 920, 939, 952, 975, 987, 1013, 1016, 1020, 1025, 1112, 1125, 1131, 1135, 1156, 1221, 1273, 1314, 1342, 1375, 1388, 1395, 1443, 1450, 1478, 1504, 1562, 1575, 1585, 1607, 1617, 1632, 1639, 1685, 1687, 1725, 1761, 1772, 1788, 1795, 1820, 1823, 1825, 1832, 1950, 1961, 1988, 2030, 2034, 2038, 2043, 2049, 2063, 2074, 2091, 2106, 2124, 2192, 2200, 2207, 2208, 2241, 2248, 2270, 2342, 2349, 2367, 2397]
+total abnormal datapoints 100
+turn_FD_threshold_abs 2.871021154679534
+stable_FD_threshold_abs 2.330164829816017
+stable: 5
+stable: 6
+stable: 7
+stable: 8
+stable: 9
+stable: 10
+stable: 11
+stable: 12
+stable: 13
+stable: 14
+turning: 15
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 15
+2 point turn, using sensor reading as prediction 16
+3 point turn, using regression model to predict value 17
+4 point turn, using regression model to predict value 18
+5 point turn, using regression model to predict value 19
+abnormal turning 50
+filtered_err_abs [4.941585]
+prediction [11.692721]
+sensor reading 17.101265643066952
+abnormal turning 51
+filtered_err_abs [5.789234]
+prediction [10.608904]
+sensor reading 16.492320941781756
+abnormal turning 53
+filtered_err_abs [5.3122373]
+prediction [9.61941]
+sensor reading 15.300605397208532
+abnormal turning 65
+filtered_err_abs [4.96233]
+prediction [3.7314382]
+sensor reading 9.164403882358318
+stable: 80
+stable: 81
+stable: 82
+stable: 83
+stable: 84
+stable: 85
+stable: 86
+stable: 87
+stable: 88
+stable: 89
+stable: 90
+stable: 91
+stable: 92
+stable: 93
+abnormal stable 93
+filtered_err_abs [4.7308307]
+prediction [-0.6453502]
+sensor reading 4.555268218810672
+stable: 94
+stable: 95
+stable: 96
+stable: 97
+stable: 98
+stable: 99
+stable: 100
+stable: 101
+stable: 102
+stable: 103
+stable: 104
+stable: 105
+stable: 106
+stable: 107
+stable: 108
+stable: 109
+stable: 110
+stable: 111
+stable: 112
+stable: 113
+stable: 114
+stable: 115
+stable: 116
+stable: 117
+stable: 118
+stable: 119
+stable: 120
+stable: 121
+stable: 122
+stable: 123
+stable: 124
+stable: 125
+stable: 126
+stable: 127
+stable: 128
+stable: 129
+stable: 130
+abnormal stable 130
+filtered_err_abs [4.6958137]
+prediction [-0.29782444]
+sensor reading 4.868401359377422
+stable: 131
+stable: 132
+stable: 133
+stable: 134
+stable: 135
+stable: 136
+stable: 137
+stable: 138
+stable: 139
+stable: 140
+stable: 141
+abnormal stable 141
+filtered_err_abs [4.7375565]
+prediction [-0.39298654]
+sensor reading 4.81638194247012
+stable: 142
+stable: 143
+stable: 144
+stable: 145
+stable: 146
+stable: 147
+stable: 148
+stable: 149
+stable: 150
+stable: 151
+stable: 152
+stable: 153
+stable: 154
+stable: 155
+stable: 156
+stable: 157
+stable: 158
+stable: 159
+stable: 160
+stable: 161
+stable: 162
+stable: 163
+stable: 164
+stable: 165
+stable: 166
+stable: 167
+stable: 168
+stable: 169
+stable: 170
+stable: 171
+stable: 172
+stable: 173
+stable: 174
+stable: 175
+stable: 176
+stable: 177
+stable: 178
+stable: 179
+stable: 180
+abnormal stable 180
+filtered_err_abs [4.767738]
+prediction [-0.5234948]
+sensor reading 4.718390491971842
+stable: 181
+stable: 182
+stable: 183
+stable: 184
+stable: 185
+stable: 186
+stable: 187
+stable: 188
+stable: 189
+stable: 190
+stable: 191
+stable: 192
+stable: 193
+stable: 194
+stable: 195
+stable: 196
+stable: 197
+stable: 198
+abnormal stable 198
+filtered_err_abs [4.7115746]
+prediction [-0.5603537]
+sensor reading 4.619091253847022
+stable: 199
+stable: 200
+stable: 201
+stable: 202
+stable: 203
+stable: 204
+stable: 205
+stable: 206
+stable: 207
+stable: 208
+turning: 209
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 209
+2 point turn, using sensor reading as prediction 210
+3 point turn, using regression model to predict value 211
+abnormal turning 211
+filtered_err_abs [5.2754374]
+prediction [-12.190066]
+sensor reading -18.051127008843807
+4 point turn, using regression model to predict value 212
+5 point turn, using regression model to predict value 213
+abnormal turning 215
+filtered_err_abs [3.563148]
+prediction [-39.720703]
+sensor reading -35.86828670204594
+abnormal turning 216
+filtered_err_abs [5.5211935]
+prediction [-40.484978]
+sensor reading -34.74622334479559
+abnormal turning 217
+filtered_err_abs [6.824791]
+prediction [-40.467674]
+sensor reading -33.49804051768104
+abnormal turning 218
+filtered_err_abs [7.1313953]
+prediction [-39.649338]
+sensor reading -32.48387657240973
+abnormal turning 219
+filtered_err_abs [5.940342]
+prediction [-38.6893]
+sensor reading -32.88129728784632
+abnormal turning 220
+filtered_err_abs [5.037225]
+prediction [-38.147575]
+sensor reading -33.21069645384499
+abnormal turning 221
+filtered_err_abs [4.3175235]
+prediction [-37.74222]
+sensor reading -33.504663909792754
+abnormal turning 222
+filtered_err_abs [3.7770963]
+prediction [-37.420906]
+sensor reading -33.70385555205896
+abnormal turning 223
+filtered_err_abs [3.3211942]
+prediction [-37.06772]
+sensor reading -33.79717949068767
+abnormal turning 224
+filtered_err_abs [2.9709325]
+prediction [-36.705914]
+sensor reading -33.77389906955591
+stable: 272
+stable: 273
+stable: 274
+stable: 275
+stable: 276
+stable: 277
+stable: 278
+stable: 279
+stable: 280
+stable: 281
+stable: 282
+stable: 283
+stable: 284
+stable: 285
+stable: 288
+stable: 289
+stable: 290
+stable: 291
+stable: 292
+stable: 293
+stable: 294
+stable: 295
+stable: 296
+stable: 297
+stable: 298
+stable: 299
+abnormal stable 299
+filtered_err_abs [4.794738]
+prediction [-0.18306613]
+sensor reading 5.08281761898711
+stable: 300
+stable: 301
+stable: 302
+stable: 303
+stable: 304
+stable: 305
+stable: 306
+stable: 307
+stable: 308
+stable: 309
+stable: 310
+stable: 311
+stable: 312
+stable: 313
+abnormal stable 313
+filtered_err_abs [4.7709036]
+prediction [-0.76063156]
+sensor reading 4.478492647756165
+stable: 314
+stable: 315
+stable: 316
+stable: 317
+stable: 318
+stable: 319
+stable: 320
+stable: 321
+stable: 322
+stable: 323
+stable: 324
+stable: 325
+stable: 326
+stable: 327
+stable: 328
+stable: 329
+stable: 330
+stable: 331
+stable: 332
+stable: 333
+stable: 334
+stable: 335
+stable: 336
+stable: 337
+stable: 338
+stable: 339
+stable: 340
+stable: 341
+stable: 342
+stable: 343
+stable: 344
+stable: 345
+stable: 346
+stable: 347
+stable: 348
+stable: 349
+stable: 350
+stable: 351
+stable: 352
+stable: 353
+stable: 354
+stable: 355
+stable: 356
+stable: 357
+stable: 358
+stable: 359
+stable: 360
+stable: 361
+stable: 362
+stable: 363
+stable: 364
+stable: 365
+stable: 366
+stable: 367
+stable: 368
+stable: 369
+stable: 370
+stable: 371
+stable: 372
+stable: 373
+stable: 374
+stable: 375
+stable: 376
+stable: 377
+stable: 378
+stable: 379
+stable: 380
+stable: 381
+stable: 382
+stable: 383
+stable: 384
+stable: 385
+stable: 386
+stable: 387
+stable: 388
+stable: 389
+stable: 390
+stable: 391
+stable: 392
+stable: 393
+stable: 394
+stable: 395
+stable: 396
+stable: 397
+stable: 398
+stable: 399
+stable: 400
+stable: 401
+stable: 402
+stable: 403
+stable: 404
+abnormal stable 404
+filtered_err_abs [4.7044897]
+prediction [-0.6141615]
+sensor reading 4.560921381380844
+stable: 405
+stable: 406
+stable: 407
+stable: 408
+stable: 409
+stable: 410
+stable: 411
+stable: 412
+stable: 413
+stable: 414
+stable: 415
+stable: 416
+stable: 417
+stable: 418
+stable: 419
+stable: 420
+stable: 421
+stable: 422
+abnormal stable 422
+filtered_err_abs [4.6786485]
+prediction [-0.5206382]
+sensor reading 4.630969402326062
+stable: 423
+stable: 424
+stable: 425
+stable: 426
+abnormal stable 426
+filtered_err_abs [4.6891174]
+prediction [-0.5082679]
+sensor reading 4.645803308289889
+stable: 427
+stable: 428
+stable: 429
+stable: 430
+stable: 431
+stable: 432
+stable: 433
+stable: 434
+stable: 435
+stable: 436
+stable: 437
+stable: 438
+stable: 439
+stable: 440
+stable: 441
+stable: 442
+stable: 443
+stable: 444
+stable: 445
+stable: 446
+stable: 447
+stable: 448
+stable: 449
+stable: 450
+stable: 451
+stable: 452
+stable: 453
+stable: 454
+stable: 455
+stable: 456
+abnormal stable 456
+filtered_err_abs [4.6967535]
+prediction [-0.60836524]
+sensor reading 4.560102504370465
+stable: 457
+stable: 458
+stable: 459
+stable: 460
+stable: 461
+stable: 462
+stable: 463
+stable: 464
+stable: 465
+stable: 466
+stable: 467
+stable: 468
+turning: 469
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 469
+2 point turn, using sensor reading as prediction 470
+3 point turn, using regression model to predict value 471
+abnormal turning 471
+filtered_err_abs [6.658702]
+prediction [10.455772]
+sensor reading 17.853826127301534
+4 point turn, using regression model to predict value 472
+5 point turn, using regression model to predict value 473
+abnormal turning 473
+filtered_err_abs [5.668281]
+prediction [24.84984]
+sensor reading 18.787150884300043
+abnormal turning 474
+filtered_err_abs [5.8800464]
+prediction [23.772497]
+sensor reading 17.868920700414254
+abnormal turning 475
+filtered_err_abs [6.073686]
+prediction [22.990635]
+sensor reading 16.895432747892663
+abnormal turning 476
+filtered_err_abs [4.0907593]
+prediction [21.992205]
+sensor reading 18.12177098611005
+abnormal turning 484
+filtered_err_abs [4.854636]
+prediction [23.548548]
+sensor reading 28.859380609942367
+abnormal turning 498
+filtered_err_abs [5.0186195]
+prediction [18.980078]
+sensor reading 24.472818022251964
+abnormal turning 500
+filtered_err_abs [5.2360096]
+prediction [17.531157]
+sensor reading 23.170693510557033
+abnormal turning 531
+filtered_err_abs [4.7724547]
+prediction [0.8540717]
+sensor reading 6.0940410875580335
+stable: 535
+stable: 536
+stable: 537
+stable: 538
+stable: 539
+stable: 540
+stable: 541
+stable: 542
+stable: 543
+stable: 544
+stable: 545
+stable: 546
+stable: 547
+stable: 548
+stable: 549
+stable: 550
+stable: 551
+stable: 552
+stable: 553
+stable: 554
+stable: 555
+stable: 556
+abnormal stable 556
+filtered_err_abs [4.628078]
+prediction [-0.27528852]
+sensor reading 4.8246494828115845
+stable: 557
+stable: 558
+stable: 559
+stable: 560
+stable: 561
+stable: 562
+stable: 563
+stable: 564
+stable: 565
+stable: 566
+stable: 567
+stable: 568
+stable: 569
+stable: 570
+stable: 571
+stable: 572
+stable: 573
+stable: 574
+abnormal stable 574
+filtered_err_abs [4.625341]
+prediction [-0.03451735]
+sensor reading 5.056728415504174
+stable: 575
+stable: 576
+stable: 577
+stable: 578
+stable: 579
+abnormal stable 579
+filtered_err_abs [4.6457872]
+prediction [-0.0192073]
+sensor reading 5.095006688743256
+stable: 580
+stable: 581
+stable: 582
+stable: 583
+stable: 584
+stable: 585
+stable: 586
+stable: 587
+stable: 588
+stable: 589
+stable: 590
+stable: 591
+stable: 592
+stable: 593
+stable: 594
+stable: 595
+stable: 596
+stable: 597
+stable: 598
+stable: 599
+stable: 600
+stable: 601
+stable: 602
+stable: 603
+stable: 604
+abnormal stable 604
+filtered_err_abs [4.686222]
+prediction [-0.26827455]
+sensor reading 4.889708519592324
+stable: 605
+stable: 606
+stable: 607
+stable: 608
+stable: 609
+stable: 610
+stable: 611
+stable: 612
+stable: 613
+stable: 614
+stable: 615
+stable: 616
+stable: 617
+stable: 618
+stable: 619
+stable: 620
+stable: 621
+stable: 622
+stable: 623
+stable: 624
+stable: 625
+stable: 626
+stable: 627
+stable: 628
+stable: 629
+stable: 630
+stable: 631
+stable: 632
+stable: 633
+stable: 634
+stable: 635
+stable: 636
+stable: 637
+stable: 638
+stable: 639
+stable: 640
+stable: 641
+stable: 642
+stable: 643
+stable: 644
+stable: 645
+stable: 646
+stable: 647
+stable: 648
+stable: 649
+stable: 650
+stable: 651
+stable: 652
+stable: 653
+stable: 654
+stable: 655
+stable: 656
+stable: 657
+stable: 658
+stable: 659
+stable: 660
+abnormal stable 660
+filtered_err_abs [4.7144246]
+prediction [-0.3987828]
+sensor reading 4.786737994234635
+stable: 661
+stable: 662
+stable: 663
+stable: 664
+stable: 665
+stable: 666
+stable: 667
+stable: 668
+stable: 669
+stable: 670
+stable: 671
+stable: 672
+stable: 673
+stable: 674
+stable: 675
+stable: 676
+stable: 677
+stable: 678
+turning: 679
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 679
+2 point turn, using sensor reading as prediction 680
+3 point turn, using regression model to predict value 681
+4 point turn, using regression model to predict value 682
+5 point turn, using regression model to predict value 683
+abnormal turning 701
+filtered_err_abs [4.941176]
+prediction [19.285398]
+sensor reading 24.699409652196923
+abnormal turning 712
+filtered_err_abs [4.9505377]
+prediction [13.709369]
+sensor reading 19.127114345230048
+stable: 745
+stable: 746
+stable: 747
+stable: 748
+stable: 749
+stable: 750
+stable: 751
+stable: 752
+stable: 753
+stable: 754
+stable: 755
+stable: 756
+stable: 757
+stable: 758
+stable: 759
+stable: 760
+stable: 761
+stable: 762
+stable: 763
+stable: 764
+stable: 765
+stable: 766
+stable: 767
+stable: 768
+stable: 769
+stable: 770
+stable: 771
+stable: 772
+stable: 773
+stable: 774
+stable: 775
+stable: 776
+stable: 777
+stable: 778
+stable: 779
+stable: 780
+stable: 781
+stable: 782
+stable: 783
+stable: 784
+stable: 785
+abnormal stable 785
+filtered_err_abs [4.7047796]
+prediction [0.18829644]
+sensor reading 5.363374768556726
+stable: 786
+stable: 787
+stable: 788
+stable: 789
+stable: 790
+stable: 791
+stable: 792
+stable: 793
+stable: 794
+stable: 795
+stable: 796
+stable: 797
+stable: 798
+stable: 799
+stable: 800
+stable: 801
+stable: 802
+stable: 803
+stable: 804
+stable: 805
+stable: 806
+stable: 807
+stable: 808
+stable: 809
+stable: 810
+stable: 811
+stable: 812
+stable: 813
+stable: 814
+stable: 815
+stable: 816
+stable: 817
+stable: 818
+stable: 819
+abnormal stable 819
+filtered_err_abs [4.7243385]
+prediction [-0.07587165]
+sensor reading 5.117495167610581
+stable: 820
+stable: 821
+stable: 822
+stable: 823
+stable: 824
+stable: 825
+stable: 826
+stable: 827
+stable: 828
+stable: 829
+stable: 830
+stable: 831
+stable: 832
+abnormal stable 832
+filtered_err_abs [4.6823716]
+prediction [0.02422571]
+sensor reading 5.175960159177875
+stable: 833
+stable: 834
+stable: 835
+stable: 836
+stable: 837
+stable: 838
+stable: 839
+stable: 840
+stable: 841
+stable: 842
+stable: 843
+abnormal stable 843
+filtered_err_abs [4.6640143]
+prediction [-0.01275927]
+sensor reading 5.116305970788475
+stable: 844
+stable: 845
+stable: 846
+stable: 847
+stable: 848
+stable: 849
+stable: 850
+stable: 851
+stable: 852
+stable: 853
+stable: 854
+stable: 855
+stable: 856
+stable: 857
+stable: 858
+stable: 859
+stable: 860
+stable: 861
+stable: 862
+stable: 863
+stable: 864
+stable: 865
+stable: 866
+stable: 867
+stable: 868
+stable: 869
+stable: 870
+stable: 871
+stable: 872
+stable: 873
+stable: 874
+stable: 875
+stable: 876
+stable: 877
+turning: 878
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 878
+2 point turn, using sensor reading as prediction 879
+3 point turn, using regression model to predict value 880
+4 point turn, using regression model to predict value 881
+5 point turn, using regression model to predict value 882
+abnormal turning 883
+filtered_err_abs [4.790523]
+prediction [-43.35814]
+sensor reading -48.618224843844935
+abnormal turning 884
+filtered_err_abs [2.9612484]
+prediction [-45.662296]
+sensor reading -48.42029370872801
+abnormal turning 901
+filtered_err_abs [3.3714716]
+prediction [-46.519825]
+sensor reading -42.912741387590614
+abnormal turning 911
+filtered_err_abs [3.7193542]
+prediction [-39.887035]
+sensor reading -35.83163621166008
+abnormal turning 918
+filtered_err_abs [4.235413]
+prediction [-28.050644]
+sensor reading -23.35546532578374
+abnormal turning 920
+filtered_err_abs [4.1977897]
+prediction [-23.360966]
+sensor reading -18.74739152491781
+stable: 939
+abnormal stable 939
+filtered_err_abs [4.4323697]
+prediction [6.40559]
+sensor reading 11.308323143279612
+abnormal stable 952
+filtered_err_abs [4.647759]
+prediction [7.522026]
+sensor reading 12.641986689765318
+abnormal stable 975
+filtered_err_abs [4.8204436]
+prediction [1.2170779]
+sensor reading 6.505193309512732
+stable: 981
+stable: 982
+stable: 983
+stable: 984
+stable: 985
+stable: 986
+stable: 987
+abnormal stable 987
+filtered_err_abs [4.735557]
+prediction [-0.39056987]
+sensor reading 4.8126207896718745
+stable: 988
+stable: 989
+stable: 990
+stable: 991
+stable: 992
+stable: 993
+stable: 994
+stable: 995
+stable: 996
+stable: 997
+stable: 998
+stable: 999
+stable: 1000
+stable: 1001
+stable: 1002
+stable: 1003
+stable: 1004
+stable: 1005
+stable: 1006
+stable: 1007
+stable: 1008
+stable: 1009
+stable: 1010
+stable: 1011
+stable: 1012
+stable: 1013
+abnormal stable 1013
+filtered_err_abs [4.636024]
+prediction [-0.5206382]
+sensor reading 4.585131008276009
+stable: 1014
+stable: 1015
+stable: 1016
+abnormal stable 1016
+filtered_err_abs [4.6475883]
+prediction [-0.4451555]
+sensor reading 4.663225115645294
+stable: 1017
+stable: 1018
+stable: 1019
+stable: 1020
+abnormal stable 1020
+filtered_err_abs [4.660981]
+prediction [-0.42547613]
+sensor reading 4.703723239377096
+stable: 1021
+stable: 1022
+stable: 1023
+stable: 1024
+stable: 1025
+abnormal stable 1025
+filtered_err_abs [4.6385503]
+prediction [-0.36759406]
+sensor reading 4.74109385923319
+stable: 1026
+stable: 1027
+stable: 1028
+stable: 1029
+stable: 1030
+stable: 1031
+stable: 1032
+stable: 1033
+stable: 1034
+stable: 1035
+stable: 1036
+stable: 1037
+stable: 1038
+stable: 1039
+stable: 1040
+stable: 1041
+stable: 1042
+stable: 1043
+stable: 1044
+stable: 1045
+stable: 1046
+stable: 1047
+stable: 1048
+stable: 1049
+stable: 1050
+stable: 1051
+stable: 1052
+stable: 1053
+stable: 1054
+stable: 1055
+stable: 1056
+stable: 1057
+stable: 1058
+stable: 1059
+stable: 1060
+stable: 1061
+stable: 1062
+stable: 1063
+stable: 1064
+stable: 1065
+stable: 1066
+stable: 1067
+stable: 1068
+stable: 1069
+stable: 1070
+stable: 1071
+stable: 1072
+stable: 1073
+stable: 1074
+stable: 1075
+stable: 1076
+stable: 1077
+stable: 1078
+stable: 1079
+stable: 1080
+stable: 1081
+stable: 1082
+stable: 1083
+stable: 1084
+stable: 1085
+stable: 1086
+stable: 1087
+stable: 1088
+stable: 1089
+stable: 1090
+stable: 1091
+stable: 1092
+stable: 1093
+stable: 1094
+stable: 1095
+stable: 1096
+stable: 1097
+stable: 1098
+stable: 1099
+stable: 1100
+stable: 1101
+stable: 1102
+stable: 1103
+stable: 1104
+stable: 1105
+stable: 1106
+stable: 1107
+stable: 1108
+stable: 1109
+stable: 1110
+stable: 1111
+stable: 1112
+abnormal stable 1112
+filtered_err_abs [4.618479]
+prediction [-0.38641244]
+sensor reading 4.7024723447407375
+stable: 1113
+stable: 1114
+stable: 1115
+stable: 1116
+stable: 1117
+stable: 1118
+stable: 1119
+stable: 1120
+stable: 1121
+stable: 1122
+stable: 1123
+stable: 1124
+stable: 1125
+abnormal stable 1125
+filtered_err_abs [4.6132946]
+prediction [-0.31586498]
+sensor reading 4.770336011647516
+stable: 1126
+stable: 1127
+stable: 1128
+stable: 1129
+stable: 1130
+stable: 1131
+abnormal stable 1131
+filtered_err_abs [4.6355166]
+prediction [-0.43772042]
+sensor reading 4.668048087580464
+stable: 1132
+stable: 1133
+stable: 1134
+stable: 1135
+abnormal stable 1135
+filtered_err_abs [4.634409]
+prediction [-0.47348768]
+sensor reading 4.628979015700712
+stable: 1136
+stable: 1137
+stable: 1138
+stable: 1139
+stable: 1140
+stable: 1141
+stable: 1142
+stable: 1143
+stable: 1144
+stable: 1145
+stable: 1146
+stable: 1147
+stable: 1148
+stable: 1149
+stable: 1150
+turning: 1151
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 1151
+2 point turn, using sensor reading as prediction 1152
+3 point turn, using regression model to predict value 1153
+4 point turn, using regression model to predict value 1154
+abnormal turning 1154
+filtered_err_abs [5.4084406]
+prediction [23.214014]
+sensor reading 17.363541558345723
+5 point turn, using regression model to predict value 1155
+abnormal turning 1155
+filtered_err_abs [4.7485237]
+prediction [21.235344]
+sensor reading 16.560145294633443
+stable: 1214
+stable: 1215
+stable: 1216
+stable: 1217
+stable: 1218
+stable: 1219
+stable: 1220
+stable: 1221
+abnormal stable 1221
+filtered_err_abs [4.6802616]
+prediction [-0.6575945]
+sensor reading 4.493488500240785
+stable: 1222
+stable: 1223
+stable: 1224
+stable: 1225
+stable: 1226
+stable: 1227
+stable: 1228
+stable: 1229
+stable: 1230
+stable: 1231
+stable: 1232
+stable: 1233
+stable: 1234
+stable: 1235
+stable: 1236
+stable: 1237
+stable: 1238
+stable: 1239
+stable: 1240
+stable: 1241
+stable: 1242
+stable: 1243
+stable: 1244
+stable: 1245
+stable: 1246
+stable: 1247
+stable: 1248
+stable: 1249
+stable: 1250
+stable: 1251
+stable: 1252
+stable: 1253
+stable: 1254
+stable: 1255
+stable: 1256
+stable: 1257
+stable: 1258
+stable: 1259
+stable: 1260
+stable: 1261
+stable: 1262
+stable: 1263
+stable: 1264
+stable: 1265
+stable: 1266
+stable: 1267
+stable: 1268
+stable: 1269
+stable: 1270
+stable: 1271
+stable: 1272
+stable: 1273
+abnormal stable 1273
+filtered_err_abs [4.6414127]
+prediction [-0.1346147]
+sensor reading 4.979420308826983
+stable: 1274
+stable: 1275
+stable: 1276
+stable: 1277
+stable: 1278
+stable: 1279
+stable: 1280
+stable: 1281
+stable: 1282
+stable: 1283
+stable: 1284
+stable: 1285
+stable: 1286
+stable: 1287
+stable: 1288
+stable: 1289
+stable: 1290
+stable: 1291
+stable: 1292
+stable: 1293
+stable: 1294
+stable: 1295
+stable: 1296
+stable: 1297
+stable: 1298
+stable: 1299
+stable: 1300
+stable: 1301
+stable: 1302
+stable: 1303
+stable: 1304
+stable: 1305
+stable: 1306
+stable: 1307
+stable: 1308
+stable: 1309
+stable: 1310
+stable: 1311
+stable: 1312
+stable: 1313
+stable: 1314
+abnormal stable 1314
+filtered_err_abs [4.6640496]
+prediction [-0.37624687]
+sensor reading 4.761607062664055
+stable: 1315
+stable: 1316
+stable: 1317
+stable: 1318
+stable: 1319
+stable: 1320
+stable: 1321
+stable: 1322
+stable: 1323
+stable: 1324
+stable: 1325
+stable: 1326
+stable: 1327
+stable: 1328
+stable: 1329
+stable: 1330
+stable: 1331
+stable: 1332
+stable: 1333
+stable: 1334
+stable: 1335
+stable: 1336
+stable: 1337
+stable: 1338
+turning: 1339
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 1339
+2 point turn, using sensor reading as prediction 1340
+3 point turn, using regression model to predict value 1341
+4 point turn, using regression model to predict value 1342
+abnormal turning 1342
+filtered_err_abs [4.368575]
+prediction [32.44826]
+sensor reading 37.13377123480478
+5 point turn, using regression model to predict value 1343
+abnormal turning 1375
+filtered_err_abs [5.2391233]
+prediction [17.024055]
+sensor reading 22.721888794137524
+abnormal turning 1388
+filtered_err_abs [5.1047506]
+prediction [4.941921]
+sensor reading 10.516135366434577
+abnormal turning 1395
+filtered_err_abs [4.966665]
+prediction [1.2880236]
+sensor reading 6.717691724683512
+stable: 1399
+stable: 1400
+stable: 1401
+stable: 1402
+stable: 1403
+stable: 1404
+stable: 1405
+stable: 1406
+stable: 1407
+stable: 1408
+stable: 1409
+stable: 1410
+stable: 1411
+stable: 1412
+stable: 1423
+stable: 1424
+stable: 1425
+stable: 1426
+stable: 1427
+stable: 1428
+stable: 1429
+stable: 1430
+stable: 1431
+stable: 1432
+stable: 1433
+stable: 1434
+stable: 1435
+stable: 1436
+stable: 1437
+stable: 1438
+stable: 1439
+stable: 1440
+stable: 1441
+stable: 1442
+stable: 1443
+abnormal stable 1443
+filtered_err_abs [4.6212296]
+prediction [-0.27692735]
+sensor reading 4.815486145875745
+stable: 1444
+stable: 1445
+stable: 1446
+stable: 1447
+stable: 1448
+stable: 1449
+stable: 1450
+abnormal stable 1450
+filtered_err_abs [4.655553]
+prediction [-0.14270157]
+sensor reading 4.980009807913659
+stable: 1451
+stable: 1452
+stable: 1453
+stable: 1454
+stable: 1455
+stable: 1456
+stable: 1457
+stable: 1458
+stable: 1459
+stable: 1460
+stable: 1461
+stable: 1462
+stable: 1463
+stable: 1464
+stable: 1465
+stable: 1466
+stable: 1467
+stable: 1468
+stable: 1469
+stable: 1470
+stable: 1471
+stable: 1472
+stable: 1473
+stable: 1474
+stable: 1475
+stable: 1476
+stable: 1477
+stable: 1478
+abnormal stable 1478
+filtered_err_abs [4.6838274]
+prediction [-0.132536]
+sensor reading 5.022280445339634
+stable: 1479
+stable: 1480
+stable: 1481
+stable: 1482
+stable: 1483
+stable: 1484
+stable: 1485
+stable: 1486
+stable: 1487
+stable: 1488
+stable: 1489
+stable: 1490
+stable: 1491
+stable: 1492
+stable: 1493
+stable: 1494
+stable: 1495
+stable: 1496
+stable: 1497
+stable: 1498
+stable: 1499
+stable: 1500
+stable: 1501
+stable: 1502
+stable: 1503
+stable: 1504
+abnormal stable 1504
+filtered_err_abs [4.7102404]
+prediction [-0.19772708]
+sensor reading 4.982643225072484
+stable: 1505
+stable: 1506
+stable: 1507
+stable: 1508
+stable: 1509
+stable: 1510
+stable: 1511
+stable: 1512
+stable: 1513
+stable: 1514
+stable: 1515
+stable: 1516
+stable: 1517
+stable: 1518
+stable: 1519
+stable: 1520
+stable: 1521
+stable: 1522
+stable: 1523
+stable: 1524
+stable: 1525
+stable: 1526
+stable: 1527
+stable: 1528
+stable: 1529
+stable: 1530
+stable: 1531
+stable: 1532
+stable: 1533
+stable: 1534
+stable: 1535
+stable: 1536
+stable: 1537
+stable: 1538
+stable: 1539
+stable: 1540
+stable: 1541
+stable: 1542
+stable: 1543
+stable: 1544
+stable: 1545
+stable: 1546
+stable: 1547
+stable: 1548
+stable: 1549
+stable: 1550
+stable: 1551
+stable: 1552
+stable: 1553
+stable: 1554
+stable: 1555
+stable: 1556
+stable: 1557
+stable: 1558
+stable: 1559
+stable: 1560
+stable: 1561
+stable: 1562
+abnormal stable 1562
+filtered_err_abs [4.7037725]
+prediction [-0.26949227]
+sensor reading 4.905227471084744
+stable: 1563
+stable: 1564
+stable: 1565
+stable: 1566
+stable: 1567
+stable: 1568
+stable: 1569
+stable: 1570
+stable: 1571
+stable: 1572
+stable: 1573
+stable: 1574
+stable: 1575
+abnormal stable 1575
+filtered_err_abs [4.7203703]
+prediction [-0.32615662]
+sensor reading 4.865942849044717
+stable: 1576
+stable: 1577
+stable: 1578
+stable: 1579
+stable: 1580
+stable: 1581
+stable: 1582
+stable: 1583
+stable: 1584
+turning: 1585
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 1585
+2 point turn, using sensor reading as prediction 1586
+3 point turn, using regression model to predict value 1587
+abnormal turning 1587
+filtered_err_abs [7.3001866]
+prediction [13.185074]
+sensor reading 21.295868935634363
+4 point turn, using regression model to predict value 1588
+5 point turn, using regression model to predict value 1589
+abnormal turning 1607
+filtered_err_abs [4.894228]
+prediction [23.327711]
+sensor reading 28.68951695833552
+abnormal turning 1617
+filtered_err_abs [4.783293]
+prediction [16.991987]
+sensor reading 22.2391477875124
+abnormal turning 1632
+filtered_err_abs [4.9120693]
+prediction [5.9620914]
+sensor reading 11.344029873072165
+abnormal turning 1639
+filtered_err_abs [4.914914]
+prediction [2.5969765]
+sensor reading 7.981315363306378
+stable: 1649
+stable: 1650
+stable: 1651
+stable: 1652
+stable: 1653
+stable: 1654
+stable: 1655
+stable: 1656
+stable: 1657
+stable: 1658
+stable: 1659
+stable: 1660
+stable: 1661
+stable: 1662
+stable: 1663
+stable: 1664
+stable: 1665
+stable: 1666
+stable: 1667
+stable: 1668
+stable: 1669
+stable: 1670
+stable: 1671
+stable: 1672
+stable: 1673
+stable: 1674
+stable: 1675
+stable: 1676
+stable: 1677
+stable: 1678
+stable: 1679
+stable: 1680
+stable: 1681
+stable: 1682
+stable: 1683
+stable: 1684
+stable: 1685
+abnormal stable 1685
+filtered_err_abs [4.770749]
+prediction [-0.14771998]
+sensor reading 5.092549209734583
+stable: 1686
+stable: 1687
+abnormal stable 1687
+filtered_err_abs [4.9360766]
+prediction [-0.21784633]
+sensor reading 5.125337080524354
+stable: 1688
+stable: 1689
+stable: 1690
+stable: 1691
+stable: 1692
+stable: 1693
+stable: 1694
+stable: 1695
+stable: 1696
+stable: 1697
+stable: 1698
+stable: 1699
+stable: 1700
+stable: 1701
+stable: 1702
+stable: 1703
+stable: 1704
+stable: 1705
+stable: 1706
+stable: 1707
+stable: 1708
+stable: 1709
+stable: 1710
+stable: 1711
+stable: 1712
+stable: 1713
+stable: 1714
+stable: 1715
+stable: 1716
+stable: 1717
+stable: 1718
+stable: 1719
+stable: 1720
+stable: 1721
+stable: 1722
+stable: 1723
+stable: 1724
+stable: 1725
+abnormal stable 1725
+filtered_err_abs [4.813667]
+prediction [-0.27165413]
+sensor reading 5.013934799391538
+stable: 1726
+stable: 1727
+turning: 1728
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 1728
+2 point turn, using sensor reading as prediction 1729
+3 point turn, using regression model to predict value 1730
+4 point turn, using regression model to predict value 1731
+5 point turn, using regression model to predict value 1732
+abnormal turning 1733
+filtered_err_abs [3.4948597]
+prediction [-42.073658]
+sensor reading -45.86152435624224
+abnormal turning 1761
+filtered_err_abs [3.999374]
+prediction [-27.223383]
+sensor reading -22.808437308629355
+abnormal turning 1772
+filtered_err_abs [3.964905]
+prediction [-9.7411785]
+sensor reading -5.369432625002538
+stable: 1783
+stable: 1784
+abnormal stable 1788
+filtered_err_abs [4.5100183]
+prediction [1.6729729]
+sensor reading 6.657799930696471
+stable: 1789
+stable: 1790
+stable: 1791
+abnormal stable 1795
+filtered_err_abs [4.6557736]
+prediction [2.6008792]
+sensor reading 7.7260127036558615
+abnormal stable 1820
+filtered_err_abs [4.8059773]
+prediction [0.23830354]
+sensor reading 5.513851533728627
+stable: 1821
+stable: 1822
+stable: 1823
+abnormal stable 1823
+filtered_err_abs [4.8762045]
+prediction [-0.12224436]
+sensor reading 5.212757686020798
+stable: 1824
+stable: 1825
+abnormal stable 1825
+filtered_err_abs [4.9587235]
+prediction [-0.3179437]
+sensor reading 5.0436256843296015
+stable: 1826
+stable: 1827
+stable: 1828
+stable: 1829
+stable: 1830
+stable: 1831
+stable: 1832
+abnormal stable 1832
+filtered_err_abs [4.7116203]
+prediction [-0.4885885]
+sensor reading 4.690110599829084
+stable: 1833
+stable: 1834
+stable: 1835
+stable: 1836
+stable: 1837
+stable: 1838
+stable: 1839
+stable: 1840
+stable: 1841
+stable: 1842
+stable: 1843
+stable: 1844
+stable: 1845
+stable: 1846
+stable: 1847
+stable: 1848
+stable: 1849
+stable: 1850
+stable: 1851
+stable: 1852
+stable: 1853
+stable: 1854
+stable: 1855
+stable: 1856
+stable: 1857
+stable: 1858
+stable: 1859
+stable: 1860
+stable: 1861
+stable: 1862
+stable: 1863
+stable: 1864
+stable: 1865
+stable: 1866
+stable: 1867
+stable: 1868
+stable: 1869
+stable: 1870
+stable: 1871
+stable: 1872
+stable: 1873
+stable: 1874
+stable: 1875
+stable: 1876
+stable: 1877
+stable: 1878
+stable: 1879
+stable: 1880
+stable: 1881
+stable: 1882
+stable: 1883
+stable: 1884
+stable: 1885
+stable: 1886
+stable: 1887
+turning: 1888
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 1888
+2 point turn, using sensor reading as prediction 1889
+3 point turn, using regression model to predict value 1890
+4 point turn, using regression model to predict value 1891
+abnormal turning 1891
+filtered_err_abs [9.213891]
+prediction [-28.686663]
+sensor reading -18.64680601829834
+5 point turn, using regression model to predict value 1892
+abnormal turning 1892
+filtered_err_abs [10.173363]
+prediction [-28.224417]
+sensor reading -17.944445705137216
+abnormal turning 1893
+filtered_err_abs [11.625048]
+prediction [-28.772785]
+sensor reading -16.986439645197855
+abnormal turning 1894
+filtered_err_abs [10.908975]
+prediction [-28.282862]
+sensor reading -17.45345181443104
+abnormal turning 1895
+filtered_err_abs [9.509129]
+prediction [-28.00834]
+sensor reading -18.654751224043416
+abnormal turning 1896
+filtered_err_abs [8.741742]
+prediction [-28.407513]
+sensor reading -19.751035491217447
+abnormal turning 1897
+filtered_err_abs [8.143827]
+prediction [-28.892603]
+sensor reading -20.81521005763675
+abnormal turning 1898
+filtered_err_abs [7.6732416]
+prediction [-29.40252]
+sensor reading -21.78156525856676
+abnormal turning 1899
+filtered_err_abs [7.291914]
+prediction [-29.86995]
+sensor reading -22.620404691485838
+abnormal turning 1900
+filtered_err_abs [6.9528174]
+prediction [-30.192482]
+sensor reading -23.27734262952237
+abnormal turning 1901
+filtered_err_abs [6.692061]
+prediction [-30.40366]
+sensor reading -23.740571558434308
+abnormal turning 1902
+filtered_err_abs [6.610588]
+prediction [-30.591045]
+sensor reading -23.98950968830495
+abnormal turning 1903
+filtered_err_abs [6.541695]
+prediction [-30.606524]
+sensor reading -24.072483717322413
+abnormal turning 1904
+filtered_err_abs [6.493008]
+prediction [-30.522179]
+sensor reading -24.034580267343326
+abnormal turning 1905
+filtered_err_abs [6.4072905]
+prediction [-30.334795]
+sensor reading -23.937029619059945
+abnormal turning 1906
+filtered_err_abs [6.2795615]
+prediction [-30.041855]
+sensor reading -23.77648627190649
+abnormal turning 1907
+filtered_err_abs [6.0714226]
+prediction [-29.6439]
+sensor reading -23.595604068941483
+abnormal turning 1908
+filtered_err_abs [5.837781]
+prediction [-29.186827]
+sensor reading -23.3750061504914
+abnormal turning 1909
+filtered_err_abs [5.569815]
+prediction [-28.653116]
+sensor reading -23.11307505670057
+abnormal turning 1910
+filtered_err_abs [5.4156027]
+prediction [-28.186296]
+sensor reading -22.78782811584322
+abnormal turning 1911
+filtered_err_abs [5.2780256]
+prediction [-27.668673]
+sensor reading -22.40593283778129
+abnormal turning 1912
+filtered_err_abs [5.1490607]
+prediction [-27.091108]
+sensor reading -21.95637754665015
+abnormal turning 1913
+filtered_err_abs [5.058007]
+prediction [-26.492687]
+sensor reading -21.44479785532272
+abnormal turning 1914
+filtered_err_abs [4.9692197]
+prediction [-25.849806]
+sensor reading -20.890451448251127
+abnormal turning 1915
+filtered_err_abs [4.8359585]
+prediction [-25.12577]
+sensor reading -20.30461929146372
+abnormal turning 1916
+filtered_err_abs [4.651412]
+prediction [-24.340574]
+sensor reading -19.70966679249341
+abnormal turning 1917
+filtered_err_abs [4.441215]
+prediction [-23.522846]
+sensor reading -19.104985470161783
+abnormal turning 1918
+filtered_err_abs [4.2927594]
+prediction [-22.760296]
+sensor reading -18.48403100053285
+abnormal turning 1919
+filtered_err_abs [4.2179093]
+prediction [-22.05747]
+sensor reading -17.847877106514687
+abnormal turning 1920
+filtered_err_abs [4.1501713]
+prediction [-21.339382]
+sensor reading -17.19673635544929
+abnormal turning 1921
+filtered_err_abs [4.05853]
+prediction [-20.55956]
+sensor reading -16.51121240709809
+abnormal turning 1922
+filtered_err_abs [3.9783888]
+prediction [-19.774366]
+sensor reading -15.804882069374507
+abnormal turning 1923
+filtered_err_abs [3.9248743]
+prediction [-18.999884]
+sensor reading -15.080955051846868
+abnormal turning 1924
+filtered_err_abs [3.8842196]
+prediction [-18.237436]
+sensor reading -14.35773391832283
+abnormal turning 1925
+filtered_err_abs [3.8565388]
+prediction [-17.46625]
+sensor reading -13.61278622520743
+abnormal turning 1926
+filtered_err_abs [3.8457875]
+prediction [-16.707855]
+sensor reading -12.863261745224527
+abnormal turning 1927
+filtered_err_abs [3.8089244]
+prediction [-15.933392]
+sensor reading -12.12856312114843
+abnormal turning 1928
+filtered_err_abs [3.8113718]
+prediction [-15.223113]
+sensor reading -11.411469198285522
+abnormal turning 1929
+filtered_err_abs [3.751903]
+prediction [-14.446552]
+sensor reading -10.701257071499928
+abnormal turning 1930
+filtered_err_abs [3.688848]
+prediction [-13.699981]
+sensor reading -10.018138972930483
+abnormal turning 1931
+filtered_err_abs [3.72413]
+prediction [-13.066791]
+sensor reading -9.338739943409232
+abnormal turning 1932
+filtered_err_abs [3.7364807]
+prediction [-12.40465]
+sensor reading -8.66679624071822
+abnormal turning 1933
+filtered_err_abs [3.742543]
+prediction [-11.769202]
+sensor reading -8.025985345741235
+abnormal turning 1934
+filtered_err_abs [3.6909487]
+prediction [-11.116754]
+sensor reading -7.431537622588442
+abnormal turning 1935
+filtered_err_abs [3.6431336]
+prediction [-10.490998]
+sensor reading -6.853177408407329
+abnormal turning 1936
+filtered_err_abs [3.6411316]
+prediction [-9.944836]
+sensor reading -6.303926315007837
+abnormal turning 1937
+filtered_err_abs [3.665768]
+prediction [-9.430383]
+sensor reading -5.761877301093143
+abnormal turning 1938
+filtered_err_abs [3.6607969]
+prediction [-8.923885]
+sensor reading -5.263640650898715
+abnormal turning 1939
+filtered_err_abs [3.679725]
+prediction [-8.458287]
+sensor reading -4.776459221361337
+abnormal turning 1940
+filtered_err_abs [3.7453938]
+prediction [-8.07129]
+sensor reading -4.318599479947574
+abnormal turning 1941
+filtered_err_abs [3.8072164]
+prediction [-7.7024784]
+sensor reading -3.8883929735580054
+abnormal turning 1942
+filtered_err_abs [3.8590221]
+prediction [-7.3464255]
+sensor reading -3.4816473700056583
+abnormal turning 1943
+filtered_err_abs [3.9180815]
+prediction [-7.0235963]
+sensor reading -3.09895264393218
+abnormal turning 1944
+filtered_err_abs [3.9799428]
+prediction [-6.712798]
+sensor reading -2.725981928374542
+abnormal turning 1945
+filtered_err_abs [4.0657353]
+prediction [-6.4640713]
+sensor reading -2.3888033706167127
+abnormal turning 1946
+filtered_err_abs [4.117447]
+prediction [-6.2122283]
+sensor reading -2.089035347246816
+abnormal turning 1947
+filtered_err_abs [4.1741614]
+prediction [-5.990715]
+sensor reading -1.810252132306704
+abnormal turning 1948
+filtered_err_abs [4.211993]
+prediction [-5.77248]
+sensor reading -1.5562827454454564
+abnormal turning 1949
+filtered_err_abs [4.274514]
+prediction [-5.604513]
+sensor reading -1.323052597303
+abnormal turning 1950
+filtered_err_abs [8.57228]
+prediction [-5.461161]
+sensor reading 3.5886485405624318
+abnormal turning 1951
+filtered_err_abs [4.8838954]
+prediction [-5.3959703]
+sensor reading -0.9218953949012412
+stable: 1952
+abnormal stable 1952
+filtered_err_abs [4.6124287]
+prediction [-5.323166]
+sensor reading -0.7409001473632559
+stable: 1953
+abnormal stable 1953
+filtered_err_abs [4.642533]
+prediction [-5.2418866]
+sensor reading -0.5960086893698494
+stable: 1954
+abnormal stable 1954
+filtered_err_abs [4.7481623]
+prediction [-5.217272]
+sensor reading -0.4573730137667993
+stable: 1955
+abnormal stable 1955
+filtered_err_abs [4.8557014]
+prediction [-5.18834]
+sensor reading -0.3206900356253345
+stable: 1956
+abnormal stable 1956
+filtered_err_abs [4.9685006]
+prediction [-5.1862617]
+sensor reading -0.2052277583674875
+stable: 1957
+abnormal stable 1957
+filtered_err_abs [5.0601497]
+prediction [-5.1722]
+sensor reading -0.1018673008527434
+stable: 1958
+abnormal stable 1958
+filtered_err_abs [5.1600237]
+prediction [-5.194736]
+sensor reading -0.0236153321517434
+stable: 1959
+abnormal stable 1959
+filtered_err_abs [5.2744966]
+prediction [-5.23757]
+sensor reading 0.04964602518464029
+stable: 1960
+abnormal stable 1960
+filtered_err_abs [5.373246]
+prediction [-5.2706585]
+sensor reading 0.1135595760934647
+stable: 1961
+abnormal stable 1961
+filtered_err_abs [9.737862]
+prediction [-5.349859]
+sensor reading 4.872958946429212
+stable: 1962
+abnormal stable 1962
+filtered_err_abs [6.0866756]
+prediction [-5.459944]
+sensor reading 0.22104400047106607
+stable: 1963
+abnormal stable 1963
+filtered_err_abs [5.829375]
+prediction [-5.540183]
+sensor reading 0.2606028802188882
+stable: 1964
+abnormal stable 1964
+filtered_err_abs [5.9256644]
+prediction [-5.6407204]
+sensor reading 0.2956426126533955
+stable: 1965
+abnormal stable 1965
+filtered_err_abs [6.0418787]
+prediction [-5.736922]
+sensor reading 0.317869650878803
+stable: 1966
+abnormal stable 1966
+filtered_err_abs [6.202714]
+prediction [-5.877156]
+sensor reading 0.3434287423505278
+stable: 1967
+abnormal stable 1967
+filtered_err_abs [6.3386316]
+prediction [-6.003347]
+sensor reading 0.3503868105695319
+stable: 1968
+abnormal stable 1968
+filtered_err_abs [6.4545846]
+prediction [-6.115689]
+sensor reading 0.3517792641694604
+stable: 1969
+abnormal stable 1969
+filtered_err_abs [6.6097846]
+prediction [-6.2910905]
+sensor reading 0.3359384249877369
+stable: 1970
+abnormal stable 1970
+filtered_err_abs [6.7291517]
+prediction [-6.4193416]
+sensor reading 0.3230728811516143
+stable: 1971
+abnormal stable 1971
+filtered_err_abs [6.834264]
+prediction [-6.5327225]
+sensor reading 0.3132203619319021
+stable: 1972
+abnormal stable 1972
+filtered_err_abs [6.901109]
+prediction [-6.6065664]
+sensor reading 0.3019700548751888
+stable: 1973
+abnormal stable 1973
+filtered_err_abs [7.0259857]
+prediction [-6.74784]
+sensor reading 0.292020889134594
+stable: 1974
+abnormal stable 1974
+filtered_err_abs [7.097241]
+prediction [-6.8317165]
+sensor reading 0.2734416898442899
+stable: 1975
+abnormal stable 1975
+filtered_err_abs [7.208472]
+prediction [-6.966075]
+sensor reading 0.2547561725055213
+stable: 1976
+abnormal stable 1976
+filtered_err_abs [7.3273563]
+prediction [-7.1184206]
+sensor reading 0.22214519097583976
+stable: 1977
+abnormal stable 1977
+filtered_err_abs [7.4270163]
+prediction [-7.2473702]
+sensor reading 0.1907196362059721
+stable: 1978
+abnormal stable 1978
+filtered_err_abs [7.5413823]
+prediction [-7.4061637]
+sensor reading 0.1479256648595028
+stable: 1979
+abnormal stable 1979
+filtered_err_abs [7.662236]
+prediction [-7.5605073]
+sensor reading 0.11515701107417921
+stable: 1980
+abnormal stable 1980
+filtered_err_abs [7.7979116]
+prediction [-7.728993]
+sensor reading 0.0839938365970137
+stable: 1981
+abnormal stable 1981
+filtered_err_abs [7.8906803]
+prediction [-7.8524084]
+sensor reading 0.04857972379888549
+stable: 1982
+abnormal stable 1982
+filtered_err_abs [7.9825125]
+prediction [-7.972704]
+sensor reading 0.0200117387364533
+stable: 1983
+abnormal stable 1983
+filtered_err_abs [8.09478]
+prediction [-8.126008]
+sensor reading -0.0187538150538637
+stable: 1984
+abnormal stable 1984
+filtered_err_abs [8.192053]
+prediction [-8.260756]
+sensor reading -0.05789453759772781
+stable: 1985
+abnormal stable 1985
+filtered_err_abs [8.279548]
+prediction [-8.390567]
+sensor reading -0.10129732243814721
+stable: 1986
+abnormal stable 1986
+filtered_err_abs [8.363375]
+prediction [-8.5034275]
+sensor reading -0.1307380540028566
+stable: 1987
+abnormal stable 1987
+filtered_err_abs [8.438271]
+prediction [-8.608834]
+sensor reading -0.1622414794666605
+stable: 1988
+abnormal stable 1988
+filtered_err_abs [12.763418]
+prediction [-8.745563]
+sensor reading 4.498428433488423
+stable: 1989
+abnormal stable 1989
+filtered_err_abs [9.036259]
+prediction [-8.846341]
+sensor reading -0.2242120044414813
+stable: 1990
+abnormal stable 1990
+filtered_err_abs [8.723466]
+prediction [-8.931241]
+sensor reading -0.2425298547631145
+stable: 1991
+abnormal stable 1991
+filtered_err_abs [8.769419]
+prediction [-9.040807]
+sensor reading -0.2662818373489966
+stable: 1992
+abnormal stable 1992
+filtered_err_abs [8.827878]
+prediction [-9.123514]
+sensor reading -0.2891407162421406
+stable: 1993
+abnormal stable 1993
+filtered_err_abs [8.886344]
+prediction [-9.19515]
+sensor reading -0.3023104089942304
+stable: 1994
+abnormal stable 1994
+filtered_err_abs [8.948272]
+prediction [-9.265178]
+sensor reading -0.3100250851704386
+stable: 1995
+abnormal stable 1995
+filtered_err_abs [9.007115]
+prediction [-9.339801]
+sensor reading -0.3261473784098643
+stable: 1996
+abnormal stable 1996
+filtered_err_abs [9.035744]
+prediction [-9.382115]
+sensor reading -0.3431911768599327
+stable: 1997
+abnormal stable 1997
+filtered_err_abs [9.053198]
+prediction [-9.419261]
+sensor reading -0.36412321587678564
+stable: 1998
+abnormal stable 1998
+filtered_err_abs [9.093809]
+prediction [-9.467971]
+sensor reading -0.36964900992909955
+stable: 1999
+abnormal stable 1999
+filtered_err_abs [9.141511]
+prediction [-9.526506]
+sensor reading -0.3796945471708355
+stable: 2000
+abnormal stable 2000
+filtered_err_abs [9.182519]
+prediction [-9.577796]
+sensor reading -0.3907202776901693
+stable: 2001
+abnormal stable 2001
+filtered_err_abs [9.258547]
+prediction [-9.655276]
+sensor reading -0.388282302164842
+stable: 2002
+abnormal stable 2002
+filtered_err_abs [9.300498]
+prediction [-9.687245]
+sensor reading -0.3820854771316046
+stable: 2003
+abnormal stable 2003
+filtered_err_abs [9.358947]
+prediction [-9.749838]
+sensor reading -0.3843962159193672
+stable: 2004
+abnormal stable 2004
+filtered_err_abs [9.360449]
+prediction [-9.734997]
+sensor reading -0.3743806787477844
+stable: 2005
+abnormal stable 2005
+filtered_err_abs [9.392167]
+prediction [-9.770637]
+sensor reading -0.37494571826618656
+stable: 2006
+abnormal stable 2006
+filtered_err_abs [9.439622]
+prediction [-9.815029]
+sensor reading -0.3701342879928416
+stable: 2007
+abnormal stable 2007
+filtered_err_abs [9.487731]
+prediction [-9.857291]
+sensor reading -0.3642151183071245
+stable: 2008
+abnormal stable 2008
+filtered_err_abs [9.543516]
+prediction [-9.903743]
+sensor reading -0.3540281292449268
+stable: 2009
+abnormal stable 2009
+filtered_err_abs [9.598224]
+prediction [-9.949335]
+sensor reading -0.3450329496923807
+stable: 2010
+abnormal stable 2010
+filtered_err_abs [9.590876]
+prediction [-9.940682]
+sensor reading -0.3506232759811604
+stable: 2011
+abnormal stable 2011
+filtered_err_abs [9.59584]
+prediction [-9.949335]
+sensor reading -0.3529425575696483
+stable: 2012
+abnormal stable 2012
+filtered_err_abs [9.568253]
+prediction [-9.920922]
+sensor reading -0.35573450069122964
+stable: 2013
+abnormal stable 2013
+filtered_err_abs [9.591559]
+prediction [-9.941201]
+sensor reading -0.3470530613681412
+stable: 2014
+abnormal stable 2014
+filtered_err_abs [9.617458]
+prediction [-9.948814]
+sensor reading -0.32847916766702
+stable: 2015
+abnormal stable 2015
+filtered_err_abs [9.629596]
+prediction [-9.940682]
+sensor reading -0.3097379473714088
+stable: 2016
+abnormal stable 2016
+filtered_err_abs [9.664836]
+prediction [-9.951933]
+sensor reading -0.2831815254544337
+stable: 2017
+abnormal stable 2017
+filtered_err_abs [9.681829]
+prediction [-9.940682]
+sensor reading -0.2569649477240625
+stable: 2018
+abnormal stable 2018
+filtered_err_abs [9.699573]
+prediction [-9.939643]
+sensor reading -0.23809927526577093
+stable: 2019
+abnormal stable 2019
+filtered_err_abs [9.709609]
+prediction [-9.92524]
+sensor reading -0.21451592561815166
+stable: 2020
+abnormal stable 2020
+filtered_err_abs [9.681998]
+prediction [-9.87757]
+sensor reading -0.19864034227573152
+stable: 2021
+abnormal stable 2021
+filtered_err_abs [9.68619]
+prediction [-9.869096]
+sensor reading -0.1824412383142906
+turning: 2022
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 2022
+2 point turn, using sensor reading as prediction 2023
+3 point turn, using regression model to predict value 2024
+4 point turn, using regression model to predict value 2025
+5 point turn, using regression model to predict value 2026
+abnormal turning 2030
+filtered_err_abs [4.6294584]
+prediction [-4.8212185]
+sensor reading 0.2818987720558581
+abnormal turning 2034
+filtered_err_abs [4.7256784]
+prediction [-5.980633]
+sensor reading -0.7867869775634114
+abnormal turning 2038
+filtered_err_abs [4.6957965]
+prediction [-6.504652]
+sensor reading -1.3450320759519685
+abnormal turning 2043
+filtered_err_abs [4.719664]
+prediction [-6.533762]
+sensor reading -1.3493579073052058
+abnormal turning 2049
+filtered_err_abs [4.667434]
+prediction [-5.906967]
+sensor reading -0.7737169508197849
+abnormal turning 2063
+filtered_err_abs [4.591168]
+prediction [-3.3708904]
+sensor reading 1.6908598590198616
+abnormal turning 2074
+filtered_err_abs [4.5534363]
+prediction [-1.7176893]
+sensor reading 3.3047121432129134
+stable: 2082
+stable: 2083
+stable: 2084
+stable: 2085
+stable: 2086
+stable: 2087
+stable: 2088
+stable: 2089
+stable: 2090
+stable: 2091
+abnormal stable 2091
+filtered_err_abs [4.613321]
+prediction [-0.6801304]
+sensor reading 4.400369021601274
+stable: 2092
+stable: 2093
+stable: 2094
+stable: 2095
+stable: 2096
+stable: 2097
+stable: 2098
+stable: 2099
+stable: 2100
+stable: 2101
+stable: 2102
+stable: 2103
+stable: 2104
+stable: 2105
+stable: 2106
+abnormal stable 2106
+filtered_err_abs [4.663989]
+prediction [-0.5415353]
+sensor reading 4.594267811536355
+stable: 2107
+stable: 2108
+stable: 2109
+stable: 2110
+stable: 2111
+stable: 2112
+stable: 2113
+stable: 2114
+stable: 2115
+stable: 2116
+stable: 2117
+stable: 2118
+stable: 2119
+stable: 2120
+stable: 2121
+stable: 2122
+stable: 2123
+stable: 2124
+abnormal stable 2124
+filtered_err_abs [4.636655]
+prediction [-0.5189994]
+sensor reading 4.589287782702215
+stable: 2125
+stable: 2126
+stable: 2127
+stable: 2128
+stable: 2129
+stable: 2130
+stable: 2131
+stable: 2132
+stable: 2133
+stable: 2134
+stable: 2135
+stable: 2136
+stable: 2137
+stable: 2138
+stable: 2139
+stable: 2140
+stable: 2141
+stable: 2142
+stable: 2143
+stable: 2144
+stable: 2145
+stable: 2146
+stable: 2147
+stable: 2148
+stable: 2149
+stable: 2150
+stable: 2151
+stable: 2152
+stable: 2153
+stable: 2154
+stable: 2155
+stable: 2156
+stable: 2157
+stable: 2158
+stable: 2159
+stable: 2160
+stable: 2161
+stable: 2162
+stable: 2163
+stable: 2164
+stable: 2165
+stable: 2166
+stable: 2167
+stable: 2168
+stable: 2169
+stable: 2170
+stable: 2171
+stable: 2172
+stable: 2173
+stable: 2174
+turning: 2175
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 2175
+2 point turn, using sensor reading as prediction 2176
+3 point turn, using regression model to predict value 2177
+4 point turn, using regression model to predict value 2178
+5 point turn, using regression model to predict value 2179
+abnormal turning 2192
+filtered_err_abs [5.676957]
+prediction [34.235344]
+sensor reading 40.36362370737327
+abnormal turning 2200
+filtered_err_abs [5.6889787]
+prediction [29.054571]
+sensor reading 35.20933434350645
+abnormal turning 2207
+filtered_err_abs [5.2752085]
+prediction [21.971342]
+sensor reading 27.705183487709903
+abnormal turning 2208
+filtered_err_abs [6.2682257]
+prediction [20.119658]
+sensor reading 26.498219244377065
+stable: 2234
+stable: 2235
+stable: 2236
+stable: 2237
+stable: 2238
+stable: 2239
+stable: 2240
+stable: 2241
+abnormal stable 2241
+filtered_err_abs [4.6259103]
+prediction [-0.9484559]
+sensor reading 4.1411508829703925
+stable: 2242
+stable: 2243
+stable: 2244
+stable: 2245
+stable: 2246
+abnormal stable 2248
+filtered_err_abs [4.55424]
+prediction [-1.1945834]
+sensor reading 3.8300073555359684
+stable: 2254
+stable: 2255
+stable: 2256
+stable: 2257
+stable: 2258
+stable: 2259
+stable: 2260
+stable: 2261
+stable: 2262
+stable: 2263
+stable: 2264
+stable: 2265
+stable: 2266
+stable: 2267
+stable: 2268
+stable: 2269
+stable: 2270
+abnormal stable 2270
+filtered_err_abs [4.538138]
+prediction [-0.2411601]
+sensor reading 4.770802645664603
+stable: 2271
+stable: 2272
+stable: 2273
+stable: 2274
+stable: 2275
+stable: 2276
+stable: 2277
+stable: 2278
+stable: 2279
+stable: 2280
+stable: 2281
+stable: 2282
+stable: 2283
+stable: 2284
+stable: 2285
+stable: 2286
+stable: 2287
+stable: 2288
+stable: 2289
+stable: 2290
+stable: 2291
+stable: 2292
+stable: 2293
+stable: 2294
+stable: 2295
+stable: 2296
+stable: 2297
+stable: 2298
+stable: 2299
+stable: 2300
+stable: 2301
+stable: 2302
+stable: 2303
+stable: 2304
+stable: 2305
+stable: 2306
+stable: 2307
+stable: 2308
+stable: 2309
+stable: 2310
+stable: 2311
+stable: 2312
+stable: 2313
+stable: 2314
+stable: 2315
+turning: 2316
+begin_turn_FD_threshold 2.871021154679534
+1 point turn, using sensor reading as prediction 2316
+2 point turn, using sensor reading as prediction 2317
+3 point turn, using regression model to predict value 2318
+4 point turn, using regression model to predict value 2319
+5 point turn, using regression model to predict value 2320
+abnormal turning 2322
+filtered_err_abs [3.5970871]
+prediction [-42.099224]
+sensor reading -38.40961006262778
+abnormal turning 2323
+filtered_err_abs [4.944746]
+prediction [-42.430916]
+sensor reading -37.3364297455846
+abnormal turning 2324
+filtered_err_abs [5.11633]
+prediction [-41.850372]
+sensor reading -36.71497852154729
+abnormal turning 2325
+filtered_err_abs [4.1793156]
+prediction [-41.045544]
+sensor reading -36.970342373090325
+abnormal turning 2326
+filtered_err_abs [3.504791]
+prediction [-40.5733]
+sensor reading -37.143455841311145
+abnormal turning 2327
+filtered_err_abs [2.9877918]
+prediction [-40.176258]
+sensor reading -37.24591215423644
+abnormal turning 2342
+filtered_err_abs [4.0487313]
+prediction [-29.578901]
+sensor reading -25.104061469756413
+abnormal turning 2349
+filtered_err_abs [4.2891164]
+prediction [-22.159544]
+sensor reading -17.39863283236158
+abnormal turning 2367
+filtered_err_abs [4.3365726]
+prediction [-4.296676]
+sensor reading 0.512831703214517
+stable: 2376
+stable: 2377
+stable: 2378
+stable: 2379
+stable: 2380
+stable: 2381
+stable: 2382
+stable: 2383
+stable: 2384
+stable: 2385
+stable: 2386
+stable: 2387
+stable: 2388
+stable: 2389
+stable: 2390
+stable: 2391
+stable: 2392
+stable: 2393
+stable: 2394
+stable: 2395
+stable: 2396
+stable: 2397
+abnormal stable 2397
+filtered_err_abs [4.685416]
+prediction [0.04096538]
+sensor reading 5.196995903555647
+stable: 2398
+stable: 2399
+stable: 2400
+stable: 2401
+stable: 2402
+stable: 2403
+stable: 2404
+stable: 2405
+stable: 5
+stable: 6
+stable: 7
+stable: 8
+stable: 9
+stable: 10
+stable: 11
+stable: 12
+stable: 13
+stable: 14
+turning: 15
+begin_turn_FD_threshold 2.871021154679534
+stable: 80
+stable: 81
+stable: 82
+stable: 83
+stable: 84
+stable: 85
+stable: 86
+stable: 87
+stable: 88
+stable: 89
+stable: 90
+stable: 91
+stable: 92
+stable: 93
+stable: 94
+stable: 95
+stable: 96
+stable: 97
+stable: 98
+stable: 99
+stable: 100
+stable: 101
+stable: 102
+stable: 103
+stable: 104
+stable: 105
+stable: 106
+stable: 107
+stable: 108
+stable: 109
+stable: 110
+stable: 111
+stable: 112
+stable: 113
+stable: 114
+stable: 115
+stable: 116
+stable: 117
+stable: 118
+stable: 119
+stable: 120
+stable: 121
+stable: 122
+stable: 123
+stable: 124
+stable: 125
+stable: 126
+stable: 127
+stable: 128
+stable: 129
+stable: 130
+stable: 131
+stable: 132
+stable: 133
+stable: 134
+stable: 135
+stable: 136
+stable: 137
+stable: 138
+stable: 139
+stable: 140
+stable: 141
+stable: 142
+stable: 143
+stable: 144
+stable: 145
+stable: 146
+stable: 147
+stable: 148
+stable: 149
+stable: 150
+stable: 151
+stable: 152
+stable: 153
+stable: 154
+stable: 155
+stable: 156
+stable: 157
+stable: 158
+stable: 159
+stable: 160
+stable: 161
+stable: 162
+stable: 163
+stable: 164
+stable: 165
+stable: 166
+stable: 167
+stable: 168
+stable: 169
+stable: 170
+stable: 171
+stable: 172
+stable: 173
+stable: 174
+stable: 175
+stable: 176
+stable: 177
+stable: 178
+stable: 179
+stable: 180
+stable: 181
+stable: 182
+stable: 183
+stable: 184
+stable: 185
+stable: 186
+stable: 187
+stable: 188
+stable: 189
+stable: 190
+stable: 191
+stable: 192
+stable: 193
+stable: 194
+stable: 195
+stable: 196
+stable: 197
+stable: 198
+stable: 199
+stable: 200
+stable: 201
+stable: 202
+stable: 203
+stable: 204
+stable: 205
+stable: 206
+stable: 207
+stable: 208
+turning: 209
+begin_turn_FD_threshold 2.871021154679534
+stable: 272
+stable: 273
+stable: 274
+stable: 275
+stable: 276
+stable: 277
+stable: 278
+stable: 279
+stable: 280
+stable: 281
+stable: 282
+stable: 283
+stable: 284
+stable: 285
+stable: 288
+stable: 289
+stable: 290
+stable: 291
+stable: 292
+stable: 293
+stable: 294
+stable: 295
+stable: 296
+stable: 297
+stable: 298
+stable: 299
+stable: 300
+stable: 301
+stable: 302
+stable: 303
+stable: 304
+stable: 305
+stable: 306
+stable: 307
+stable: 308
+stable: 309
+stable: 310
+stable: 311
+stable: 312
+stable: 313
+stable: 314
+stable: 315
+stable: 316
+stable: 317
+stable: 318
+stable: 319
+stable: 320
+stable: 321
+stable: 322
+stable: 323
+stable: 324
+stable: 325
+stable: 326
+stable: 327
+stable: 328
+stable: 329
+stable: 330
+stable: 331
+stable: 332
+stable: 333
+stable: 334
+stable: 335
+stable: 336
+stable: 337
+stable: 338
+stable: 339
+stable: 340
+stable: 341
+stable: 342
+stable: 343
+stable: 344
+stable: 345
+stable: 346
+stable: 347
+stable: 348
+stable: 349
+stable: 350
+stable: 351
+stable: 352
+stable: 353
+stable: 354
+stable: 355
+stable: 356
+stable: 357
+stable: 358
+stable: 359
+stable: 360
+stable: 361
+stable: 362
+stable: 363
+stable: 364
+stable: 365
+stable: 366
+stable: 367
+stable: 368
+stable: 369
+stable: 370
+stable: 371
+stable: 372
+stable: 373
+stable: 374
+stable: 375
+stable: 376
+stable: 377
+stable: 378
+stable: 379
+stable: 380
+stable: 381
+stable: 382
+stable: 383
+stable: 384
+stable: 385
+stable: 386
+stable: 387
+stable: 388
+stable: 389
+stable: 390
+stable: 391
+stable: 392
+stable: 393
+stable: 394
+stable: 395
+stable: 396
+stable: 397
+stable: 398
+stable: 399
+stable: 400
+stable: 401
+stable: 402
+stable: 403
+stable: 404
+stable: 405
+stable: 406
+stable: 407
+stable: 408
+stable: 409
+stable: 410
+stable: 411
+stable: 412
+stable: 413
+stable: 414
+stable: 415
+stable: 416
+stable: 417
+stable: 418
+stable: 419
+stable: 420
+stable: 421
+stable: 422
+stable: 423
+stable: 424
+stable: 425
+stable: 426
+stable: 427
+stable: 428
+stable: 429
+stable: 430
+stable: 431
+stable: 432
+stable: 433
+stable: 434
+stable: 435
+stable: 436
+stable: 437
+stable: 438
+stable: 439
+stable: 440
+stable: 441
+stable: 442
+stable: 443
+stable: 444
+stable: 445
+stable: 446
+stable: 447
+stable: 448
+stable: 449
+stable: 450
+stable: 451
+stable: 452
+stable: 453
+stable: 454
+stable: 455
+stable: 456
+stable: 457
+stable: 458
+stable: 459
+stable: 460
+stable: 461
+stable: 462
+stable: 463
+stable: 464
+stable: 465
+stable: 466
+stable: 467
+stable: 468
+turning: 469
+begin_turn_FD_threshold 2.871021154679534
+stable: 535
+stable: 536
+stable: 537
+stable: 538
+stable: 539
+stable: 540
+stable: 541
+stable: 542
+stable: 543
+stable: 544
+stable: 545
+stable: 546
+stable: 547
+stable: 548
+stable: 549
+stable: 550
+stable: 551
+stable: 552
+stable: 553
+stable: 554
+stable: 555
+stable: 556
+stable: 557
+stable: 558
+stable: 559
+stable: 560
+stable: 561
+stable: 562
+stable: 563
+stable: 564
+stable: 565
+stable: 566
+stable: 567
+stable: 568
+stable: 569
+stable: 570
+stable: 571
+stable: 572
+stable: 573
+stable: 574
+stable: 575
+stable: 576
+stable: 577
+stable: 578
+stable: 579
+stable: 580
+stable: 581
+stable: 582
+stable: 583
+stable: 584
+stable: 585
+stable: 586
+stable: 587
+stable: 588
+stable: 589
+stable: 590
+stable: 591
+stable: 592
+stable: 593
+stable: 594
+stable: 595
+stable: 596
+stable: 597
+stable: 598
+stable: 599
+stable: 600
+stable: 601
+stable: 602
+stable: 603
+stable: 604
+stable: 605
+stable: 606
+stable: 607
+stable: 608
+stable: 609
+stable: 610
+stable: 611
+stable: 612
+stable: 613
+stable: 614
+stable: 615
+stable: 616
+stable: 617
+stable: 618
+stable: 619
+stable: 620
+stable: 621
+stable: 622
+stable: 623
+stable: 624
+stable: 625
+stable: 626
+stable: 627
+stable: 628
+stable: 629
+stable: 630
+stable: 631
+stable: 632
+stable: 633
+stable: 634
+stable: 635
+stable: 636
+stable: 637
+stable: 638
+stable: 639
+stable: 640
+stable: 641
+stable: 642
+stable: 643
+stable: 644
+stable: 645
+stable: 646
+stable: 647
+stable: 648
+stable: 649
+stable: 650
+stable: 651
+stable: 652
+stable: 653
+stable: 654
+stable: 655
+stable: 656
+stable: 657
+stable: 658
+stable: 659
+stable: 660
+stable: 661
+stable: 662
+stable: 663
+stable: 664
+stable: 665
+stable: 666
+stable: 667
+stable: 668
+stable: 669
+stable: 670
+stable: 671
+stable: 672
+stable: 673
+stable: 674
+stable: 675
+stable: 676
+stable: 677
+stable: 678
+turning: 679
+begin_turn_FD_threshold 2.871021154679534
+stable: 745
+stable: 746
+stable: 747
+stable: 748
+stable: 749
+stable: 750
+stable: 751
+stable: 752
+stable: 753
+stable: 754
+stable: 755
+stable: 756
+stable: 757
+stable: 758
+stable: 759
+stable: 760
+stable: 761
+stable: 762
+stable: 763
+stable: 764
+stable: 765
+stable: 766
+stable: 767
+stable: 768
+stable: 769
+stable: 770
+stable: 771
+stable: 772
+stable: 773
+stable: 774
+stable: 775
+stable: 776
+stable: 777
+stable: 778
+stable: 779
+stable: 780
+stable: 781
+stable: 782
+stable: 783
+stable: 784
+stable: 785
+stable: 786
+stable: 787
+stable: 788
+stable: 789
+stable: 790
+stable: 791
+stable: 792
+stable: 793
+stable: 794
+stable: 795
+stable: 796
+stable: 797
+stable: 798
+stable: 799
+stable: 800
+stable: 801
+stable: 802
+stable: 803
+stable: 804
+stable: 805
+stable: 806
+stable: 807
+stable: 808
+stable: 809
+stable: 810
+stable: 811
+stable: 812
+stable: 813
+stable: 814
+stable: 815
+stable: 816
+stable: 817
+stable: 818
+stable: 819
+stable: 820
+stable: 821
+stable: 822
+stable: 823
+stable: 824
+stable: 825
+stable: 826
+stable: 827
+stable: 828
+stable: 829
+stable: 830
+stable: 831
+stable: 832
+stable: 833
+stable: 834
+stable: 835
+stable: 836
+stable: 837
+stable: 838
+stable: 839
+stable: 840
+stable: 841
+stable: 842
+stable: 843
+stable: 844
+stable: 845
+stable: 846
+stable: 847
+stable: 848
+stable: 849
+stable: 850
+stable: 851
+stable: 852
+stable: 853
+stable: 854
+stable: 855
+stable: 856
+stable: 857
+stable: 858
+stable: 859
+stable: 860
+stable: 861
+stable: 862
+stable: 863
+stable: 864
+stable: 865
+stable: 866
+stable: 867
+stable: 868
+stable: 869
+stable: 870
+stable: 871
+stable: 872
+stable: 873
+stable: 874
+stable: 875
+stable: 876
+stable: 877
+turning: 878
+begin_turn_FD_threshold 2.871021154679534
+stable: 939
+stable: 981
+stable: 982
+stable: 983
+stable: 984
+stable: 985
+stable: 986
+stable: 987
+stable: 988
+stable: 989
+stable: 990
+stable: 991
+stable: 992
+stable: 993
+stable: 994
+stable: 995
+stable: 996
+stable: 997
+stable: 998
+stable: 999
+stable: 1000
+stable: 1001
+stable: 1002
+stable: 1003
+stable: 1004
+stable: 1005
+stable: 1006
+stable: 1007
+stable: 1008
+stable: 1009
+stable: 1010
+stable: 1011
+stable: 1012
+stable: 1013
+stable: 1014
+stable: 1015
+stable: 1016
+stable: 1017
+stable: 1018
+stable: 1019
+stable: 1020
+stable: 1021
+stable: 1022
+stable: 1023
+stable: 1024
+stable: 1025
+stable: 1026
+stable: 1027
+stable: 1028
+stable: 1029
+stable: 1030
+stable: 1031
+stable: 1032
+stable: 1033
+stable: 1034
+stable: 1035
+stable: 1036
+stable: 1037
+stable: 1038
+stable: 1039
+stable: 1040
+stable: 1041
+stable: 1042
+stable: 1043
+stable: 1044
+stable: 1045
+stable: 1046
+stable: 1047
+stable: 1048
+stable: 1049
+stable: 1050
+stable: 1051
+stable: 1052
+stable: 1053
+stable: 1054
+stable: 1055
+stable: 1056
+stable: 1057
+stable: 1058
+stable: 1059
+stable: 1060
+stable: 1061
+stable: 1062
+stable: 1063
+stable: 1064
+stable: 1065
+stable: 1066
+stable: 1067
+stable: 1068
+stable: 1069
+stable: 1070
+stable: 1071
+stable: 1072
+stable: 1073
+stable: 1074
+stable: 1075
+stable: 1076
+stable: 1077
+stable: 1078
+stable: 1079
+stable: 1080
+stable: 1081
+stable: 1082
+stable: 1083
+stable: 1084
+stable: 1085
+stable: 1086
+stable: 1087
+stable: 1088
+stable: 1089
+stable: 1090
+stable: 1091
+stable: 1092
+stable: 1093
+stable: 1094
+stable: 1095
+stable: 1096
+stable: 1097
+stable: 1098
+stable: 1099
+stable: 1100
+stable: 1101
+stable: 1102
+stable: 1103
+stable: 1104
+stable: 1105
+stable: 1106
+stable: 1107
+stable: 1108
+stable: 1109
+stable: 1110
+stable: 1111
+stable: 1112
+stable: 1113
+stable: 1114
+stable: 1115
+stable: 1116
+stable: 1117
+stable: 1118
+stable: 1119
+stable: 1120
+stable: 1121
+stable: 1122
+stable: 1123
+stable: 1124
+stable: 1125
+stable: 1126
+stable: 1127
+stable: 1128
+stable: 1129
+stable: 1130
+stable: 1131
+stable: 1132
+stable: 1133
+stable: 1134
+stable: 1135
+stable: 1136
+stable: 1137
+stable: 1138
+stable: 1139
+stable: 1140
+stable: 1141
+stable: 1142
+stable: 1143
+stable: 1144
+stable: 1145
+stable: 1146
+stable: 1147
+stable: 1148
+stable: 1149
+stable: 1150
+turning: 1151
+begin_turn_FD_threshold 2.871021154679534
+stable: 1214
+stable: 1215
+stable: 1216
+stable: 1217
+stable: 1218
+stable: 1219
+stable: 1220
+stable: 1221
+stable: 1222
+stable: 1223
+stable: 1224
+stable: 1225
+stable: 1226
+stable: 1227
+stable: 1228
+stable: 1229
+stable: 1230
+stable: 1231
+stable: 1232
+stable: 1233
+stable: 1234
+stable: 1235
+stable: 1236
+stable: 1237
+stable: 1238
+stable: 1239
+stable: 1240
+stable: 1241
+stable: 1242
+stable: 1243
+stable: 1244
+stable: 1245
+stable: 1246
+stable: 1247
+stable: 1248
+stable: 1249
+stable: 1250
+stable: 1251
+stable: 1252
+stable: 1253
+stable: 1254
+stable: 1255
+stable: 1256
+stable: 1257
+stable: 1258
+stable: 1259
+stable: 1260
+stable: 1261
+stable: 1262
+stable: 1263
+stable: 1264
+stable: 1265
+stable: 1266
+stable: 1267
+stable: 1268
+stable: 1269
+stable: 1270
+stable: 1271
+stable: 1272
+stable: 1273
+stable: 1274
+stable: 1275
+stable: 1276
+stable: 1277
+stable: 1278
+stable: 1279
+stable: 1280
+stable: 1281
+stable: 1282
+stable: 1283
+stable: 1284
+stable: 1285
+stable: 1286
+stable: 1287
+stable: 1288
+stable: 1289
+stable: 1290
+stable: 1291
+stable: 1292
+stable: 1293
+stable: 1294
+stable: 1295
+stable: 1296
+stable: 1297
+stable: 1298
+stable: 1299
+stable: 1300
+stable: 1301
+stable: 1302
+stable: 1303
+stable: 1304
+stable: 1305
+stable: 1306
+stable: 1307
+stable: 1308
+stable: 1309
+stable: 1310
+stable: 1311
+stable: 1312
+stable: 1313
+stable: 1314
+stable: 1315
+stable: 1316
+stable: 1317
+stable: 1318
+stable: 1319
+stable: 1320
+stable: 1321
+stable: 1322
+stable: 1323
+stable: 1324
+stable: 1325
+stable: 1326
+stable: 1327
+stable: 1328
+stable: 1329
+stable: 1330
+stable: 1331
+stable: 1332
+stable: 1333
+stable: 1334
+stable: 1335
+stable: 1336
+stable: 1337
+stable: 1338
+turning: 1339
+begin_turn_FD_threshold 2.871021154679534
+stable: 1399
+stable: 1400
+stable: 1401
+stable: 1402
+stable: 1403
+stable: 1404
+stable: 1405
+stable: 1406
+stable: 1407
+stable: 1408
+stable: 1409
+stable: 1410
+stable: 1411
+stable: 1412
+stable: 1423
+stable: 1424
+stable: 1425
+stable: 1426
+stable: 1427
+stable: 1428
+stable: 1429
+stable: 1430
+stable: 1431
+stable: 1432
+stable: 1433
+stable: 1434
+stable: 1435
+stable: 1436
+stable: 1437
+stable: 1438
+stable: 1439
+stable: 1440
+stable: 1441
+stable: 1442
+stable: 1443
+stable: 1444
+stable: 1445
+stable: 1446
+stable: 1447
+stable: 1448
+stable: 1449
+stable: 1450
+stable: 1451
+stable: 1452
+stable: 1453
+stable: 1454
+stable: 1455
+stable: 1456
+stable: 1457
+stable: 1458
+stable: 1459
+stable: 1460
+stable: 1461
+stable: 1462
+stable: 1463
+stable: 1464
+stable: 1465
+stable: 1466
+stable: 1467
+stable: 1468
+stable: 1469
+stable: 1470
+stable: 1471
+stable: 1472
+stable: 1473
+stable: 1474
+stable: 1475
+stable: 1476
+stable: 1477
+stable: 1478
+stable: 1479
+stable: 1480
+stable: 1481
+stable: 1482
+stable: 1483
+stable: 1484
+stable: 1485
+stable: 1486
+stable: 1487
+stable: 1488
+stable: 1489
+stable: 1490
+stable: 1491
+stable: 1492
+stable: 1493
+stable: 1494
+stable: 1495
+stable: 1496
+stable: 1497
+stable: 1498
+stable: 1499
+stable: 1500
+stable: 1501
+stable: 1502
+stable: 1503
+stable: 1504
+stable: 1505
+stable: 1506
+stable: 1507
+stable: 1508
+stable: 1509
+stable: 1510
+stable: 1511
+stable: 1512
+stable: 1513
+stable: 1514
+stable: 1515
+stable: 1516
+stable: 1517
+stable: 1518
+stable: 1519
+stable: 1520
+stable: 1521
+stable: 1522
+stable: 1523
+stable: 1524
+stable: 1525
+stable: 1526
+stable: 1527
+stable: 1528
+stable: 1529
+stable: 1530
+stable: 1531
+stable: 1532
+stable: 1533
+stable: 1534
+stable: 1535
+stable: 1536
+stable: 1537
+stable: 1538
+stable: 1539
+stable: 1540
+stable: 1541
+stable: 1542
+stable: 1543
+stable: 1544
+stable: 1545
+stable: 1546
+stable: 1547
+stable: 1548
+stable: 1549
+stable: 1550
+stable: 1551
+stable: 1552
+stable: 1553
+stable: 1554
+stable: 1555
+stable: 1556
+stable: 1557
+stable: 1558
+stable: 1559
+stable: 1560
+stable: 1561
+stable: 1562
+stable: 1563
+stable: 1564
+stable: 1565
+stable: 1566
+stable: 1567
+stable: 1568
+stable: 1569
+stable: 1570
+stable: 1571
+stable: 1572
+stable: 1573
+stable: 1574
+stable: 1575
+stable: 1576
+stable: 1577
+stable: 1578
+stable: 1579
+stable: 1580
+stable: 1581
+stable: 1582
+stable: 1583
+stable: 1584
+turning: 1585
+begin_turn_FD_threshold 2.871021154679534
+stable: 1649
+stable: 1650
+stable: 1651
+stable: 1652
+stable: 1653
+stable: 1654
+stable: 1655
+stable: 1656
+stable: 1657
+stable: 1658
+stable: 1659
+stable: 1660
+stable: 1661
+stable: 1662
+stable: 1663
+stable: 1664
+stable: 1665
+stable: 1666
+stable: 1667
+stable: 1668
+stable: 1669
+stable: 1670
+stable: 1671
+stable: 1672
+stable: 1673
+stable: 1674
+stable: 1675
+stable: 1676
+stable: 1677
+stable: 1678
+stable: 1679
+stable: 1680
+stable: 1681
+stable: 1682
+stable: 1683
+stable: 1684
+stable: 1685
+stable: 1686
+stable: 1687
+stable: 1688
+stable: 1689
+stable: 1690
+stable: 1691
+stable: 1692
+stable: 1693
+stable: 1694
+stable: 1695
+stable: 1696
+stable: 1697
+stable: 1698
+stable: 1699
+stable: 1700
+stable: 1701
+stable: 1702
+stable: 1703
+stable: 1704
+stable: 1705
+stable: 1706
+stable: 1707
+stable: 1708
+stable: 1709
+stable: 1710
+stable: 1711
+stable: 1712
+stable: 1713
+stable: 1714
+stable: 1715
+stable: 1716
+stable: 1717
+stable: 1718
+stable: 1719
+stable: 1720
+stable: 1721
+stable: 1722
+stable: 1723
+stable: 1724
+stable: 1725
+stable: 1726
+stable: 1727
+turning: 1728
+begin_turn_FD_threshold 2.871021154679534
+stable: 1783
+stable: 1784
+stable: 1789
+stable: 1790
+stable: 1791
+stable: 1821
+stable: 1822
+stable: 1823
+stable: 1824
+stable: 1825
+stable: 1826
+stable: 1827
+stable: 1828
+stable: 1829
+stable: 1830
+stable: 1831
+stable: 1832
+stable: 1833
+stable: 1834
+stable: 1835
+stable: 1836
+stable: 1837
+stable: 1838
+stable: 1839
+stable: 1840
+stable: 1841
+stable: 1842
+stable: 1843
+stable: 1844
+stable: 1845
+stable: 1846
+stable: 1847
+stable: 1848
+stable: 1849
+stable: 1850
+stable: 1851
+stable: 1852
+stable: 1853
+stable: 1854
+stable: 1855
+stable: 1856
+stable: 1857
+stable: 1858
+stable: 1859
+stable: 1860
+stable: 1861
+stable: 1862
+stable: 1863
+stable: 1864
+stable: 1865
+stable: 1866
+stable: 1867
+stable: 1868
+stable: 1869
+stable: 1870
+stable: 1871
+stable: 1872
+stable: 1873
+stable: 1874
+stable: 1875
+stable: 1876
+stable: 1877
+stable: 1878
+stable: 1879
+stable: 1880
+stable: 1881
+stable: 1882
+stable: 1883
+stable: 1884
+stable: 1885
+stable: 1886
+stable: 1887
+turning: 1888
+begin_turn_FD_threshold 2.871021154679534
+stable: 1952
+stable: 1953
+stable: 1954
+stable: 1955
+stable: 1956
+stable: 1957
+stable: 1958
+stable: 1959
+stable: 1960
+stable: 1961
+stable: 1962
+stable: 1963
+stable: 1964
+stable: 1965
+stable: 1966
+stable: 1967
+stable: 1968
+stable: 1969
+stable: 1970
+stable: 1971
+stable: 1972
+stable: 1973
+stable: 1974
+stable: 1975
+stable: 1976
+stable: 1977
+stable: 1978
+stable: 1979
+stable: 1980
+stable: 1981
+stable: 1982
+stable: 1983
+stable: 1984
+stable: 1985
+stable: 1986
+stable: 1987
+stable: 1988
+stable: 1989
+stable: 1990
+stable: 1991
+stable: 1992
+stable: 1993
+stable: 1994
+stable: 1995
+stable: 1996
+stable: 1997
+stable: 1998
+stable: 1999
+stable: 2000
+stable: 2001
+stable: 2002
+stable: 2003
+stable: 2004
+stable: 2005
+stable: 2006
+stable: 2007
+stable: 2008
+stable: 2009
+stable: 2010
+stable: 2011
+stable: 2012
+stable: 2013
+stable: 2014
+stable: 2015
+stable: 2016
+stable: 2017
+stable: 2018
+stable: 2019
+stable: 2020
+stable: 2021
+turning: 2022
+begin_turn_FD_threshold 2.871021154679534
+stable: 2082
+stable: 2083
+stable: 2084
+stable: 2085
+stable: 2086
+stable: 2087
+stable: 2088
+stable: 2089
+stable: 2090
+stable: 2091
+stable: 2092
+stable: 2093
+stable: 2094
+stable: 2095
+stable: 2096
+stable: 2097
+stable: 2098
+stable: 2099
+stable: 2100
+stable: 2101
+stable: 2102
+stable: 2103
+stable: 2104
+stable: 2105
+stable: 2106
+stable: 2107
+stable: 2108
+stable: 2109
+stable: 2110
+stable: 2111
+stable: 2112
+stable: 2113
+stable: 2114
+stable: 2115
+stable: 2116
+stable: 2117
+stable: 2118
+stable: 2119
+stable: 2120
+stable: 2121
+stable: 2122
+stable: 2123
+stable: 2124
+stable: 2125
+stable: 2126
+stable: 2127
+stable: 2128
+stable: 2129
+stable: 2130
+stable: 2131
+stable: 2132
+stable: 2133
+stable: 2134
+stable: 2135
+stable: 2136
+stable: 2137
+stable: 2138
+stable: 2139
+stable: 2140
+stable: 2141
+stable: 2142
+stable: 2143
+stable: 2144
+stable: 2145
+stable: 2146
+stable: 2147
+stable: 2148
+stable: 2149
+stable: 2150
+stable: 2151
+stable: 2152
+stable: 2153
+stable: 2154
+stable: 2155
+stable: 2156
+stable: 2157
+stable: 2158
+stable: 2159
+stable: 2160
+stable: 2161
+stable: 2162
+stable: 2163
+stable: 2164
+stable: 2165
+stable: 2166
+stable: 2167
+stable: 2168
+stable: 2169
+stable: 2170
+stable: 2171
+stable: 2172
+stable: 2173
+stable: 2174
+turning: 2175
+begin_turn_FD_threshold 2.871021154679534
+stable: 2234
+stable: 2235
+stable: 2236
+stable: 2237
+stable: 2238
+stable: 2239
+stable: 2240
+stable: 2241
+stable: 2242
+stable: 2243
+stable: 2244
+stable: 2245
+stable: 2246
+stable: 2254
+stable: 2255
+stable: 2256
+stable: 2257
+stable: 2258
+stable: 2259
+stable: 2260
+stable: 2261
+stable: 2262
+stable: 2263
+stable: 2264
+stable: 2265
+stable: 2266
+stable: 2267
+stable: 2268
+stable: 2269
+stable: 2270
+stable: 2271
+stable: 2272
+stable: 2273
+stable: 2274
+stable: 2275
+stable: 2276
+stable: 2277
+stable: 2278
+stable: 2279
+stable: 2280
+stable: 2281
+stable: 2282
+stable: 2283
+stable: 2284
+stable: 2285
+stable: 2286
+stable: 2287
+stable: 2288
+stable: 2289
+stable: 2290
+stable: 2291
+stable: 2292
+stable: 2293
+stable: 2294
+stable: 2295
+stable: 2296
+stable: 2297
+stable: 2298
+stable: 2299
+stable: 2300
+stable: 2301
+stable: 2302
+stable: 2303
+stable: 2304
+stable: 2305
+stable: 2306
+stable: 2307
+stable: 2308
+stable: 2309
+stable: 2310
+stable: 2311
+stable: 2312
+stable: 2313
+stable: 2314
+stable: 2315
+turning: 2316
+begin_turn_FD_threshold 2.871021154679534
+stable: 2376
+stable: 2377
+stable: 2378
+stable: 2379
+stable: 2380
+stable: 2381
+stable: 2382
+stable: 2383
+stable: 2384
+stable: 2385
+stable: 2386
+stable: 2387
+stable: 2388
+stable: 2389
+stable: 2390
+stable: 2391
+stable: 2392
+stable: 2393
+stable: 2394
+stable: 2395
+stable: 2396
+stable: 2397
+stable: 2398
+stable: 2399
+stable: 2400
+stable: 2401
+stable: 2402
+stable: 2403
+stable: 2404
+stable: 2405
+FP [211, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 471, 473, 474, 475, 476, 883, 884, 1154, 1155, 1587, 1733, 1891, 1892, 1893, 1894, 1895, 1896, 1897, 1898, 1899, 1900, 1901, 1902, 1903, 1904, 1905, 1906, 1907, 1908, 1909, 1910, 1911, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928, 1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944, 1945, 1946, 1947, 1948, 1949, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2322, 2323, 2324, 2325, 2326, 2327]
+FN [1156, 1585]
+abnormal x, abnormal y, test results:
+TP 98
+FP 156
+TN 2145
+FN 2
+TPR 0.98
+FPR 0.06779661016949153
+ACC 0.9341940857975843
+MSE abnormal x, abnormal y 3.388903183401422
+MSE normal x, normal y 1.293844349615998
+len(abnormalx_abnormaly_raw_err) 2406
+len(abnormalx_abnormaly_test_err) 2406
