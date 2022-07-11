@@ -37,7 +37,8 @@ to_screen = sys.stdout
 
 # create the output directory
 parent_path = os.getcwd()
-directory = 'sequence/range_scale/normal_training/stride3_MAE_model2_turn_5_roll'
+# stride3_MAE_model2_turn_5_roll
+directory = 'sequence/range_scale/normal_training/tset'
 output_dir = os.path.join(parent_path, directory)
 
 # Check whether the specified path exists or not
@@ -59,7 +60,7 @@ stable_mean_std_file_abs = output_dir + '/stable_mean_std_abs.pickle'
 # load data
 filename = 'log_17_2022-6-18-17-45-37_normal_data_last_degrees.csv'
 read_path = '/home/mengjie/dataset/px4/fixed_wing/turn/5/'
-df_train1 = pd.read_csv(read_path + filename)  # turn cut 3: 800 - 2450; 4: 1343:3736; 5: 1350:4100
+df_train1 = pd.read_csv(read_path + filename)  
 
 # normalize data
 X_training, nav_cmd_train = myModule.preprocess(df_train1)
@@ -69,19 +70,15 @@ X_training = X_training[1350:4100]
 X_training_normal = X_training.copy()
 y_train = X_training_normal[:, y_index]
 print(np.array(y_train).shape)
-for i in range(1000):
-    print(X_training[i][0])
 
 # turning stage index
-turn = [[1385, 1497], [1669, 1782], [1897, 1998], [2015, 2081], [2142, 2209], [2261, 2325], [2337, 2448], [2589, 2685], [2734, 2799],
-        [2835, 2900], [2916, 3005], [3073, 3179], [3302, 3395], [3583, 3689], [3746, 3812], [3845, 3943], [3943, 4009], [4019, 4090]]
+turn = [[35, 147], [319, 432], [547, 648], [665, 731], [792, 859], [911, 975], [987, 1098], [1239, 1335], [1384, 1449],
+        [1485, 1550], [1566, 1655], [1723, 1829], [1952, 2045], [2233, 2339], [2396, 2462], [2495, 2583], [2593, 2657], [2668, 2736]]
 
-for pair in turn:
-    print('#######')
-    print(X_training[pair[0]-1350:pair[0]-1350+10, 0]*90)
 # stable stage index
-stable = [[1350, 1385], [1497, 1669], [1782, 1897], [1998, 2015], [2081, 2142], [2209, 2261], [2325, 2337], [2448, 2589],
-          [2685, 2734], [2799, 2835], [2900, 2916], [3005, 3073], [3179, 3302], [3395, 3583], [3689, 3746], [3812, 3845], [4009, 4019], [4090, 4100]]
+stable = [[0, 35], [147, 319], [432, 547], [648, 665], [731, 792], [859, 911], [975, 987], [1098, 1239], [1335, 1384],
+          [1449, 1485], [1550, 1566], [1655, 1723], [1829, 1952], [2045, 2233], [2339, 2396], [2462, 2495], [2583, 2593], [2657, 2668], [2736, 2750]]
+
 
 turn_x = []
 turn_y = []
@@ -89,19 +86,17 @@ turn_y = []
 stable_x = []
 stable_y = []
 
-cut_index = 1350
-
 for pair in turn:
-    a = pair[0] - cut_index
-    b = pair[1] - cut_index
+    a = pair[0]
+    b = pair[1]
     x = X_training[a:b]
     y = y_train[a:b]
     turn_x.append(x)
     turn_y.append(y)
 
 for pair in stable:
-    a = pair[0] - cut_index
-    b = pair[1] - cut_index
+    a = pair[0]
+    b = pair[1]
     x = X_training[a:b]
     y = y_train[a:b]
     stable_x.append(x)

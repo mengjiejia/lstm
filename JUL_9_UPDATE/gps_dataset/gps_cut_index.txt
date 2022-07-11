@@ -1,0 +1,13 @@
+datadet_2: cut index = [26, 151]
+
+datadet_3: cut index = [84, 250]
+
+datadet_4: cut index = [125, 380]
+
+datadet_5: cut index = [125, 420]
+
+nav_cmd value meaning (details can be found in 'vehicle_command.msg'):
+VEHICLE_CMD_NAV_TAKEOFF = 22
+VEHICLE_CMD_NAV_WAYPOINT = 16
+VEHICLE_CMD_DO_SET_CAM_TRIGG_DIST=206
+VEHICLE_CMD_NAV_LAND = 21
