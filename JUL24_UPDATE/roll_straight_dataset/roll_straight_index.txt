@@ -1,3 +1,5 @@
 roll_straight_1: cut index = [1500, 15700]
 
-roll_straight_2: cut index = [2800, 10140]
+roll_straight_2: cut index = [2800, 10140] # not stable
+
+roll_straight_3: cut index = [2500, 15000]
